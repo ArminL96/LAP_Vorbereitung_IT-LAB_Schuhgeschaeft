@@ -19,5 +19,5 @@ Flussdiagramm
 	Bestellen			-	o		-	x
 ERD 					-	o		-	o
 
-
+x* = pending | o* = done
 
