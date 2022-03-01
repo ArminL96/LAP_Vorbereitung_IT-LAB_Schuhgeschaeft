@@ -6,9 +6,9 @@ Besprechung Aufteilung Projektplannung
 
 Keller 						Status		Review
 Flussdiagram 
-	Bestellübersicht 	-	x		-	x
+	Bestellübersicht 	-	o		-	x
 	Produkte Liste		-	o		-	x
-	Suchfunktion		-	x		-	x
+	Suchfunktion		-	o		-	x
 Zeitplan (Für 6 Wochen)	-	o		-	x
 
 
