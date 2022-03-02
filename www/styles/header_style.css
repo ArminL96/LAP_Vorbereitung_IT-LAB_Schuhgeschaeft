@@ -15,21 +15,21 @@ header {
 
 .header-container .header-child1 {
 	display: flex;
-	width:80%;
+	width: 50%;
 	height: 100%;
 	align-items: center;
 	padding-left: 20px
 }
 
 .header-container .header-child2 {
-	width: 20%;
+	width: 50%;
 	height: 100%;
 }
 
 .header-container .header-child2 a{
 	display: inline-flex;
     height: 100%;
-    width: 100%;
+    width: 120px;
     align-items: center;
 	justify-content: center;
 }
@@ -41,10 +41,11 @@ header {
 	height: 100%;
 	margin: 0px;
 	padding: 0px;
+	justify-content: flex-end;
 }
 
 .header-container li {
-	width: 100%;
+	width: 120px;
 	border-left: solid 2px #8B4646;
 	height: 100%;
 	display: flex;
