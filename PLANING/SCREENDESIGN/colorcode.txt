@@ -1,0 +1,13 @@
+Color Code:
+Primary Color: #DB6C6C
+Button-Border: #D44444
+
+h1: 64px; #DB6C6C; roboto
+h2:	36px; black; roboto
+h3:	24px; black; roboto
+p:  14px; black; roboto; 
+buttons: #FFFFFF; 14; roboto
+
+Umrandungen #8B4646 
+Searchbar #D4BFBF
+Eingabefelder-background: #C4C4C4
