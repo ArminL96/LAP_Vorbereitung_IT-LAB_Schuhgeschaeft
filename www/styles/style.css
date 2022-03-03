@@ -5,3 +5,141 @@ body {
 main {
 	min-height: 1000px;
 }
+
+h1 {
+	font-size: 64px;
+	color: #DB6C6C;
+}
+
+h2 {
+	font-size: 36px;
+	color: #DB6C6C;
+}
+
+p {
+	font-size: 16px;
+	color: black;
+}
+
+.button-style {
+	display: inline-block;
+	font-size: 16px;
+	font-weight: bold;
+	color: white;
+	border: 2px solid #D44444;
+	background-color: #DB6C6C;
+	padding: 5px 45px;
+}
+
+.button-style:hover {
+	color: #DB6C6C;
+	background-color: white;
+	border: 2px solid #D44444;
+}
+
+main a {
+	color: #DB6C6C;
+}
+
+main a:visited {
+	color: #DB6C6C;
+}
+
+span {
+	font-weight: bold;
+}
+
+/****************/
+/** LOGIN FORM **/
+/****************/
+
+.login-page-container {
+	display: flex;
+	justify-content: center;
+}
+
+.login-container {
+    display: flex;
+    border: 2px solid #DB6C6C;
+    height: 400px;
+    width: 600px;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 300px;
+}
+
+.login-container input[type=text], input[type=password], input[type=email] {
+	width: 400px;
+	padding: 12px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+}
+
+.login-container label {
+	margin-right: 20px;
+}
+
+.login-container .button-style {
+	margin-top: 15px;
+	margin-left: 358px;
+}
+
+/****************/
+/**PROFILE PAGE**/
+/****************/
+
+.profile-page-container {
+	display: flex;
+	justify-content: center;
+}
+
+.profile-container {
+	margin-top: 100px;
+	display:flex;
+	flex-direction: column;
+}
+
+.profile-header {
+	display: flex;
+}
+
+.profile-main {
+	margin-top: 100px;
+}
+
+.profile-container .profile-header h2 {
+	display: flex;
+	align-items: center;
+	margin-left: 40px;
+}
+
+.profile-container img {
+	margin-right: 40px;
+	height: 180px;
+	width: 180px;
+	border: 0px solid;
+	border-radius: 100%;
+}
+
+.profile-shipadd {
+	border: 2px solid #DB6C6C;
+	padding: 0px 20px 20px 20px;
+	margin-bottom: 20px;
+}
+
+.profile-billadd {
+	border: 2px solid #DB6C6C;
+	padding: 0px 20px 20px 20px;
+	margin-bottom: 20px;
+}
+
+.profile-main input[type=button] {
+	margin-left: 235px;
+}
+
+.profile-main h2 {
+	text-align: center;
+}
