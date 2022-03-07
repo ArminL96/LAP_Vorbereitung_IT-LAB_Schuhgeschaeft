@@ -6,10 +6,10 @@ Besprechung Aufteilung Projektplannung
 
 Keller 						Status		Review
 Flussdiagram 
-	Bestellübersicht 	-	o		-	x
-	Produkte Liste		-	o		-	x
-	Suchfunktion		-	o		-	x
-Zeitplan (Für 6 Wochen)	-	o		-	x
+	Bestellübersicht 		-	o		-	o
+	Produkte Liste			-	o		-	o
+	Suchfunktion			-	o		-	o
+Zeitplan (Für 6 Wochen)			-	o		-	o
 
 
 Lepuschitz					Status		Review
@@ -18,6 +18,14 @@ Flussdiagramm
 	Warenkorb			-	x		-	x
 	Bestellen			-	o		-	x
 ERD 					-	o		-	o
+
+
+
+Woche 2	(Schuhgeschäft)
+						Status		Review
+Keller
+Backend
+	Datenbank			-	o		-	x
 
 x* = pending | o* = done
 
