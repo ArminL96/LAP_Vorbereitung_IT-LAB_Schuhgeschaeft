@@ -45,8 +45,8 @@ CREATE TABLE `cartitem` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `quantity` int(11) NOT NULL,
   `price` float NOT NULL,
-  `cartId` int(11) NOT NULL,
-  `productId` int(11) NOT NULL
+  `cartId` bigint(20) UNSIGNED NOT NULL,
+  `productId` bigint(20) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -56,7 +56,7 @@ CREATE TABLE `cartitem` (
 --
 
 CREATE TABLE `category` (
-  `id` int(11) NOT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL,
   `Name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -70,10 +70,10 @@ CREATE TABLE `customer` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `firstName` varchar(255) NOT NULL,
   `lastName` varchar(255) NOT NULL,
-  `shippingAddressId` int(11) NOT NULL,
-  `billingAdressId` int(11) NOT NULL,
-  `userId` bigint(20) NOT NULL,
-  `cartId` int(11) NOT NULL
+  `shippingAddressId` bigint(20) UNSIGNED NOT NULL,
+  `billingAdressId` bigint(20) UNSIGNED NOT NULL,
+  `userId` bigint(20) UNSIGNED NOT NULL,
+  `cartId` bigint(20) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -84,10 +84,10 @@ CREATE TABLE `customer` (
 
 CREATE TABLE `orders` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `cartId` int(11) NOT NULL,
-  `customerId` int(11) NOT NULL,
-  `billAddId` int(11) NOT NULL,
-  `shipAddId` int(11) NOT NULL
+  `cartId` bigint(20) UNSIGNED NOT NULL,
+  `customerId` bigint(20) UNSIGNED NOT NULL,
+  `billAddId` bigint(20) UNSIGNED NOT NULL,
+  `shipAddId` bigint(20) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -102,7 +102,7 @@ CREATE TABLE `product` (
   `price` float NOT NULL,
   `size` int(11) NOT NULL,
   `color` varchar(255) NOT NULL,
-  `categoryId` int(11) NOT NULL
+  `categoryId` bigint(20) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -113,7 +113,7 @@ CREATE TABLE `product` (
 
 CREATE TABLE `returns` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `orderId` int(11) NOT NULL,
+  `orderId` bigint(20) UNSIGNED NOT NULL,
   `returned` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -168,31 +168,49 @@ ALTER TABLE `billingadress`
 -- Indizes für die Tabelle `cartitem`
 --
 ALTER TABLE `cartitem`
+  ADD UNIQUE KEY `id` (`id`),
+  ADD KEY `cart_cartitem_id` (`cartId`),
+  ADD KEY `product_cartitem_id` (`productId`);
+
+--
+-- Indizes für die Tabelle `category`
+--
+ALTER TABLE `category`
   ADD UNIQUE KEY `id` (`id`);
 
 --
 -- Indizes für die Tabelle `customer`
 --
 ALTER TABLE `customer`
-  ADD UNIQUE KEY `id` (`id`);
+  ADD UNIQUE KEY `id` (`id`),
+  ADD KEY `user_id` (`userId`),
+  ADD KEY `shippingAdd_id` (`shippingAddressId`),
+  ADD KEY `billingAdd_id` (`billingAdressId`),
+  ADD KEY `cart_id` (`cartId`);
 
 --
 -- Indizes für die Tabelle `orders`
 --
 ALTER TABLE `orders`
-  ADD UNIQUE KEY `id` (`id`);
+  ADD UNIQUE KEY `id` (`id`),
+  ADD KEY `customer_id` (`customerId`),
+  ADD KEY `order_cart_id` (`cartId`),
+  ADD KEY `order_billingAdd_id` (`billAddId`),
+  ADD KEY `order_shippingAdd_id` (`shipAddId`);
 
 --
 -- Indizes für die Tabelle `product`
 --
 ALTER TABLE `product`
-  ADD UNIQUE KEY `id` (`id`);
+  ADD UNIQUE KEY `id` (`id`),
+  ADD KEY `category_product_id` (`categoryId`);
 
 --
 -- Indizes für die Tabelle `returns`
 --
 ALTER TABLE `returns`
-  ADD UNIQUE KEY `id` (`id`);
+  ADD UNIQUE KEY `id` (`id`),
+  ADD KEY `order_return_id` (`orderId`);
 
 --
 -- Indizes für die Tabelle `shippingadress`
@@ -226,6 +244,12 @@ ALTER TABLE `billingadress`
 -- AUTO_INCREMENT für Tabelle `cartitem`
 --
 ALTER TABLE `cartitem`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT für Tabelle `category`
+--
+ALTER TABLE `category`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
@@ -269,7 +293,49 @@ ALTER TABLE `shopingcart`
 --
 ALTER TABLE `user`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- Constraints der exportierten Tabellen
+--
+
+--
+-- Constraints der Tabelle `cartitem`
+--
+ALTER TABLE `cartitem`
+  ADD CONSTRAINT `cart_cartitem_id` FOREIGN KEY (`cartId`) REFERENCES `shopingcart` (`id`),
+  ADD CONSTRAINT `product_cartitem_id` FOREIGN KEY (`productId`) REFERENCES `product` (`id`);
+
+--
+-- Constraints der Tabelle `customer`
+--
+ALTER TABLE `customer`
+  ADD CONSTRAINT `billingAdd_id` FOREIGN KEY (`billingAdressId`) REFERENCES `billingadress` (`id`),
+  ADD CONSTRAINT `cart_id` FOREIGN KEY (`cartId`) REFERENCES `shopingcart` (`id`),
+  ADD CONSTRAINT `shippingAdd_id` FOREIGN KEY (`shippingAddressId`) REFERENCES `shippingadress` (`id`),
+  ADD CONSTRAINT `user_id` FOREIGN KEY (`userId`) REFERENCES `user` (`id`);
+
+--
+-- Constraints der Tabelle `orders`
+--
+ALTER TABLE `orders`
+  ADD CONSTRAINT `customer_id` FOREIGN KEY (`customerId`) REFERENCES `customer` (`id`),
+  ADD CONSTRAINT `order_billingAdd_id` FOREIGN KEY (`billAddId`) REFERENCES `billingadress` (`id`),
+  ADD CONSTRAINT `order_cart_id` FOREIGN KEY (`cartId`) REFERENCES `shopingcart` (`id`),
+  ADD CONSTRAINT `order_shippingAdd_id` FOREIGN KEY (`shipAddId`) REFERENCES `shippingadress` (`id`);
+
+--
+-- Constraints der Tabelle `product`
+--
+ALTER TABLE `product`
+  ADD CONSTRAINT `category_product_id` FOREIGN KEY (`categoryId`) REFERENCES `category` (`id`);
+
+--
+-- Constraints der Tabelle `returns`
+--
+ALTER TABLE `returns`
+  ADD CONSTRAINT `order_return_id` FOREIGN KEY (`orderId`) REFERENCES `orders` (`id`);
 COMMIT;
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
