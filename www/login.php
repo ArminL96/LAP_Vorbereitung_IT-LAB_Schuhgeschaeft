@@ -27,9 +27,10 @@
 			<div class="login-page-container">
 				<div class="login-container">
 					<h1>Log-in</h1>
+					<!--Check if all Fields are set and Call Database Communicator for Login-->
 					<?php
 						if (isset($_POST['uname']) && isset($_POST['email']) && isset($_POST['password']) && isset($_POST['login'])) {
-							SQLCommunicator_Login($_POST['uname'], $_POST['email'], $_POST['password']);
+							SQLCommunicator::Login($_POST['uname'], $_POST['email'], $_POST['password']);
 						}
 					?>
 					<form method="POST">

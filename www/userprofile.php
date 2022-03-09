@@ -28,7 +28,7 @@
 				<div class="profile-container">
 					<div class="profile-header">
 						<img src="content/testpic.png" />
-						<h2>Username</h2>
+						<h2><?php echo SQLCommunicator::GetUserData()[1]?></h2>
 						<a href="#">Your orders</a>
 					</div>
 					<div class="profile-main">
