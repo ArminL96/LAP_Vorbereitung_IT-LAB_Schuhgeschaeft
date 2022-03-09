@@ -1,5 +1,7 @@
 <?php
 
+$Communicator = new SQLCommunicator();
+
 class SQLCommunicator {
 	private static $result = array();
 	

@@ -30,7 +30,7 @@
 					<!--Check if all Fields are set and Call Database Communicator for Login-->
 					<?php
 						if (isset($_POST['uname']) && isset($_POST['email']) && isset($_POST['password']) && isset($_POST['login'])) {
-							SQLCommunicator::Login($_POST['uname'], $_POST['email'], $_POST['password']);
+							$Communicator->Login($_POST['uname'], $_POST['email'], $_POST['password']);
 						}
 					?>
 					<form method="POST">
