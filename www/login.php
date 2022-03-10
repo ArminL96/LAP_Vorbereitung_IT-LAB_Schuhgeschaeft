@@ -3,6 +3,7 @@
 	PHP Includes
 	Load php files
 */
+	session_start();
 
 	require 'header.php';
 	require 'footer.php';
@@ -20,7 +21,15 @@
 	<body>
 		<!--Load the get_the_header() function from header.php-->
 		<header class="header-container">
-			<?php get_the_header(); ?>
+			<?php 
+			if (isset($_SESSION['loggeduser'])) {
+				get_the_header_prof();
+			}
+			else {
+				get_the_header_log();
+			}
+
+			?>
 		</header>
 		
 		<main>
@@ -29,18 +38,14 @@
 					<h1>Log-in</h1>
 					<!--Check if all Fields are set and Call Database Communicator for Login-->
 					<?php
-						if (isset($_POST['uname']) && isset($_POST['email']) && isset($_POST['password']) && isset($_POST['login'])) {
-							$Communicator->Login($_POST['uname'], $_POST['email'], $_POST['password']);
+						if (isset($_POST['uname']) && isset($_POST['password']) && isset($_POST['login'])) {
+							SQLCommunicator::Get_user($_POST['uname'], $_POST['password']);
 						}
 					?>
 					<form method="POST">
 						<div class="label-container">
 							<label for="uname">Username:</label>
 							<input type="text" placeholder="Username" name="uname" id="login-uname" required/>
-						</div>
-						<div class="label-container">
-							<label for="email">Email:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-							<input type="email" placeholder="Email" name="email" id="login-email" required/>
 						</div>
 						<div class="label-container">
 							<label for="password">Password:&nbsp;</label>

@@ -1,18 +1,18 @@
 <?php
 
-$Communicator = new SQLCommunicator();
 
 class SQLCommunicator {
-	private static $result = array();
 	
-	function Login($uname, $email, $pass) {
+	
+	private static $servername = "localhost";
+	private static $username = "root";
+	private static $password = "";
+	
+	function Get_user($uname, $pass) {
 		//MySQL server data
-		$servername = "localhost";
-		$username = "root";
-		$password = "";
 		try {
 		//set connection
-			$conn = new PDO("mysql:host=$servername;dbname=shoeshop", $username, $password);
+			$conn = new PDO("mysql:host=". self::$servername . ";dbname=shoeshop", self::$username, self::$password);
 		
 		//set Error Mode
 			$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -21,9 +21,10 @@ class SQLCommunicator {
 			$loginquery->bindParam(':username', $uname);
 			$loginquery->bindParam(':password', $pass);
 			$loginquery->execute();
-			self::$result = $loginquery->fetch(PDO::FETCH_BOTH);
-			if(is_array(self::$result))
+			$result = $loginquery->fetch(PDO::FETCH_BOTH);
+			if(is_array($result))
 			{
+				$_SESSION['loggeduser'] = $result;
 				header("Location:userprofile.php");
 				exit;
 			}
@@ -36,10 +37,29 @@ class SQLCommunicator {
 			echo "Connection to Database failed" ;
 		}
 	}
-
-	function GetUserData() {
-		return self::$result;
+	
+	function Get_Products($category, $search) {
+		
+		
 	}
+}
+
+class Profile {
+	
+	function Get_profilepicture () {
+		$username = $_SESSION['loggeduser'][1];
+		$userid = $_SESSION['loggeduser'][0];
+		if (file_exists("content/{$username}_{$userid}.png")) {
+			echo "<img src='content/{$username}_{$userid}.png' />";
+		}
+		else {
+			echo "<img src='content/testpic.png' />";
+		}
+	}
+}
+
+class Products {
+	
 }
 
 ?>

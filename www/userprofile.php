@@ -3,7 +3,11 @@
 	PHP Includes
 	Load php files
 */
-
+	session_start();
+	if (!isset($_SESSION['loggeduser'])) {
+		header("login.php");
+	}
+	
 	require 'header.php';
 	require 'footer.php';
 	require 'functions.php';
@@ -20,16 +24,15 @@
 	<body>
 		<!--Load the get_the_header() function from header.php-->
 		<header class="header-container">
-			<?php get_the_header(); ?>
+			<?php get_the_header_prof(); ?>
 		</header>
 		
 		<main>
 			<div class="profile-page-container">
 				<div class="profile-container">
 					<div class="profile-header">
-						<img src="content/testpic.png" />
-						<h2><?php echo $Communicator->GetUserData()[1]?></h2>
-						<a href="#">Your orders</a>
+						<?php Profile::Get_profilepicture(); ?>
+						<h2><?php echo $_SESSION['loggeduser'][1]?></h2>
 					</div>
 					<div class="profile-main">
 						<div class="address-container">

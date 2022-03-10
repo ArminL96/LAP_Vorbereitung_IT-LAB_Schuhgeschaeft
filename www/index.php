@@ -3,7 +3,11 @@
 	PHP Includes
 	Load php files
 */
-
+	session_start();
+	if (!isset($_SESSION['loggeduser'])) {
+		header("login.php");
+	}
+	
 	require 'header.php';
 	require 'footer.php';
 	require 'functions.php';
@@ -19,7 +23,7 @@
 	<body>
 		<!--Load the get_the_header() function from header.php-->
 		<header class="header-container">
-			<?php get_the_header(); ?>
+			<?php get_the_header_prof(); ?>
 		</header>
 		<main>
 			<h1>TEST</h1>

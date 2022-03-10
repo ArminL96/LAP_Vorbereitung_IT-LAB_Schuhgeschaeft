@@ -6,8 +6,15 @@
 	Echo the Variable
 */
 
-	function get_the_header() {
-		$header_html = '<div class="header-child1"><a href="index.php">Shopname</a></div><div class="header-child2"><ul><li><a href="login.php">Login</a></li><li><a href="userprofile.php">Profile</a></li><li><a href="#">Cart</a></li></ul></div>';
+	function get_the_header_prof() {
+		
+		$header_html = "<div class='header-child1'><a href='index.php'>Shopname</a></div><div class='header-child2'><ul><li><a href='userprofile.php'>My Profile</a></li><li><a href='#'>My Orders</a></li><li><a href='#'>My Cart</a></li></ul></div>";
+		echo($header_html);
+	}
+	
+	function get_the_header_log() {
+		
+		$header_html = "<div class='header-child1'><a href='index.php'>Shopname</a></div><div class='header-child2'><ul><li><a href='login.php'>Login</a></li></ul></div>";
 		echo($header_html);
 	}
 ?>
