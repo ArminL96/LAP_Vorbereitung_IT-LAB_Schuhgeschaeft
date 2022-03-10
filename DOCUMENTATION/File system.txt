@@ -2,6 +2,10 @@ Database/
 	shoeshop-sql
 	sql File to build the Database (create empty Databse called shoeshop beforehand and import the file)
 
+
+
+
+
 DOCUMENTATION/
 	Documentation.txt
 	Documentation of what did which task in the project and if it is finished or not.
@@ -9,16 +13,25 @@ DOCUMENTATION/
 	Filesystem.txt
 	Explanation of the Files and where they are.
 
+
+
+
+
 PLANING/
+
 	ERD/
 		erd.drawio
 		Drawiofile if the Entity Relation Diagramm (open file on the draw.io website)
 
 		erd.jpg
 		JPeg for Entity Relation Diagramm
-	
+
+
+
 	FLOWCHARTS/
 	here you will find the .drawio files of every flowchart made for this Project as well as the coresponding JPegs
+
+
 
 	SCREENDESIGNS/
 		colorcode.txt
@@ -32,32 +45,48 @@ PLANING/
 
 		Various PNG files can be found for each Screen.
 
+
+
 	Timeplan.xlsx
 	Timeplan for Project
+
+
+
 
 www/
 	content/
 	Profilepictures are saved here
 
+
+
 	forms/
 		billingAdress_form.php
 		form for changing users Billing Address
 
+
 		shippingAdress_form.php
 		form for changing users Shipping Address
+
+
 
 	styles/
 		footer_style.css
 		CSS File for footer
 
+
 		header_style.css
 		CSS File for header
+
 
 		style.css
 		style for website
 
+
+
 	footer.php
 	php containing code to load footer
+
+
 
 	functions.php
 		.SQLCommunicator
@@ -69,33 +98,52 @@ www/
 			Array structure : [0]/["id"] = user id [1]/["userName"] = user name [2]/["passwort"] = user password (hashed)
 			returns Error as echo
 
+
 			.Get_Products(string : Argument1, string : Argument2)
 			Argument1 : Category of Products to search
 			Argument2 : Search tag the user has given
 			Function to query for Products
+
+
 
 		.Profile
 			.Get_profilepicture()
 			function to get the name of the profilepictures file.
 			Returns an echo containing HTML <img> Element with profilepicture as the Source property
 
+
+
 		.Products
 		class for product page
+
+
 
 	header.php
 	file to build footer element
 	
+
+
 	html_template.php
 	template that can be used for new Pages (includes header and footer)
+
+
 
 	index.php
 	(Product page) main page
 
+
+
 	login.php
 	login page
 	
+
+
 	userprofile.php
 	userprofile page
+
+
+
+
 
 README.md
 git documentation
