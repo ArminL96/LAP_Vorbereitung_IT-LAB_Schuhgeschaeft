@@ -17,4 +17,10 @@
 		$header_html = "<div class='header-child1'><a href='index.php'>Shopname</a></div><div class='header-child2'><ul><li><a href='login.php'>Login</a></li></ul></div>";
 		echo($header_html);
 	}
+	
+	function get_the_header_none() {
+		
+		$header_html = "<div class='header-child1'><a href='index.php'>Shopname</a></div><div class='header-child2'></div>";
+		echo($header_html);
+	}
 ?>

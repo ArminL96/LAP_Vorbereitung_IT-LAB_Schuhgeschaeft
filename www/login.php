@@ -4,6 +4,9 @@
 	Load php files
 */
 	session_start();
+	if (isset($_SESSION['loggeduser'])) {
+		header("Location:userprofile.php");
+	}
 
 	require 'header.php';
 	require 'footer.php';
@@ -16,19 +19,12 @@
 		<link rel="stylesheet" href="styles/style.css">
 		<link rel="stylesheet" href="styles/header_style.css">
 		<link rel="stylesheet" href="styles/footer_style.css">
-		<script src="scripts/script.js"></script>
 	</head>
 	<body>
 		<!--Load the get_the_header() function from header.php-->
 		<header class="header-container">
 			<?php 
-			if (isset($_SESSION['loggeduser'])) {
-				get_the_header_prof();
-			}
-			else {
-				get_the_header_log();
-			}
-
+				get_the_header_none();
 			?>
 		</header>
 		

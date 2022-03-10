@@ -1,5 +1,4 @@
 <link rel="stylesheet" href="../styles/style.css">
-<script src="../scripts/script.js"></script>
 <div class="profile-shipadd-container">
 	<div class="label-container">
 		<label for="address">Address:</label>

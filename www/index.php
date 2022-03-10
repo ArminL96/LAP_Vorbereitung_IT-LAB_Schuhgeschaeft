@@ -23,7 +23,14 @@
 	<body>
 		<!--Load the get_the_header() function from header.php-->
 		<header class="header-container">
-			<?php get_the_header_prof(); ?>
+			<?php 
+			if (isset($_SESSION['loggeduser'])) {
+				get_the_header_prof();
+			}
+			else {
+				get_the_header_log();
+			}
+			?>
 		</header>
 		<main>
 			<h1>TEST</h1>

@@ -19,7 +19,6 @@
 		<link rel="stylesheet" href="styles/style.css">
 		<link rel="stylesheet" href="styles/header_style.css">
 		<link rel="stylesheet" href="styles/footer_style.css">
-		<script src="scripts/script.js"></script>
 	</head>
 	<body>
 		<!--Load the get_the_header() function from header.php-->
@@ -36,13 +35,21 @@
 					</div>
 					<div class="profile-main">
 						<div class="address-container">
+						<?php
+							if (isset($_POST['chaship'])) { 
+								header("forms/shippingAddress_form.php");
+							} 
+							else if (isset($_POST['chabill'])) {
+								header("forms/billingAddress_form.php");
+							}
+						?>
 							<div class="profile-shipadd">
 								<h2>Shipping Address</h2>
 								<p>Address: <span id="shipadd-page-add">PLACEHOLDER</span></p>
 								<p>City: <span id="shipadd-page-city">PLACEHOLDER</span></p>
 								<p>Country: <span id="shipadd-page-country">PLACEHOLDER</span></p>
 								<p>Zipcode: <span id="shipadd-page-zip">PLACEHOLDER</span></p>
-								<input type="button" value="Change" onclick="openFormSA()" class="button-style"/>
+									<input type="button" name="chaship" value="Change" class="button-style"/>
 							</div>
 							<div class="profile-billadd">
 								<h2>Billing Address</h2>
@@ -50,7 +57,7 @@
 								<p>City: <span id="billadd-page-city">PLACEHOLDER</span></p>
 								<p>Country: <span id="billadd-page-country">PLACEHOLDER</span></p>
 								<p>Zipcode: <span id="billadd-page-zip">PLACEHOLDER</span></p>
-								<input type="button" value="Change" onclick="openFormBA()" class="button-style"/>
+									<input type="button" name="chabill" value="Change" class="button-style"/>
 							</div>
 						</div>
 					</div>
