@@ -3,12 +3,12 @@
 	PHP Includes
 	Load php files
 */
-	//
+	//starts the session and looks if a user is already loggend in
 	session_start();
 	if (isset($_SESSION['loggeduser'])) {
 		header("Location:userprofile.php");
 	}
-
+	//includes php files
 	require 'header.php';
 	require 'footer.php';
 	require 'functions.php';
@@ -39,6 +39,7 @@
 							SQLCommunicator::Get_user($_POST['uname'], $_POST['password']);
 						}
 					?>
+					<!--Form fol login-->
 					<form method="POST">
 						<div class="label-container">
 							<label for="uname">Username:</label>
