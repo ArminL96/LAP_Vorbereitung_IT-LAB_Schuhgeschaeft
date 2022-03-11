@@ -4,9 +4,6 @@
 	Load php files
 */
 	session_start();
-	if (!isset($_SESSION['loggeduser'])) {
-		header("login.php");
-	}
 	
 	require 'header.php';
 	require 'footer.php';

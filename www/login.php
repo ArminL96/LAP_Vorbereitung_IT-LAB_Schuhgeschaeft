@@ -3,6 +3,7 @@
 	PHP Includes
 	Load php files
 */
+	//
 	session_start();
 	if (isset($_SESSION['loggeduser'])) {
 		header("Location:userprofile.php");
