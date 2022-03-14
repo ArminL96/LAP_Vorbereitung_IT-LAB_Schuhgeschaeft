@@ -6,7 +6,6 @@
 	<link rel="stylesheet" href="style/footer_style.css">
 </head>
 <body>
-	<!--Load the get_the_header() function from header.php-->
 	<header class="header-container">
 		<div class='header-child1'>
 			<a href='index.php'>Schuhversand</a>
