@@ -1,63 +1,85 @@
-<?php
-/*
-	PHP Includes
-	Load php files
-*/
-	//starts the session and looks if a user is already loggend in
-	session_start();
-	if (isset($_SESSION['loggeduser'])) {
-		header("Location:userprofile.php");
-	}
-	//includes php files
-	require 'header.php';
-	require 'footer.php';
-	require 'functions.php';
-?>
-
 <!DOCTYPE html>
 <html>
-	<head>
-		<link rel="stylesheet" href="styles/style.css">
-		<link rel="stylesheet" href="styles/header_style.css">
-		<link rel="stylesheet" href="styles/footer_style.css">
-	</head>
-	<body>
-		<!--Load the get_the_header() function from header.php-->
-		<header class="header-container">
-			<?php 
-				get_the_header_none();
-			?>
-		</header>
-		
-		<main>
-			<div class="login-page-container">
-				<div class="login-container">
-					<h1>Log-in</h1>
-					<!--Check if all Fields are set and Call Database Communicator for Login-->
+<head>
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="header_style.css">
+	<link rel="stylesheet" href="footer_style.css">
+</head>
+<body>
+	<header class="header-container">
+			<div class='header-child1'><a href='index.php'>Schuhgeschäft</a></div><div class='header-child2'></div>
+	</header>
+
+	<?php
+	#database server data
+	$mysqli = new mysqli("localhost", "root", "", "Schuhgeschaeft");
+	#checks if no connection could be established
+	if($mysqli->connect_error){
+		#if true the connection failed
+		die("connection failed: ".$mysqli->connect_error);
+	}
+
+	$sql = "SELECT
+	userName,
+	passwort
+	FROM user";
+	$result = $mysqli->query($sql);
+	?>
+		<div class="login-page-container">
+			<div class="login-container">
+				<h1>Log-in</h1>
+				<!--Form fol login-->
+				<form method="POST">
+					<div class="label-container">
+						<label for="uname">Username:</label>
+						<input type="text" placeholder="Username" name="uname" id="login-uname" required/>
+					</div>
+					<div class="label-container">
+						<label for="password">Password:&nbsp;</label>
+						<input type="password" placeholder="Password" name="password" id="login-pass" required/>
+					</div>
 					<?php
-						if (isset($_POST['uname']) && isset($_POST['password']) && isset($_POST['login'])) {
-							SQLCommunicator::Get_user($_POST['uname'], $_POST['password']);
-						}
+					if (empty($_POST['uname']) or empty($_POST['password']) ) {
+					}
+					else {
+						#Read the input fields
+						$login_username =  $_POST['uname'];
+						$login_password =  $_POST['password'];
+					}
 					?>
-					<!--Form fol login-->
-					<form method="POST">
-						<div class="label-container">
-							<label for="uname">Username:</label>
-							<input type="text" placeholder="Username" name="uname" id="login-uname" required/>
-						</div>
-						<div class="label-container">
-							<label for="password">Password:&nbsp;</label>
-							<input type="password" placeholder="Password" name="password" id="login-pass" required/>
-						</div>
-							<input type="submit" name="login" value="Login" class="button-style"/>
-					</form>
-				</div>
+					<input type="submit" name="login" value="Login" class="button-style"/>
+					<?php
+					if ($_SERVER["REQUEST_METHOD"] == "POST")
+					{
+						#if a username exists in the database
+						if ($result->num_rows > 0)
+						{
+							$row = mysqli_fetch_array($result);
+							#get the hash from the database
+							$hash = $row["passwort"];
+							#check if the entert password matches the hash
+							if (password_verify($login_password, $hash))
+							{
+								#save $result in session array
+								$_SESSION['loggeduser'] = $result;
+								#redirects to the products page
+								header('Location: products.php');
+							}
+							#else output error
+							else
+							{
+								echo '<br> <span style="color:red;font-size: 16px;">Incorrect Password or Username</span></br>';
+							}
+						}
+					}
+					?>
+				</form>
 			</div>
-		</main>
-		
-		<!--Load the get_the_footer() function from footer.php-->
-		<footer>
-			<?php get_the_footer(); ?>
-		</footer>
-	</body>
+		</div>
+	<footer>
+		<?php
+				include "footer.php"
+		 ?>
+	</footer>
+</body>
 </html>
