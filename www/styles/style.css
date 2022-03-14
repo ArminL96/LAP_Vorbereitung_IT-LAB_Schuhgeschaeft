@@ -1,5 +1,5 @@
 body {
-	margin: 0 auto !important;
+	margin: 0 auto;
 	height: 100%;
 }
 main {
@@ -56,6 +56,7 @@ span {
 .login-page-container {
 	display: flex;
 	justify-content: center;
+	margin-top: -150px;
 }
 
 .login-container {
