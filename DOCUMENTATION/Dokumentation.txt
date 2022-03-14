@@ -25,7 +25,13 @@ Woche 2	(Schuhgeschäft)
 						Status		Review
 Keller
 Backend
-	Datenbank			-	o		-	x
+	Datenbank			-	o	-	  x
+
+Woche 3	(Schuhgeschäft)
+						Status		Review
+Hofferer
+Frontend
+	Product Seite				  x		   x
 
 x* = pending | o* = done
 
