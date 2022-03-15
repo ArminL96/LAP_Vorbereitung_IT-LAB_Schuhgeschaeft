@@ -1,45 +1,42 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<link rel="stylesheet" href="style/products_page.css">
-	<link rel="stylesheet" href="style/header_style.css">
-	<link rel="stylesheet" href="style/footer_style.css">
-</head>
-<body>
-	<header class="header-container">
-		<div class='header-child1'>
-			<a href='index.php'>Schuhversand</a>
-		</div>
-		<div class='header-child2'>
-			<ul>
-				<li><a href='login.php'>Log out</a></li>
-				<li>
-					<a href='userprofile.php'>My Profile</a>
-				</li>
+<?php
+$mysqli = new mysqli("localhost", "root", "", "Schuhgeschaeft");
+#checks if no connection could be established
+if($mysqli->connect_error){
+	#if true the connection failed
+	die("Verbindung fehlgeschlagen: ".$mysqli->connect_error);
+}
 
-				<li><a href='#'>My Cart</a></li>
+$sql = "SELECT * FROM product INNER JOIN category ON product.categoryId = category.id";
 
-			</ul>
-		</div>
+$result = $mysqli->query($sql);
+?>
 
-	</header>
-
-	<form method="post">
-		<div id="searchbarDiv">
-			<input id="searchbar" name="search" type="text" placeholder="Search..">
-		</div>
-
-		<section class="container" id="products">
-			<div class="row">
-				<div class="col">
-					<?php include 'product_card.php'?>
-				</div>
+<?php
+#goes through each column of the Products table
+while($row = mysqli_fetch_assoc($result)){
+	?>
+	<div class="article-card">
+		<?php
+		//Important: the image name must match the product name in the database
+		//deletes all spaces from the string
+		$name = $row['name'];
+		$name = str_replace(' ', '', $name);
+		//output of the image with the same name as the name of the product
+		echo "<img src= img/$name.jpg>"
+		?>
+		<div class="article-body">
+			<!-- output data products: name, size, price, category-->
+			<p id="name"><?php echo $row['name'];?></p>
+			<div class="under">
+			<p id="size">Size: <?php echo $row['size'];?></p>
+			<p id="price">Price: <?php echo $row['price'];?>€</p>
+			<p id="category">Category: <?php echo $row['Name']?></p>
 			</div>
-
-			<footer>
-				<?php
-				include "footer.php"
-				?>
-			</footer>
-		</body>
-		</html>
+		</div>
+		<div class="card-footer">
+			<a href="" class="btn btn-shopcart">Add to Card</a>
+		</div>
+	</div>
+	<?php
+}
+?>
