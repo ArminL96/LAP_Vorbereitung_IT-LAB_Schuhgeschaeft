@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 07. Mrz 2022 um 09:10
--- Server-Version: 10.4.22-MariaDB
--- PHP-Version: 7.4.27
+-- Erstellungszeit: 15. Mrz 2022 um 14:50
+-- Server-Version: 10.4.18-MariaDB
+-- PHP-Version: 8.0.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Datenbank: `shoeshop`
+-- Datenbank: `schuhgeschaeft`
 --
 
 -- --------------------------------------------------------
@@ -59,6 +59,15 @@ CREATE TABLE `category` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `Name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Daten für Tabelle `category`
+--
+
+INSERT INTO `category` (`id`, `Name`) VALUES
+(1, 'Herren'),
+(2, 'Damen'),
+(3, 'Kinder');
 
 -- --------------------------------------------------------
 
@@ -104,6 +113,18 @@ CREATE TABLE `product` (
   `color` varchar(255) NOT NULL,
   `categoryId` bigint(20) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Daten für Tabelle `product`
+--
+
+INSERT INTO `product` (`id`, `name`, `price`, `size`, `color`, `categoryId`) VALUES
+(1, 'Scout Gummistiefel', 23.48, 23, 'Weiß', 3),
+(2, 'Casual Looks Sandalette', 15.57, 40, 'Schwarz', 2),
+(3, 'LASCANA Sneaker', 40.17, 45, 'Olivgrün', 1),
+(4, 'Hirschkogel Pumps', 74.5, 38, 'Schwarz', 2),
+(5, 'Ballerina mit Schleife', 30.2, 21, 'Schwarz', 3),
+(10, 'Wensky Sneaker', 50.6, 46, 'Braun', 1);
 
 -- --------------------------------------------------------
 
@@ -153,6 +174,13 @@ CREATE TABLE `user` (
   `userName` varchar(255) NOT NULL,
   `passwort` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Daten für Tabelle `user`
+--
+
+INSERT INTO `user` (`id`, `userName`, `passwort`) VALUES
+(1, 'test', '$2y$10$ScjD.M4WjSIfBSOH6vlTPOQEN6JnHEpr.1Z/K3CsP6KO3zfxQZrdy');
 
 --
 -- Indizes der exportierten Tabellen
@@ -250,7 +278,7 @@ ALTER TABLE `cartitem`
 -- AUTO_INCREMENT für Tabelle `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT für Tabelle `customer`
@@ -268,7 +296,7 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT für Tabelle `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT für Tabelle `returns`
@@ -292,7 +320,7 @@ ALTER TABLE `shopingcart`
 -- AUTO_INCREMENT für Tabelle `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints der exportierten Tabellen
@@ -335,7 +363,6 @@ ALTER TABLE `product`
 ALTER TABLE `returns`
   ADD CONSTRAINT `order_return_id` FOREIGN KEY (`orderId`) REFERENCES `orders` (`id`);
 COMMIT;
-
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
