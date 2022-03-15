@@ -1,36 +1,37 @@
 <?php
 $mysqli = new mysqli("localhost", "root", "", "Schuhgeschaeft");
-#überprüft ob keine verbindung hergestellt werden konnte
+#checks if no connection could be established
 if($mysqli->connect_error){
-	#wenn ja ist die verbindung fehlgeschlagen
+	#if true the connection failed
 	die("Verbindung fehlgeschlagen: ".$mysqli->connect_error);
 }
-#‎daten aus einer datenbank‎ werden in eine variable gespeichert
+#sql query select all products with category
 $sql = "SELECT * FROM product INNER JOIN category ON product.categoryId = category.id";
 
-#spalten aus der datenbank auswählen wo die product_category Blumenstrauß ist
 $result = $mysqli->query($sql);
 ?>
 
 <?php
-#geht jede spalte der Tabelle Products durch
+#goes through each column of the Product table
 while($row = mysqli_fetch_assoc($result)){
 	?>
 	<div class="article-card">
 		<?php
-		//Wichtig: der Bildname muss mit dem Produktnamen in der Datenbank übereinstimmen
-		//löscht alle leerzeichen aus dem String
+		//Important: the image name must match the product name in the database
+		//deletes all spaces from the string
 		$name = $row['name'];
 		$name = str_replace(' ', '', $name);
-		echo "<img src= $name.jpg>"
+		//output of the image with the same name as the name of the product
+		echo "<img src= img/$name.jpg>"
 		?>
 		<div class="article-body">
-			<!-- ausgabe der daten -->
-			<p>Name: <?php echo $row['name'];?></p>
-			<p>Size: <?php echo $row['size'];?></p>
-			<p>Color: <?php echo $row['color'];?></p>
-			<p>Price: <?php echo $row['price'];?>€</p>
-			<p>Category: <?php echo $row['Name']?></p>
+			<!-- output data products: name, size, price, category-->
+			<p id="name"><?php echo $row['name'];?></p>
+			<div class="under">
+				<p id="size">Size: <?php echo $row['size'];?></p>
+				<p id="price">Price: <?php echo $row['price'];?>€</p>
+				<p id="category">Category: <?php echo $row['Name']?></p>
+			</div>
 		</div>
 		<div class="card-footer">
 			<a href="" class="btn btn-shopcart">Add to Card</a>
