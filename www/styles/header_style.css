@@ -9,10 +9,6 @@ header {
 	height: 100%;
 }
 
-.header-container .header-child1 a {
-	font-size: 48px !important;
-}
-
 .header-container .header-child1 {
 	display: flex;
 	width: 50%;
