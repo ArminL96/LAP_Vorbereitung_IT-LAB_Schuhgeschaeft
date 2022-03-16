@@ -1,73 +1,105 @@
-<?php
-/*
-	PHP Includes
-	Load php files
-*/
-	session_start();
-	if (!isset($_SESSION['loggeduser'])) {
-		header("login.php");
-	}
-	
-	require 'header.php';
-	require 'footer.php';
-	require 'functions.php';
-?>
-
 <!DOCTYPE html>
 <html>
-	<head>
-		<link rel="stylesheet" href="styles/style.css">
-		<link rel="stylesheet" href="styles/header_style.css">
-		<link rel="stylesheet" href="styles/footer_style.css">
-	</head>
-	<body>
-		<!--Load the get_the_header() function from header.php-->
-		<header class="header-container">
-			<?php get_the_header_prof(); ?>
-		</header>
-		
-		<main>
-			<div class="profile-page-container">
-				<div class="profile-container">
-					<div class="profile-header">
-						<?php Profile::Get_profilepicture(); ?>
-						<h2><?php echo $_SESSION['loggeduser'][1]?></h2>
-					</div>
-					<div class="profile-main">
-						<div class="address-container">
-						<?php
-							if (isset($_POST['chaship'])) { 
-								header("forms/shippingAddress_form.php");
-							} 
-							else if (isset($_POST['chabill'])) {
-								header("forms/billingAddress_form.php");
-							}
-						?>
-							<div class="profile-shipadd">
-								<h2>Shipping Address</h2>
-								<p>Address: <span id="shipadd-page-add">PLACEHOLDER</span></p>
-								<p>City: <span id="shipadd-page-city">PLACEHOLDER</span></p>
-								<p>Country: <span id="shipadd-page-country">PLACEHOLDER</span></p>
-								<p>Zipcode: <span id="shipadd-page-zip">PLACEHOLDER</span></p>
-									<input type="button" name="chaship" value="Change" class="button-style"/>
-							</div>
-							<div class="profile-billadd">
-								<h2>Billing Address</h2>
-								<p>Address: <span id="billadd-page-add">PLACEHOLDER</span></p>
-								<p>City: <span id="billadd-page-city">PLACEHOLDER</span></p>
-								<p>Country: <span id="billadd-page-country">PLACEHOLDER</span></p>
-								<p>Zipcode: <span id="billadd-page-zip">PLACEHOLDER</span></p>
-									<input type="button" name="chabill" value="Change" class="button-style"/>
-							</div>
-						</div>
-					</div>
+<head>
+	<link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+	<!--Include the header.php-->
+	<header class="header-container">
+		<?php include "header.php"?>
+	</header>
+	<?php
+	#database server data
+	$mysqli = new mysqli("localhost", "root", "", "schuhgeschaeft");
+	#checks if no connection could be established
+	if($mysqli->connect_error){
+		#if true the connection failed
+		die("connection failed: ".$mysqli->connect_error);
+	}
+	#‎select data form database
+	$sql = "SELECT *
+	FROM cumstomer";
+	$result = $mysqli->query($sql);
+	session_start();
+	?>
+	<form method="POST">
+		<div class="profile-page-container">
+			<div class="profile-container">
+				<div class="profile-header">
+					<?php
+					//Important: the image name must match the username in the database
+					//deletes all spaces from the string
+					$name =  $_SESSION["na"];
+					$name = str_replace(' ', '', $name);
+					//if user set image
+					if (file_exists("content/$name.jpg")) {
+						//output of the image with the same name as the name of the username
+						echo "<img src= content/$name.jpg>";
+					}
+					//else output of placeholder
+					else {
+						//echo element with placeholder image
+						echo "<img src='content/testpic.png' />";
+					}
+					?>
+					<p id="displayName"><?php echo $_SESSION["na"]; ?></p>
 				</div>
 			</div>
-		</main>
-		
-		<!--Load the get_the_footer() function from footer.php-->
-		<footer>
-			<?php get_the_footer(); ?>
-		</footer>
-	</body>
+		</div>
+		<div class="profile-main">
+			<div class="address-container">
+				<?php
+				if (isset($_POST['chaship'])) {
+					header("forms/shippingAddress_form.php");
+				}
+				else if (isset($_POST['chabill'])) {
+					header("forms/billingAddress_form.php");
+				}
+				?>
+				<!--Output of User Shipping Adress-->
+				<div class="profile-shipadd">
+					<h2>Shipping Address</h2>
+					<input type="text" placeholder="First Name" name="ship_firstname" id="ship_firstname"/>
+					<br>
+					<input type="text" placeholder="Last Name" name="ship_lastname" id="ship_lastname"/>
+					<br>
+					<input type="text" placeholder="Address" name="ship_address" id="ship_address"/>
+					<br>
+					<input type="text" placeholder="City" name="ship_city" id="ship_city"/>
+					<br>
+					<input type="text" placeholder="Country" name="ship_country" id="ship_country"/>
+					<br>
+					<input type="text" placeholder="ZIP Code" name="ship_zip" id="ship_zip"/>
+					<br>
+					<input type="submit" name="ship_sumit" value="Change" class="button-style"/>
+					<br>
+				</div>
+				<div class="profile-billadd">
+					<!--Output of User Billing Adress-->
+					<h2>Billing Address</h2>
+					<input type="text" placeholder="First Name" name="bill_firstname" id="bill_firstname"/>
+					<br>
+					<input type="text" placeholder="Last Name" name="bill_lastname" id="bill_lastname"/>
+					<br>
+					<input type="text" placeholder="Address" name="bill_address" id="bill_address"/>
+					<br>
+					<input type="text" placeholder="City" name="bill_city" id="bill_city"/>
+					<br>
+					<input type="text" placeholder="Country" name="bill_country" id="bill_country"/>
+					<br>
+					<input type="text" placeholder="ZIP Code" name="bill_zip" id="bill_zip"/>
+					<br>
+					<input type="submit" name="ship_sumit" value="Change" class="button-style"/>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--Load the get_the_footer() function from footer.php-->
+<footer>
+	<?php include "footer.php"?>
+</footer>
+</form>
+</body>
 </html>
