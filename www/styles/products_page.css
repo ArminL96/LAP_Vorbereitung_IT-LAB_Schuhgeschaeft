@@ -5,7 +5,6 @@ h1{
 
 html {
   font-family: arial;
-  font-size: 14px;
 }
 
 body{
@@ -18,7 +17,16 @@ body{
 title {
   display: none;
 }
+#name{
+  font-size: 18px;
+}
 
+.article-card img
+{
+  height: 180px;
+  width: 200px;
+  margin-left: 35px;
+}
 /* ----HEADER---- */
 
 .headerTest {
@@ -32,24 +40,22 @@ title {
 }
 
 @media (min-width: 576px)
-.headerTest {
-  padding: 4rem 2rem;
+{
+  .headerTest {
+    padding: 4rem 2rem;
+  }
 }
+
 
 .container {
   width: 100%;
   padding-right: 15px;
-  /* padding-left: 15px; */
   margin-right: auto;
   margin-left: auto;
   color: #black;
 }
 
 
-@media (min-width: 1200px)
-.container{
-  max-width: 1140px;
-}
 
 /* Logout & Shopcart Button */
 
@@ -78,9 +84,8 @@ input[name="shopcart"]{
   display: flex;
   flex-wrap: wrap;
   margin-right: -15px;	/*first row*/
-  margin-left: -15px;
+  margin-left: 2px;
   margin-bottom: 15px;
-
 }
 
 .col {
@@ -104,10 +109,10 @@ input[name="shopcart"]{
   border: 2px solid #db6c6c;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   float: left;
-  margin-left: 150px;
-  margin-top: 50px;
+  margin-left: 10px;
   margin-right: 20px;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
+  width: 300px;
 }
 
 .article-body {
@@ -129,15 +134,35 @@ input[name="shopcart"]{
   background-color: rgba(0, 0, 0, 0.03);
   border-top: 1px solid rgba(0, 0, 0, 0.125);
 }
+
+/*searchbar top from article + drop category menu*/
 #searchbar{
-    margin-left: 30px;
-    margin-top: 10px;
-    width: 300px;
-    border: solid 1px #8B4646;
+  margin-left: 30px;
+  margin-top: 13px;
+  width: 300px;
+  border: solid 1px #DB6C6C;
 }
 #searchbarDiv{
   background-color: #d4bfbf;
   margin: 30px;
+  margin-bottom: px;
   height: 50px;
   border-bottom: solid 2px #DB6C6C;
+  margin-top: 83px;
+}
+#drop{
+  margin-top: 13px;
+  margin-right: -307px;
+  width: 226px;
+  float: right;
+  border: 1px solid var(--select-border);
+  border: solid 1px #DB6C6C;
+  padding: 0.25em 0.5em;
+}
+
+#categor{
+  float: right;
+  margin-right: 283px;
+  color:#DB6C6C;
+
 }
