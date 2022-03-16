@@ -31,7 +31,8 @@ Woche 3	(Schuhgeschäft)
 						Status		Review
 Hofferer
 Frontend
-	Product Seite				  x		   x
+	Product Seite				  o		   o
+	Anmerkung: Css Footer bleibt nicht an einen Ort, Category Dropdown kein name wird angezeigt nach dem auswählen
 
 x* = pending | o* = done
 
