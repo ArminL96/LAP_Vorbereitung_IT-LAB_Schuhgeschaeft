@@ -92,6 +92,11 @@ span {
 /**PROFILE PAGE**/
 /****************/
 
+#displayName{
+	font-size: 36px;
+	margin-left: 10px;
+	 margin-top: 40px;
+}
 .profile-page-container {
 	display: flex;
 	justify-content: center;
@@ -143,4 +148,9 @@ span {
 
 .profile-main h2 {
 	text-align: center;
+}
+
+input{
+	border: 2px solid #DB6C6C;
+	margin-top: 30px;
 }
