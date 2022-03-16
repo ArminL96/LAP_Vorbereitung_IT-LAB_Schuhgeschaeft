@@ -32,7 +32,7 @@ Woche 3	(Schuhgeschäft)
 Hofferer
 Frontend
 	Product Seite				  o		   o
-	Anmerkung: Css Footer bleibt nicht an einen Ort, Category Dropdown kein name wird angezeigt nach dem auswählen
+	Anmerkung: Css Footer bleibt nicht unten, Category Dropdown kein name wird angezeigt nach dem auswählen
 
 x* = pending | o* = done
 
