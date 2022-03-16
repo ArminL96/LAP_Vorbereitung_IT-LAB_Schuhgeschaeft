@@ -1,7 +1,8 @@
 footer {
 	background: #DB6C6C;
 	width:100%;
-	position: fixed;
-	bottom: 0;
+	bottom: -600px;
 	height: 100px;
+	margin-bottom: -20px;
+	position: absolute;
 }
