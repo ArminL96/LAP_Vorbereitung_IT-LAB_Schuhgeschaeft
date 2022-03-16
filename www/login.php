@@ -34,12 +34,14 @@
 					<input type="password" placeholder="Password" name="password" id="login-pass" required/>
 				</div>
 				<?php
+				session_start();
 				if (empty($_POST['uname']) or empty($_POST['password']) ) {
 				}
 				else {
 					#Read the input fields
 					$login_username =  $_POST['uname'];
 					$login_password =  $_POST['password'];
+					$_SESSION["na"] = $login_username;
 				}
 				?>
 				<input type="submit" name="login" value="Login" class="button-style"/>
@@ -71,10 +73,5 @@
 			</form>
 		</div>
 	</div>
-	<footer>
-		<?php
-		include "footer.php"
-		?>
-	</footer>
 </body>
 </html>
