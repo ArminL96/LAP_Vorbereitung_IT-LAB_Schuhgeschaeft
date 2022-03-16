@@ -1,6 +1,6 @@
 Database/
-	shoeshop-sql
-	sql File to build the Database (create empty Databse called shoeshop beforehand and import the file)
+	schuhgeschaeft-sql
+	sql File to build the Database (create empty Databse called schuhgeschaeft beforehand and import the file)
 
 
 
@@ -80,7 +80,9 @@ www/
 
 		style.css
 		style for website
-
+		
+		products_page.css
+		only for products page
 
 
 	footer.php
@@ -119,16 +121,11 @@ www/
 
 
 	header.php
-	file to build footer element
+	php containing code to load header
 	
 
 
-	html_template.php
-	template that can be used for new Pages (includes header and footer)
-
-
-
-	index.php
+	products.php
 	(Product page) main page
 
 
