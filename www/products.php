@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" href="style/products_page.css">
-</head>
+	<link rel="stylesheet" href="style/products_page.css"></head>
+	
 <body>
 	<?php
 	$mysqli = new mysqli("localhost", "root", "", "Schuhgeschaeft");
@@ -32,33 +32,48 @@
 		<div id="searchbarDiv">
 			<!--searchbar to search products -->
 			<input id="searchbar" name="search" type="text" placeholder="Search..">
-			<!--dropdown for category -->
-			<select id="drop" name=”color”>
-				<option value=”herren”>Herren</option>
-				<option value=”damen”>Damen</option>
-				<option value=”kinder”>Kinder</option>
+			<p id="categor">Category</p>
+			<select  type="submit" name="categoryt" id="drop" onchange="form.submit()">
+				 <option value=""></option>
+				<option value="herren">Herren</option>
+			  <option value="damen">Damen</option>
+				<option value="kinder">Kinder</option>
+
+				<?php
+						$in = "";
+						#Read the inputs form searchbar and dropdown
+						$input_search =  $_POST['search'];
+						$selectedValue = $_POST['categoryt'];
+
+						#query of the selection
+						if ($selectedValue == 'herren') {
+									$in = "herren";
+						}
+						if ($selectedValue == 'damen') {
+									$in = "damen";
+						}
+
+						if ($selectedValue == 'kinder') {
+									$in = "kinder";
+						}
+					?>
 			</select>
 		</div>
 		<?php
-		#if search is empty
-		if (empty($_POST['search'])) {
-			?>
-			<!--all produts output -->
-			<section class="container" id="products">
-				<div class="row">
-					<div class="col">
-						<!--the product-->
-						<?php include 'product_card.php'?>
-					</div>
-				</div>
-				<?php
-			}
-			#else if search is not empty
-			else {
-				#Read the search input field
-				$input_search =  $_POST['search'];
-				#sql query select all products where product name like the search input
-				$sql = "SELECT * FROM product INNER JOIN category ON product.categoryId = category.id WHERE product.name LIKE '%{$input_search}%'";
+				#checks if one input input is empty
+				if(empty($input_search))
+				{
+					#if one query is empty, the command of the other is queried
+					#sql query select all products where product name like the selected Value input
+					$sql = "SELECT * FROM product INNER JOIN category ON product.categoryId = category.id WHERE category.Name LIKE'%{$in}%'";
+				}
+
+				if(empty($selectedValue))
+				{
+						#sql query select all products where product name like the search input
+						$sql = "SELECT * FROM product INNER JOIN category ON product.categoryId = category.id WHERE product.name LIKE '%{$input_search}%'";
+				}
+
 				$result = $mysqli->query($sql);
 
 				#goes through each column of the Product table
@@ -66,6 +81,7 @@
 					?>
 					<div class="article-card">
 						<?php
+
 						//Important: the image name must match the product name in the database
 						//deletes all spaces from the string
 						$name = $row['name'];
@@ -88,11 +104,11 @@
 					</div>
 					<?php
 				}
-			}
 			?>
 			<footer>
 				<!--the footer-->
 				<?php include "footer.php"?>
 			</footer>
+		</form>
 		</body>
 		</html>
