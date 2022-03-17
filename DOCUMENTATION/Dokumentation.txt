@@ -26,13 +26,49 @@ Woche 2	(Schuhgeschäft)
 Keller
 Backend
 	Datenbank			-	o	-	  x
+-----------------------------------------------------IN ARBEIT-------------------------------------------------------------
+												
+Aktuelle Versionen:
+Datenbank (Backend) V1.1
+Login (Frontend) V1.1
+Login (Backend) V1.1
+Artikel Page (Frontend) V1.1
+Artikel Page (Backend) V1.1
+Warenkorb (Frontend) V1.1
 
-Woche 3	(Schuhgeschäft)
-						Status		Review
-Hofferer
-Frontend
-	Product Seite				  o		   o
-	Anmerkung: Css Footer bleibt nicht unten, Category Dropdown kein name wird angezeigt nach dem auswählen
 
-x* = pending | o* = done
+Entwickler Version: Windows 10	
+Datenbank Server: XAMPP
+Technologien: HTML5, CSS3, JavaScript ,PHP
 
+
+"1" = Abgeschlossen
+"0" = Offen
+
+Hofferer:			Status		Erledigt
+Login (Backend)			  1   		   0
+Artikel Page (Backend)		  0  		   0
+Artikel Page (Frontend)		  1	           0
+Warenkorb (Frontend)		  1	  	   0
+
+
+Griesser:			  
+Header (Frontend)		  1		   0
+Footer (Frontend)		  0		   0
+
+
+14.03.2022:
+	  Login (Backend) Fertiggestellt (V1.1)
+	  Login (Frontend) Fertiggestellt (V1.1)
+	  
+15.03.2022:
+	  Artikel Page reparieren (Frontend) (V1.1)
+
+16.03.2022:
+	  Artikel Page reparieren (Backend)  (V1.1)
+	  Warenkorb (Frontend) angefangen (V1.0)
+	  
+17.03.2022:
+	  Datenback Test Daten einfügen (V1.1)
+	  Footer überarbeiten (V1.1)
+	  Warenkorb (Frontend) fertig gestellt (V1.1)
