@@ -1,0 +1,82 @@
+body {
+	margin: 0 auto;
+	height: 100%;
+}
+
+h1 {
+	font-size: 64px;
+	color: #DB6C6C;
+}
+
+h2 {
+	font-size: 36px;
+	color: #DB6C6C;
+}
+
+p {
+	font-size: 16px;
+	color: black;
+}
+
+.button-style {
+	display: inline-block;
+	font-size: 16px;
+	font-weight: bold;
+	color: white;
+	border: 2px solid #D44444;
+	background-color: #DB6C6C;
+	padding: 5px 45px;
+}
+
+.button-style:hover {
+	color: #DB6C6C;
+	background-color: white;
+	border: 2px solid #D44444;
+}
+
+
+span {
+	font-weight: bold;
+}
+
+.login-page-container {
+	display: flex;
+	justify-content: center;
+	margin-top: -150px;
+}
+
+.login-container {
+    display: flex;
+    border: 2px solid #DB6C6C;
+    height: 400px;
+    width: 600px;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 300px;
+}
+
+.login-container input[type=text], input[type=password], input[type=email] {
+	width: 400px;
+	padding: 12px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+}
+
+.login-container label {
+	margin-right: 20px;
+}
+
+.login-container .button-style {
+	margin-top: 15px;
+	margin-left: 358px;
+}
+
+.container-footer {
+	background: #DB6C6C;
+	width:100%;
+	bottom: 0px;
+	height: 100px;
+}
