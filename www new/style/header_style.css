@@ -1,3 +1,23 @@
+body {
+	margin: 0 auto;
+	height: 100%;
+}
+h1 {
+font-size: 64px;
+color: #DB6C6C;
+}
+
+h2 {
+font-size: 36px;
+color: #DB6C6C;
+}
+
+p {
+font-size: 16px;
+color: black;
+}
+
+
 header {
 	background: #DB6C6C;
 	width:100%;
@@ -5,7 +25,12 @@ header {
 }
 
 .header-container {
+	display: flex;
 	height: 100%;
+}
+
+.header-container .header-child1 a {
+	font-size: 48px !important;
 }
 
 .header-container .header-child1 {
