@@ -2,6 +2,7 @@
 <html>
 <head>
 	<link rel="stylesheet" href="style/cart_style.css">
+	<link rel="shortcut icon" href="../www/img/favicon.ico" type="image/x-icon">
 </head>
 	<body>
 		<!--Header-->
