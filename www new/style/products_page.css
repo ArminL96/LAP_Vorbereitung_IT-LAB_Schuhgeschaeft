@@ -54,22 +54,6 @@ p {
   color: #black;
 }
 
-/* Logout & Shopcart Button */
-
-input[type="submit"]{
-  padding: 8px 30px;
-  background-color: #28CAD4;
-  border: 2px;
-  border-radius: 50px;
-  cursor: pointer;
-  transition: 0.5s;
-  float: right;
-  margin-right: 20px;
-  border: 2px solid #00F0FF;
-  box-sizing: border-box;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
 
 /* ARTICLE_SHOW */
 
@@ -168,7 +152,7 @@ input[type="submit"]{
   padding: 0.25em 0.5em;
 }
 
-#categor{
+#category-title{
   margin-top: 14px;
   float: right;
   margin-right: 258px;
