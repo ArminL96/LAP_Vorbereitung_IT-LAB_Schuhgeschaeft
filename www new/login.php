@@ -2,7 +2,7 @@
 <html>
 <head>
 	<link rel="stylesheet" href="style/login.css">
-	<link rel="stylesheet" href="style/footer_style.css">
+	<link rel="shortcut icon" href="../www/img/favicon.ico" type="image/x-icon">
 </head>
 <body>
 	<?php
@@ -37,17 +37,15 @@
 				<?php
 				#session start
 				session_start();
-				#if input username or password is empty then do nothing
-				if (empty($_POST['uname']) or empty($_POST['password']) ) {
-				}
-				#if input one is not empty
-				else {
+				#if input username and password is not empty
+				if (!empty($_POST['uname']) and !empty($_POST['password']) ) {
 					#Read the input fields
 					$login_username =  $_POST['uname'];
 					$login_password =  $_POST['password'];
 					#Session transfer to userprofile to get username
 					$_SESSION["na"] = $login_username;
 				}
+
 				?>
 				<input type="submit" name="login" value="Login" class="button-style"/>
 				<?php
@@ -78,8 +76,5 @@
 			</form>
 		</div>
 	</div>
-	<footer>
-		<div class="container-footer"></div>
-	</footer>
 </body>
 </html>
