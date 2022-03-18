@@ -2,11 +2,11 @@
 <html>
 <head>
 	<link rel="stylesheet" href="style/products_page.css">
+		<link rel="shortcut icon" href="../www/img/favicon.ico" type="image/x-icon">
 </head>
 <body>
-	<div id="wrapper">
 	<?php
-	$mysqli = new mysqli("localhost", "root", "", "Schuhgeschaeft");
+	$mysqli = new mysqli("localhost", "root", "", "schuhgeschaeft");
 	#checks if no connection could be established
 	if($mysqli->connect_error){
 		#if true the connection failed
@@ -32,8 +32,8 @@
 		<div id="searchbarDiv">
 			<!--searchbar to search products -->
 			<input id="searchbar" name="search" type="text" placeholder="Search..">
-			<p id="categor">Category</p>
-			<select  type="submit" name="categoryt" id="drop" onchange="form.submit()">
+				<p id="category-title">Category</p>
+			<select  type="submit" name="category-selection" id="drop" onchange="form.submit()">
 				<option value=""></option>
 				<option value="herren">Herren</option>
 				<option value="damen">Damen</option>
@@ -43,7 +43,7 @@
 				$in = "";
 				#Read the inputs form searchbar and dropdown
 				$input_search =  $_POST['search'];
-				$selectedValue = $_POST['categoryt'];
+				$selectedValue = $_POST['category-selection'];
 
 				#query of the selection
 				if ($selectedValue == 'herren') {
@@ -96,13 +96,13 @@
 					</div>
 				</div>
 				<div class="card-footer">
+					<!-- button add to card-->
 					<a href="" class="btn btn-shopcart">Add to Card</a>
 				</div>
 			</div>
 			<?php
 		}
 		?>
-	</div> <!-- ENDE vom Wrapper -->
 	</form>
 	<footer>
 		<!--the footer-->
