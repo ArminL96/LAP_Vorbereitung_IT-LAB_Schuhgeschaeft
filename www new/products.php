@@ -1,3 +1,31 @@
+<?php
+	session_start();
+	$mysqli = new mysqli("localhost", "root", "", "schuhgeschaeft");
+	#checks if no connection could be established
+	if($mysqli->connect_error){
+		#if true the connection failed
+		die("Verbindung fehlgeschlagen: ".$mysqli->connect_error);
+	}
+	
+	#if the add_to_cart button got press
+	if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST['add_to_cart'])) {
+		$idProd = $_POST['add_to_cart'];
+		
+		#sql statment, select cartID from customer table where cartID equal userID is
+		$sql = "SELECT cartId FROM customer WHERE cartId = '".$_SESSION['userID']."'";
+		$result = $mysqli->query($sql);
+		
+		#if num_rows bigger than 0, than fetches cartID as an associative array
+		if($result->num_rows > 0) {
+			while($row = $result->fetch_assoc()) {
+				$cartID = $row['cartId'];
+			}
+		}					
+		$sql = "INSERT INTO cartitem(quantity, price, cartId, productId) VALUES ('1','1','".$cartID."', '".$idProd."')";
+		$mysqli->query($sql);
+	}
+	?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,14 +33,7 @@
 		<link rel="shortcut icon" href="../www/img/favicon.ico" type="image/x-icon">
 </head>
 <body>
-	<?php
-	$mysqli = new mysqli("localhost", "root", "", "schuhgeschaeft");
-	#checks if no connection could be established
-	if($mysqli->connect_error){
-		#if true the connection failed
-		die("Verbindung fehlgeschlagen: ".$mysqli->connect_error);
-	}
-	?>
+	
 	<!--Header-->
 	<header class="header-container">
 		<?php include "header.php"?>
@@ -35,9 +56,9 @@
 				<p id="category-title">Category</p>
 			<select  type="submit" name="category-selection" id="drop" onchange="form.submit()">
 				<option value=""></option>
-				<option value="herren">Herren</option>
-				<option value="damen">Damen</option>
-				<option value="kinder">Kinder</option>
+				<option value="herren">Men</option>
+				<option value="damen">Women</option>
+				<option value="kinder">Children</option>
 
 				<?php
 				$in = "";
@@ -65,13 +86,13 @@
 		{
 			#if one query is empty, the command of the other is queried
 			#sql query select all products where product name like the selected Value input
-			$sql = "SELECT * FROM product INNER JOIN category ON product.categoryId = category.id WHERE category.Name LIKE'%{$in}%'";
+			$sql = "SELECT product.id, product.name, product.price, product.size, product.color, product.categoryid, category.name AS catName FROM product INNER JOIN category ON product.categoryId = category.id WHERE category.Name LIKE'%{$in}%'";
 		}
 
 		if(empty($selectedValue))
 		{
 			#sql query select all products where product name like the search input
-			$sql = "SELECT * FROM product INNER JOIN category ON product.categoryId = category.id WHERE product.name LIKE '%{$input_search}%'";
+			$sql = "SELECT product.id, product.name, product.price, product.size, product.color, product.categoryid, category.name AS catName FROM product INNER JOIN category ON product.categoryId = category.id WHERE product.name LIKE '%{$input_search}%'";
 		}
 		$result = $mysqli->query($sql);
 		#goes through each column of the Product table
@@ -88,16 +109,17 @@
 				?>
 				<div class="article-body">
 					<!-- output data products: name, size, price, category-->
-					<p id="name"><?php echo $row['name'];?></p>
+					<p id="nameID" name="name_item"><?php echo $row['name'];?></p>
 					<div class="under">
-						<p id="size">Size: <?php echo $row['size'];?></p>
-						<p id="price">Price: <?php echo $row['price'];?>€</p>
-						<p id="category">Category: <?php echo $row['Name']?></p>
+						<p id="sizeID" name="size_item">Size: <?php echo $row['size'];?></p>
+						<p id="priceID" name="price_item">Price: <?php echo $row['price'];?>€</p>
+						<p id="categoryID" name="category_item">Category: <?php echo $row['catName']?></p>
 					</div>
 				</div>
 				<div class="card-footer">
 					<!-- button add to card-->
-					<a href="" class="button-card">Add to Card</a>
+					<button type="submit" name="add_to_cart" class="button-card" value="<?php echo $row['id'] ?>">Add to cart</button> 
+					
 				</div>
 			</div>
 			<?php
