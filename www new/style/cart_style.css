@@ -17,7 +17,7 @@ p {
 	font-size: 16px;
 	color: black;
 }
-
+/* ----Buttons---- */
 .button-style {
 	display: inline-block;
 	font-size: 16px;
@@ -34,39 +34,13 @@ p {
 	border: 2px solid #D44444;
 }
 
-span {
-	font-weight: bold;
-}
-
-#name{
-  font-size: 18px;
-}
-
+/* Card Pictures */
 .article-card img
 {
   height: 180px;
   width: 200px;
   margin-left: 35px;
 }
-/* ----HEADER---- */
-
-.headerTest {
-  padding: 45px 22px;
-  margin-bottom: 45px;
-  background-color: #28CAD48A;
-  border-radius: 2px;
-  box-sizing: border-box;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-
-}
-
-@media (min-width: 576px)
-{
-  .headerTest {
-    padding: 4rem 2rem;
-  }
-}
-
 
 .container {
   width: 100%;
@@ -75,8 +49,6 @@ span {
   margin-left: auto;
   color: #black;
 }
-
-
 
 /* Logout & Shopcart Button */
 
@@ -104,7 +76,7 @@ input[name="shopcart"]{
 .row {
   display: flex;
   flex-wrap: wrap;
-  margin-right: -15px;	/*first row*/
+  margin-right: -15px;
   margin-left: 2px;
   margin-bottom: 15px;
 }
@@ -123,6 +95,7 @@ input[name="shopcart"]{
   box-sizing: border-box;
 }
 
+/* Article Card Body*/
 .article-card{
   background-color: #fff;
   background-clip: border-box;
@@ -145,9 +118,9 @@ input[name="shopcart"]{
 }
 
 
-/* Buttons for footer */
+/* Buttons for Card */
 
-.btn{
+.button-card{
   display: inline-block;
   font-weight: 400;
   text-align: center;
@@ -171,7 +144,7 @@ input[name="shopcart"]{
   background-color: rgba(0, 0, 0, 0.03);
   border-top: 1px solid rgba(0, 0, 0, 0.125);
 }
-
+/* Proceed Buttons */
 .proceed-checkout{
   margin-top: 166px;
   float: right;
@@ -226,7 +199,7 @@ input[name="shopcart"]{
   color:#DB6C6C;
 
 }
-
+/* Footer */
 .container-footer {
 	background: #DB6C6C;
 	width:100%;
