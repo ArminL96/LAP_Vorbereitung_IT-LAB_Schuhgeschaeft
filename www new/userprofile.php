@@ -8,6 +8,16 @@
 	<!--Include the header.php-->
 	<header class="header-container">
 		<?php include "header.php"?>
+		<div class='header-child2'>
+			<ul>
+				<!--Buttons for log out, products, cart-->
+				<li><a href='login.php'>Log out</a></li>
+				<li>
+					<a href='products.php'>Products</a>
+				</li>
+				<li><a href='cart.php'>Cart</a></li>
+			</ul>
+		</div>
 	</header>
 	<?php
 	#database server data
@@ -18,8 +28,7 @@
 		die("connection failed: ".$mysqli->connect_error);
 	}
 	#‎select data form database
-	$sql = "SELECT *
-	FROM cumstomer";
+	$sql = "SELECT firstName, lastName, shippingAddressId, billingAdressId, userId, cartId FROM customer";
 	$result = $mysqli->query($sql);
 	session_start();
 	?>
@@ -67,6 +76,7 @@
 				<input type="submit" name="ship_sumit" value="Change" class="button-style"/>
 				<br>
 			</div>
+
 			<div class="profile-billadd">
 				<!--Output of User Billing Adress-->
 				<h2>Billing Address</h2>
@@ -85,6 +95,7 @@
 				<input type="submit" name="ship_sumit" value="Change" class="button-style"/>
 			</div>
 		</div>
+
 		<!--footer-->
 		<footer>
 			<div class="container-footer"></div>
