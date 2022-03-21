@@ -1,3 +1,17 @@
+<?php
+	session_start();
+	$mysqli = new mysqli("localhost", "root", "", "schuhgeschaeft");
+	#checks if no connection could be established
+	if($mysqli->connect_error){
+		#if true the connection failed
+		die("Verbindung fehlgeschlagen: ".$mysqli->connect_error);
+	}
+	
+	if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST[''])) {
+		
+	}
+	?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,26 +34,59 @@
 			</div>
 		</header>
 		<form method="post">
-				<!-- article-->
-			<div class="article-card">
-				<img src= ../www/img/BirkenstockPantolette.jpg>
-					<!-- article inputs-->
-				<div class="article-body">
-					<!-- output daten -->
-					<p>Name: </p>
-					<p>Price: </p>
-					<p>Category: </p>
+		<?php
+		$pdid = array();
+		$sql = "SELECT cartId FROM customer WHERE userId = '".$_SESSION['userID']."'";
+		$result = $mysqli->query($sql);
+		if($result->num_rows > 0) {
+			while($row = $result->fetch_assoc()) {
+				$cartID = $row['cartId'];
+			}
+			
+			$sql = "SELECT productId FROM cartitem WHERE cartId = '".$cartID."'";
+			$result = $mysqli->query($sql);
+			
+			if($result->num_rows > 0) {
+				while($row = $result->fetch_assoc()) {
+					array_push($pdid, $row['productId']);
+				}
+			}
+			
+			foreach($pdid as $id) {
+				$sql = "SELECT product.id, product.name, product.price, product.size, product.color, product.categoryid, category.name AS catName FROM product INNER JOIN category ON product.categoryId = category.id WHERE product.id = '".$id."'";
+				$result = $mysqli->query($sql);
+				#goes through each column of the Product table
+				while($row = mysqli_fetch_assoc($result)){
+				?>
+				<div class="article-card">
+					<?php
+					//Important: the image name must match the product name in the database
+					//deletes all spaces from the string
+					$name = $row['name'];
+					$name = str_replace(' ', '', $name);
+					//output of the image with the same name as the name of the product
+					echo "<img src= img/$name.jpg>"
+					?>
+					<div class="article-body">
+						<!-- output data products: name, size, price, category-->
+						<p id="nameID" name="name_item"><?php echo $row['name'];?></p>
+						<div class="under">
+							<p id="sizeID" name="size_item">Size: <?php echo $row['size'];?></p>
+							<p id="priceID" name="price_item">Price: <?php echo $row['price'];?>€</p>
+							<p id="categoryID" name="category_item">Category: <?php echo $row['catName']?></p>
+						</div>
+					</div>
+					<div class="card-footer">
+						<!-- button add to card-->
+						<button type="submit" name="" class="button-card" value="<?php echo $row['id'] ?>">DELETE</button> 
+						
+					</div>
 				</div>
-				<!--cart footer-->
-				<div class="card-footer">
-					<a href="" class="button-card">Remove</a>
-				</div>
-			</div>
-			<!--Proceed to Checkout button-->
-			<div class="proceed-checkout">
-				<a href="" class="proceed">Proceed to Checkout</a>
-				<p> Price: </p>
-			</div>
+				<?php
+					}
+				}
+			}	
+			?>	
 		</form>
 	</body>
 	<footer>
