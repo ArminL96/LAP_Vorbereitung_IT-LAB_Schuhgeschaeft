@@ -1,0 +1,176 @@
+body {
+  margin: 0 auto;
+  height: 100%;
+}
+
+h1 {
+  font-size: 64px;
+  color: #DB6C6C;
+}
+
+h2 {
+  font-size: 36px;
+  color: #DB6C6C;
+}
+
+p {
+  font-size: 16px;
+  color: black;
+}
+
+#text-payment
+{
+  font-size: 36px;
+  color: black;
+  inline-size: 10p;
+  text-align: center;
+}
+
+/* Buttons */
+.button-style {
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 10px;
+  color: white;
+  border: 2px solid #D44444;
+  background-color: #DB6C6C;
+  padding: 5px 45px;
+  float: right;
+  text-decoration: none;
+}
+
+.button-proceed{
+  display: inline-block;
+  font-size: 16px;
+  /* margin-top: 10px; */
+  color: white;
+  border: 2px solid #D44444;
+  background-color: #DB6C6C;
+  padding: 5px 45px;
+  /* float: right; */
+  text-decoration: none;
+  /* position: absolute; */
+  bottom: 32px;
+  margin-left: 189px;
+  /* margin-bottom: -46px; */
+}
+
+
+.button-proceed:hover {
+  color: #DB6C6C;
+  background-color: white;
+  border: 2px solid #D44444;
+}
+
+
+.button-style:hover {
+  color: #DB6C6C;
+  background-color: white;
+  border: 2px solid #D44444;
+}
+
+
+.order-shipadd {
+  border: 2px solid #DB6C6C;
+  padding: 40px 20px 20px 20px;
+  margin-bottom: 20px;
+  float: left;
+  margin-top: 15px;
+  margin-left: 15px;
+}
+
+.order-billadd {
+  border: 2px solid #DB6C6C;
+  padding: 40px 20px 20px 20px;
+  margin-bottom: 20px;
+  float: left;
+  margin-top: 15px;
+  margin-left: 15px;
+  margin-left: 70px;
+}
+
+.adress-container h2 {
+  text-align: center;
+}
+/* Input Fields of Billing Address*/
+.order-billadd input{
+  border: none;
+  background-color: #C4C4C4;
+  float: right;
+  height: 25px;
+  width: 300px;
+  margin-left: 10px;
+}
+
+/* Input Fields of Shipping Address*/
+.order-shipadd input{
+  border: none;
+  background-color: #C4C4C4;
+  float: right;
+  height: 25px;
+  width: 300px;
+  margin-left: 10px;
+}
+
+
+.payment-options{
+  border: 2px solid #DB6C6C;
+  padding: 20px 20px 20px 20px;
+  float: left;
+  margin-bottom: 20px;
+  margin-left: 5px;
+  width: 890px;
+}
+
+.payment-container{
+  margin-left: 10px;
+  width: 300px;
+}
+
+
+.order-container{
+  border: 2px solid #DB6C6C;
+  padding: 20px 374px 37px 0px;
+  float: left;
+  margin-bottom: 20px;
+  margin-left: 45px;
+  margin-top: 20px;
+}
+
+.order-list{
+  width: 9px;
+}
+
+/* Footer */
+.container-footer {
+  background: #DB6C6C;
+  height: 103px;
+  clear: both;
+  bottom: 0;
+  display: block;
+  margin: auto;
+  margin-top: -1%;
+}
+
+table{
+  width: 100%;
+  border-collapse: collapse;
+}
+th{
+  height: 22px;
+  padding-left: 52px;
+}
+td{
+  padding-top: 16px;
+  padding-bottom: 13px;
+  border-top: 2px solid #DB6C6C;
+  padding-left: 64px;
+}
+tbody{
+  border-bottom: 2px solid #DB6C6C;
+}
+
+#no-border{
+  border: none;
+  padding-left: 19px;
+}
