@@ -17,7 +17,7 @@ p {
 	font-size: 16px;
 	color: black;
 }
-
+/* Buttons */
 .button-style {
 	display: inline-block;
 	font-size: 16px;
@@ -34,11 +34,7 @@ p {
 	border: 2px solid #D44444;
 }
 
-
-span {
-	font-weight: bold;
-}
-
+/* Login Page */
 .login-page-container {
 	display: flex;
 	justify-content: center;
@@ -55,8 +51,8 @@ span {
     align-items: center;
     margin-top: 300px;
 }
-
-.login-container input[type=text], input[type=password], input[type=email] {
+/* Login Inputs */
+.login-container input[type=text], input[type=password]{
 	width: 400px;
 	padding: 12px 20px;
 	margin: 8px 0;
@@ -68,12 +64,13 @@ span {
 .login-container label {
 	margin-right: 20px;
 }
-
+/* Login Container & Button Style */
 .login-container .button-style {
 	margin-top: 15px;
 	margin-left: 358px;
 }
 
+/* Footer */
 .container-footer {
 	background: #DB6C6C;
 	width:100%;
