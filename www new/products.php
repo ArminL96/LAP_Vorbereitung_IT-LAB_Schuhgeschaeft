@@ -97,7 +97,7 @@
 				</div>
 				<div class="card-footer">
 					<!-- button add to card-->
-					<a href="" class="btn btn-shopcart">Add to Card</a>
+					<a href="" class="button-card">Add to Card</a>
 				</div>
 			</div>
 			<?php
