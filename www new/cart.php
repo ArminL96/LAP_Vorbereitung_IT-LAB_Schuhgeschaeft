@@ -2,7 +2,7 @@
 <html>
 <head>
 	<link rel="stylesheet" href="style/cart_style.css">
-	<link rel="shortcut icon" href="../www/img/favicon.ico" type="image/x-icon">
+		<link rel="shortcut icon" href="../www/img/favicon.ico" type="image/x-icon">
 </head>
 	<body>
 		<!--Header-->
@@ -32,7 +32,7 @@
 				</div>
 				<!--cart footer-->
 				<div class="card-footer">
-					<a href="" class="btn btn-shopcart">Remove</a>
+					<a href="" class="button-card">Remove</a>
 				</div>
 			</div>
 			<!--Proceed to Checkout button-->
