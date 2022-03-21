@@ -17,7 +17,7 @@ p {
 	font-size: 16px;
 	color: black;
 }
-
+/* Buttons */
 .button-style {
 	display: inline-block;
 	font-size: 16px;
@@ -33,12 +33,13 @@ p {
 	background-color: white;
 	border: 2px solid #D44444;
 }
-
+/* Name of the User */
 #displayName{
 	font-size: 36px;
 	margin-left: 10px;
 	 margin-top: 40px;
 }
+/* Profile */
 .profile-page-container {
 	display: flex;
 	justify-content: center;
@@ -91,15 +92,19 @@ p {
 .profile-main h2 {
 	text-align: center;
 }
-
+/* Input Field */
 input{
 	border: 2px solid #DB6C6C;
 	margin-top: 30px;
 }
 
+/* Footer */
 .container-footer {
-	background: #DB6C6C;
-	width:100%;
-	bottom: 0px;
-	height: 100px;
+		background: #DB6C6C;
+		height: 100px;
+		clear: both;
+		bottom: 0;
+		display: block;
+		margin: auto;
+		margin-top: -1%;
 }
