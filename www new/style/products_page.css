@@ -17,7 +17,7 @@ p {
 	color: black;
 }
 
-
+/* Buttons */
 .button-style {
 	display: inline-block;
 	font-size: 16px;
@@ -34,11 +34,7 @@ p {
 	border: 2px solid #D44444;
 }
 
-
-#name{
-  font-size: 18px;
-}
-
+/* Article Pictures */
 .article-card img
 {
   height: 180px;
@@ -78,7 +74,7 @@ p {
 *, ::before, ::after {
   box-sizing: border-box;
 }
-
+/* Card Body */
 .article-card{
   background-color: #fff;
   background-clip: border-box;
@@ -100,9 +96,9 @@ p {
 }
 
 
-/* Buttons for footer */
+/* Buttons for card footer */
 
-.btn{
+.button-card{
 	display: inline-block;
 	font-weight: 400;
 	text-align: center;
@@ -162,9 +158,10 @@ p {
 /*footer */
 .container-footer {
 	background: #DB6C6C;
-	width:100%;
-	bottom: 0px;
 	height: 100px;
-  position: absolute;
-	margin-bottom: -342px
+	clear: both;
+	bottom: 0;
+	display: block;
+	margin: auto;
+	margin-top: -1%;
 }
