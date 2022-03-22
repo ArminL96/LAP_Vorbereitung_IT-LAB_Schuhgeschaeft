@@ -21,7 +21,7 @@
   </header>
 
   <div class="adress-container">
-    <!--Output & input of User Shipping Adress-->
+    <!--Output & input of User Shipping Address-->
     <h2>Your Order</h2>
     <div class="order-shipadd">
       <h2 id="text-adress">Shipping Address</h2>
@@ -35,6 +35,7 @@
     </div>
 
     <div class="order-billadd">
+      <!--Output & input of User Billing Address-->
       <h2 id="text-adress">Billing Address</h2>
       <p>First Name: <input  type="text" name="ship_firstname" id="ship_firstname"/></p>
       <p>Last Name:  <input type="text" name="ship_lastname" id="ship_lastname"/></p>
@@ -45,54 +46,58 @@
       <a href="" name="ship_sumit" class="button-style">Change</a>
     </div>
   </div>
-
+  <!--Order View-->
   <div class="order-container">
     <div class="order-list">
-    <table id="order-table" name="order-table" >
-    <tr>
-      <th>Productname</th>
-      <th>Quantity</th>
-      <th>Price</th>
-    </tr>
-    <tr>
-      <td>Musterprodukt</td>
-      <td>x2</td>
-      <td>55.50€</td>
-    </tr>
-    <tr>
-      <td>Musterprodukt</td>
-      <td>x2</td>
-      <td>55.50€</td>
-    </tr>
-    <tr>
-      <td>Musterprodukt</td>
-      <td>x2</td>
-      <td>55.50€</td>
-    </tr>
-    <tr>
-      <td>Musterprodukt</td>
-      <td>x2</td>
-      <td>55.50€</td>
-    </tr>
-    <tfoot>
-    <tr>
-      <td id="no-border">Tax Rate: </td>
-    </tr>
-    <tr>
-      <td id="no-border">Total Price: </td>
-    </tr>
-  </tfoot>
-  </table>
-  <input type="submit" value="Proceed" class="button-proceed"></input>
+      <table id="order-table" name="order-table" >
+        <tr>
+          <!--Header Table-->
+          <th>Productname</th>
+          <th>Quantity</th>
+          <th>Price</th>
+        </tr>
+        <tr>
+          <!--Input of Order-->
+          <td>Musterprodukt</td>
+          <td>x2</td>
+          <td>55.50€</td>
+        </tr>
+        <tr>
+          <td>Musterprodukt</td>
+          <td>x2</td>
+          <td>55.50€</td>
+        </tr>
+        <tr>
+          <td>Musterprodukt</td>
+          <td>x2</td>
+          <td>55.50€</td>
+        </tr>
+        <tr>
+          <td>Musterprodukt</td>
+          <td>x2</td>
+          <td>55.50€</td>
+        </tr>
+      </table>
+      <!--Table footer -->
+      <p class ="table-foot" style="border-top: 2px solid #db6c6c;">Tax Rate: </p>
+      <p class ="table-foot-text" name="tax_rate"> Austria 20%</p>
+      <p class ="table-foot">Total Price: </p>
+      <p class ="table-foot-text" name="total_price">5000€</p>
+      <input type="submit" value="Proceed" class="button-proceed" name="proceed_button"></input>
+    </div>
   </div>
-  </div>
-
+  <!--Payment Options -->
   <div class="payment-container">
     <div class="payment-options">
       <h2 id="text-payment">Payment Options</h2>
-      <input type="checkbox" name="pay_card" value="" style="margin-bottom: 30px;"> Pay with card
-      <br>
-      <input type="checkbox" name="payment_site" value=""> Payment on site
+      <!--Checkboxs for Payment Options-->
+      <div class="checkbox-payment">
+        <input type="checkbox" name="pay_card" id="pay_card" value=""> Pay with card
+        <label for="pay_card"></label>
+        <br>
+        <input type="checkbox" name="payment_site" id="payment_site" value=""> Payment on site
+        <label for="payment_site"></label>
+      </div>
     </div>
   </div>
 
