@@ -72,6 +72,10 @@
 							echo '<br> <span style="color:red;font-size: 16px;">Incorrect Password or Username</span></br>';
 						}
 					}
+					else
+					{
+						echo '<br> <span style="color:red;font-size: 16px;">Incorrect Password or Username</span></br>';
+					}
 				}
 				?>
 			</form>
