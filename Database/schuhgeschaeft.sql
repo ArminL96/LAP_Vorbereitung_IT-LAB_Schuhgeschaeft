@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 21. Mrz 2022 um 13:53
--- Server-Version: 10.4.22-MariaDB
--- PHP-Version: 8.1.2
+-- Erstellungszeit: 22. Mrz 2022 um 16:06
+-- Server-Version: 10.4.18-MariaDB
+-- PHP-Version: 8.0.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -35,13 +35,6 @@ CREATE TABLE `billingadress` (
   `zipcode` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Daten für Tabelle `billingadress`
---
-
-INSERT INTO `billingadress` (`id`, `adress`, `country`, `city`, `zipcode`) VALUES
-(1, 'Musterstraße 1', 'Austria', 'Villach', 9500);
-
 -- --------------------------------------------------------
 
 --
@@ -55,14 +48,6 @@ CREATE TABLE `cartitem` (
   `cartId` bigint(20) UNSIGNED NOT NULL,
   `productId` bigint(20) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Daten für Tabelle `cartitem`
---
-
-INSERT INTO `cartitem` (`id`, `quantity`, `price`, `cartId`, `productId`) VALUES
-(4, 1, 1, 1, 1),
-(5, 1, 1, 1, 10);
 
 -- --------------------------------------------------------
 
@@ -99,13 +84,6 @@ CREATE TABLE `customer` (
   `userId` bigint(20) UNSIGNED NOT NULL,
   `cartId` bigint(20) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Daten für Tabelle `customer`
---
-
-INSERT INTO `customer` (`id`, `firstName`, `lastName`, `shippingAddressId`, `billingAdressId`, `userId`, `cartId`) VALUES
-(2, 'Keanu', 'Griesser', 1, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -175,13 +153,6 @@ CREATE TABLE `shippingadress` (
   `zipcode` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Daten für Tabelle `shippingadress`
---
-
-INSERT INTO `shippingadress` (`id`, `adress`, `country`, `city`, `zipcode`) VALUES
-(1, 'Musterstraße 1', 'Austria', 'Villach', 9500);
-
 -- --------------------------------------------------------
 
 --
@@ -192,13 +163,6 @@ CREATE TABLE `shopingcart` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `totalPrice` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Daten für Tabelle `shopingcart`
---
-
-INSERT INTO `shopingcart` (`id`, `totalPrice`) VALUES
-(1, 1);
 
 -- --------------------------------------------------------
 
@@ -217,7 +181,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `userName`, `passwort`) VALUES
-(1, 'test', '$2y$10$wE/l7PgAT011QVI8HtQMq.qWCNpUzgV44n.FveGKFm6q9X4uNbyWW');
+(1, 'test', '$2y$10$ScjD.M4WjSIfBSOH6vlTPOQEN6JnHEpr.1Z/K3CsP6KO3zfxQZrdy'),
+(2, 'testt', '$2y$10$tB3LPb26Do.PIHBUTrkndebFUL4I.b61xK/2hjHEMzEwesdUeibVm'),
+(3, 'test4', '$2y$10$sMmhG9DPZjMydZ9YYoyTvuh0FecpOrEVBmRwYcoSnVS8C2wJ/s3n.');
 
 --
 -- Indizes der exportierten Tabellen
@@ -303,13 +269,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT für Tabelle `billingadress`
 --
 ALTER TABLE `billingadress`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT für Tabelle `cartitem`
 --
 ALTER TABLE `cartitem`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT für Tabelle `category`
@@ -321,7 +287,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT für Tabelle `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT für Tabelle `orders`
@@ -345,19 +311,19 @@ ALTER TABLE `returns`
 -- AUTO_INCREMENT für Tabelle `shippingadress`
 --
 ALTER TABLE `shippingadress`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT für Tabelle `shopingcart`
 --
 ALTER TABLE `shopingcart`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT für Tabelle `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints der exportierten Tabellen
