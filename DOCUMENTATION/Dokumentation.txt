@@ -35,6 +35,7 @@ Login (Backend) V1.1
 Artikel Page (Frontend) V1.1
 Artikel Page (Backend) V1.1
 Warenkorb (Frontend) V1.1
+Warenkorb (Backend) V1.0
 
 
 Entwickler Version: Windows 10	
@@ -47,7 +48,6 @@ Technologien: HTML5, CSS3, JavaScript ,PHP
 
 Hofferer:			Status		Erledigt
 Login (Backend)			  1   		   0
-Artikel Page (Backend)		  0  		   0
 Artikel Page (Frontend)		  1	           0
 Warenkorb (Frontend)		  1	  	   0
 
@@ -55,6 +55,8 @@ Warenkorb (Frontend)		  1	  	   0
 Griesser:			  
 Header (Frontend)		  1		   0
 Footer (Frontend)		  0		   0
+Artikel Page (Backend)		  0 		   0
+Warenkorb (Backend)		  0 		   0
 
 
 14.03.2022:
@@ -72,3 +74,10 @@ Footer (Frontend)		  0		   0
 	  Datenback Test Daten einfügen (V1.1)
 	  Footer überarbeiten (V1.1)
 	  Warenkorb (Frontend) fertig gestellt (V1.1)
+
+21.03.2022:
+	  Artikel Page (Backend) fertiggestellt (V1.2)
+	  Order (Frontend) angefangen (V1.0)
+	  
+22.03.2022:
+	  Warenkorb (Backend) fertiggestellt (V1.0)
