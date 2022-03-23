@@ -62,8 +62,9 @@
 						#check if the entert password matches the hash
 						if (password_verify($login_password, $hash))
 						{
-							#if password is true then redirects to the products page
+							#Session transfer to get userID
 							$_SESSION["userID"] = $row["id"];
+							#if password is true then redirects to the products page
 							header('Location: ../www/products.php');
 						}
 						#else output an error
