@@ -165,3 +165,21 @@ p {
 	margin: auto;
 	margin-top: -1%;
 }
+
+/* Responsiv */
+@media (max-width: 800px) {
+	#searchbar{
+    margin-left: 14px;
+    margin-top: 13px;
+    width: 269px;
+}
+
+#category-title{
+margin-right: 183px;
+}
+
+#drop{
+margin-right: -225px;
+    width: 153px;
+}
+}
