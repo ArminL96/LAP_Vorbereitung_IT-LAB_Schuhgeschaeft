@@ -5,6 +5,9 @@
 		<link rel="shortcut icon" href="../www/img/favicon.ico" type="image/x-icon">
 </head>
 <body>
+	<?php
+		$test = "";
+	?>
 	<!--Include the header.php-->
 	<header class="header-container">
 		<?php include "header.php"?>
@@ -58,41 +61,74 @@
 			</div>
 		</div>
 		<div class="profile-main">
+			<?php
+				if(isset($_POST['ship_adress']))
+				{
+					require "test_lieferAdresse.php";
+					if ($result =="") 
+					{
+						echo"<div></div>";
+					}
+					else
+					{
+						echo "<div>$result</div>";
+					}
+				}
+				
+				
+			?>
+
 			<!--Output of User Shipping Adress-->
 			<div class="profile-shipadd">
 				<h2>Shipping Address</h2>
-				<input type="text" placeholder="First Name" name="ship_firstname" id="ship_firstname"/>
+				<input type="text" placeholder="First Name" name="ship_firstName" id="ship_firstname"	required pattern="[A-Za-z].{1,}"/>
 				<br>
-				<input type="text" placeholder="Last Name" name="ship_lastname" id="ship_lastname"/>
+				<input type="text" placeholder="Last Name" name="ship_lastName" id="ship_lastname"	required pattern="[A-Za-z].{1,}"/>
 				<br>
-				<input type="text" placeholder="Address" name="ship_address" id="ship_address"/>
+				<input type="text" placeholder="Address" name="ship_adress" id="ship_address"	required pattern="[A-Za-z].{1,}"/>
 				<br>
-				<input type="text" placeholder="City" name="ship_city" id="ship_city"/>
+				<input type="text" placeholder="City" name="ship_city" id="ship_city"	required pattern="[A-Za-z].{1,}"/>
 				<br>
-				<input type="text" placeholder="Country" name="ship_country" id="ship_country"/>
+				<input type="text" placeholder="Country" name="ship_country" id="ship_country"	required pattern="[A-Za-z].{1,}"/>
 				<br>
-				<input type="text" placeholder="ZIP Code" name="ship_zip" id="ship_zip"/>
+				<input type="text" placeholder="ZIP Code" name="ship_zipcode" id="ship_zip"	required pattern="[0-9].{1,}"/>
 				<br>
 				<input type="submit" name="ship_sumit" value="Change" class="button-style"/>
 				<br>
 			</div>
+				
+			<?php
+				if(isset($_POST['bill_adress']))
+				{
+					require "test_ZahlungsAdresse.php";
+					if ($result =="") 
+					{
+						echo"<div></div>";
+					}
+					else
+					{
+						echo "<div>$result</div>";
+					}
+				}
+				
+			?>
 
 			<div class="profile-billadd">
 				<!--Output of User Billing Adress-->
 				<h2>Billing Address</h2>
-				<input type="text" placeholder="First Name" name="bill_firstname" id="bill_firstname"/>
+				<input type="text" placeholder="First Name" name="bill_firstName" id="bill_firstname" required pattern="[A-Za-z].{1,}"/>
 				<br>
-				<input type="text" placeholder="Last Name" name="bill_lastname" id="bill_lastname"/>
+				<input type="text" placeholder="Last Name" name="bill_lastName" id="bill_lastname" required pattern="[A-Za-z].{1,}"/>
 				<br>
-				<input type="text" placeholder="Address" name="bill_address" id="bill_address"/>
+				<input type="text" placeholder="Address" name="bill_adress" id="bill_address" required pattern="[A-Za-z].{1,}"/>
 				<br>
-				<input type="text" placeholder="City" name="bill_city" id="bill_city"/>
+				<input type="text" placeholder="City" name="bill_city" id ="bill_city" required pattern="[A-Za-z].{1,}"/>
 				<br>
-				<input type="text" placeholder="Country" name="bill_country" id="bill_country"/>
+				<input type="text" placeholder="Country" name="bill_country" id="bill_country" required pattern="[A-Za-z].{1,}"/>
 				<br>
-				<input type="text" placeholder="ZIP Code" name="bill_zip" id="bill_zip"/>
+				<input type="text" placeholder="ZIP Code" name="bill_zipcode" id="bill_zip" required pattern="[0-9].{1,}"/>
 				<br>
-				<input type="submit" name="ship_sumit" value="Change" class="button-style"/>
+				<input type="submit" name="bill_sumit" value="Change" class="button-style"/>
 			</div>
 		</div>
 
@@ -103,3 +139,4 @@
 	</form>
 </body>
 </html>
+
