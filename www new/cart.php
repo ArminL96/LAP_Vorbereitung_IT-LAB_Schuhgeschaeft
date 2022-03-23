@@ -7,9 +7,25 @@
 		die("Verbindung fehlgeschlagen: ".$mysqli->connect_error);
 	}
 	
-	if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST[''])) {
+	if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST['delete_from_shopcart'])) {
+		$idProd = $_POST['delete_from_shopcart'];
 		
+		#sql statment, select cartID from customer table where cartID equal userID is
+		$sql = "SELECT cartId FROM customer WHERE cartId = '".$_SESSION['userID']."'";
+		$result = $mysqli->query($sql);
+		
+		#if num_rows bigger than 0, than fetches cartID as an associative array
+		if($result->num_rows > 0) {
+			while($row = $result->fetch_assoc()) {
+				$cartID = $row['cartId'];
+			}
+		}					
+		$sql = "DELETE FROM cartitem WHERE id = '".$idProd."'";
+		
+		$mysqli->query($sql);
 	}
+	
+	$Pricetotal = 0;
 	?>
 
 <!DOCTYPE html>
@@ -35,6 +51,7 @@
 		</header>
 		<form method="post">
 		<?php
+		
 		$pdid = array();
 		$sql = "SELECT cartId FROM customer WHERE userId = '".$_SESSION['userID']."'";
 		$result = $mysqli->query($sql);
@@ -53,7 +70,7 @@
 			}
 			
 			foreach($pdid as $id) {
-				$sql = "SELECT product.id, product.name, product.price, product.size, product.color, product.categoryid, category.name AS catName FROM product INNER JOIN category ON product.categoryId = category.id WHERE product.id = '".$id."'";
+				$sql = "SELECT cartitem.id AS cartitemId, product.id, product.name, product.price, product.size, product.color, product.categoryid, category.name AS catName FROM product INNER JOIN category ON product.categoryId = category.id INNER JOIN cartitem ON product.id = cartitem.productId WHERE product.id = '".$id."'";
 				$result = $mysqli->query($sql);
 				#goes through each column of the Product table
 				while($row = mysqli_fetch_assoc($result)){
@@ -77,16 +94,29 @@
 						</div>
 					</div>
 					<div class="card-footer">
-						<!-- button add to card-->
-						<button type="submit" name="" class="button-card" value="<?php echo $row['id'] ?>">DELETE</button> 
+						<!-- button to delete article-->
+						<button type="submit" name="delete_from_shopcart" class="button-card" value="<?php echo $row['cartitemId'] ?>">DELETE</button> 
 						
 					</div>
 				</div>
 				<?php
+						$Pricetotal += $row['price']; //add price of article in pricetotal variable
 					}
 				}
 			}	
+				
+				
+				
+				//sql Update totalprice
+				$sql = "UPDATE shopingcart SET totalPrice ='".$Pricetotal."' WHERE id = '".$_SESSION["userID"]."'";
+				$result = $mysqli->query($sql);
+
 			?>	
+			<!--Proceed to Checkout button-->
+			<div class="proceed-checkout">
+				<a href="order.php" class="proceed">Proceed to Checkout</a>
+				<p id="price_totalId" name="price_total"> Price: <?php echo $Pricetotal;?>€</p> <!--Output from the total-->
+			</div>		
 		</form>
 	</body>
 	<footer>
