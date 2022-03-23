@@ -100,8 +100,6 @@
       </div>
     </div>
   </div>
-
-</form>
 <footer>
   <!--the footer-->
   <div class="container-footer"></div>
