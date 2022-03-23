@@ -56,9 +56,9 @@
 				<p id="category-title">Category</p>
 			<select  type="submit" name="category-selection" id="drop" onchange="form.submit()">
 				<option value=""></option>
-				<option value="herren">Men</option>
-				<option value="damen">Women</option>
-				<option value="kinder">Children</option>
+				<option value="herren">Herren</option>
+				<option value="damen">Damen</option>
+				<option value="kinder">Kinder</option>
 
 				<?php
 				$in = "";
