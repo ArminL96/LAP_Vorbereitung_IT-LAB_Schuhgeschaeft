@@ -64,7 +64,7 @@
 			<?php
 				if(isset($_POST['ship_adress']))
 				{
-					require "test_lieferAdresse.php";
+					require "shippingAdress.php";
 					if ($result =="") 
 					{
 						echo"<div></div>";
@@ -100,7 +100,7 @@
 			<?php
 				if(isset($_POST['bill_adress']))
 				{
-					require "test_ZahlungsAdresse.php";
+					require "BillingAdress.php";
 					if ($result =="") 
 					{
 						echo"<div></div>";
@@ -139,4 +139,3 @@
 	</form>
 </body>
 </html>
-
