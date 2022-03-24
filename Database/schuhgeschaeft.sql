@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 23. Mrz 2022 um 16:15
--- Server-Version: 10.4.22-MariaDB
--- PHP-Version: 8.1.1
+-- Erstellungszeit: 24. Mrz 2022 um 13:22
+-- Server-Version: 10.4.18-MariaDB
+-- PHP-Version: 8.0.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -42,7 +42,8 @@ CREATE TABLE `billingadress` (
 --
 
 INSERT INTO `billingadress` (`id`, `bill_adress`, `bill_country`, `bill_city`, `bill_zipcode`, `bill_firstName`, `bill_lastName`) VALUES
-(1, 'sfssdf', 'sdf', 'sdfsdf', 1412, 'dsfds', 'sdfs');
+(1, 'dfsdfggfdf', 'sggdfgffgd', 'sggsdgfdgsf', 555, 'fdgssfg', 'fdddfgf'),
+(2, 'dsfsdfdfd', 'fdfdfdfd', 'dfdffdfddf', 777, 'refafdd', 'adffsdfsd');
 
 -- --------------------------------------------------------
 
@@ -99,7 +100,8 @@ CREATE TABLE `customer` (
 --
 
 INSERT INTO `customer` (`id`, `firstName`, `lastName`, `shippingAddressId`, `billingAdressId`, `userId`, `cartId`) VALUES
-(2, 'Keanu', 'Griesser', 1, 1, 1, 1);
+(1, 'Keanu', 'Griesser', 1, 1, 1, 1),
+(2, 'test', 'test', 2, 2, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -176,7 +178,8 @@ CREATE TABLE `shippingadress` (
 --
 
 INSERT INTO `shippingadress` (`id`, `ship_adress`, `ship_country`, `ship_city`, `ship_zipcode`, `ship_firstName`, `ship_lastName`) VALUES
-(1, 'eqweqewq', 'wqeq', 'wqewqe', 1234, 'qweqwe', 'qwe');
+(1, 'gdfgdgfdg', 'fgfgfgfg', 'dfggfdfgdfg', 66654, 'dfgfag', 'ggsgs'),
+(2, 'asdfadfsdsfds', 'dsfafdssdffds', 'dsfdfsfdsadfas', 555, 'sfda', 'asdfsfdasd');
 
 -- --------------------------------------------------------
 
@@ -194,7 +197,8 @@ CREATE TABLE `shopingcart` (
 --
 
 INSERT INTO `shopingcart` (`id`, `totalPrice`) VALUES
-(1, 0);
+(1, 0),
+(2, 0);
 
 -- --------------------------------------------------------
 
@@ -214,7 +218,7 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id`, `userName`, `passwort`) VALUES
 (1, 'User1', '$2y$10$wE/l7PgAT011QVI8HtQMq.qWCNpUzgV44n.FveGKFm6q9X4uNbyWW'),
-(2, 'test1', 'test1');
+(2, 'test1', '$2y$10$/NtW5QFaoZOX7TTAJGCQEO8A3txw.E5YteZNjLsP2cU5Md42P3zBa');
 
 --
 -- Indizes der exportierten Tabellen
@@ -306,7 +310,7 @@ ALTER TABLE `billingadress`
 -- AUTO_INCREMENT für Tabelle `cartitem`
 --
 ALTER TABLE `cartitem`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
 
 --
 -- AUTO_INCREMENT für Tabelle `category`
@@ -318,7 +322,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT für Tabelle `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT für Tabelle `orders`
@@ -342,13 +346,13 @@ ALTER TABLE `returns`
 -- AUTO_INCREMENT für Tabelle `shippingadress`
 --
 ALTER TABLE `shippingadress`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT für Tabelle `shopingcart`
 --
 ALTER TABLE `shopingcart`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT für Tabelle `user`
