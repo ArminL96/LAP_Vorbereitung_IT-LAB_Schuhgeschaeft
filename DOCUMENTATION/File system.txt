@@ -5,15 +5,12 @@ Database/
 
 
 
-
 DOCUMENTATION/
 	Documentation.txt
 	Documentation of what did which task in the project and if it is finished or not.
 
 	Filesystem.txt
 	Explanation of the Files and where they are.
-
-
 
 
 
@@ -46,101 +43,72 @@ PLANING/
 		Various PNG files can be found for each Screen.
 
 
-
 	Timeplan.xlsx
 	Timeplan for Project
-
-
 
 
 www/
 	content/
 	Profilepictures are saved here
 
-
-
-	forms/
-		billingAdress_form.php
-		form for changing users Billing Address
-
-
-		shippingAdress_form.php
-		form for changing users Shipping Address
-
-
+	img/
+	Products pictures are saved here
+	
 
 	styles/
-		footer_style.css
-		CSS File for footer
-
-
 		header_style.css
 		CSS File for header
-
-
-		style.css
-		style for website
 		
-		products_page.css
-		only for products page
-
-
-	footer.php
-	php containing code to load footer
-
-
-
-	functions.php
-		.SQLCommunicator
-			.Get_user(string : Argument1, string : Argument2)
-			Argument1 : the users name
-			Argument2 : users password (unhased)
-			Function to get user who is trying to log in
-			Returns fetched user as an Array in $_SESSION['loggeduser']
-			Array structure : [0]/["id"] = user id [1]/["userName"] = user name [2]/["passwort"] = user password (hashed)
-			returns Error as echo
-
-
-			.Get_Products(string : Argument1, string : Argument2)
-			Argument1 : Category of Products to search
-			Argument2 : Search tag the user has given
-			Function to query for Products
-
-
-
-		.Profile
-			.Get_profilepicture()
-			function to get the name of the profilepictures file.
-			Returns an echo containing HTML <img> Element with profilepicture as the Source property
-
-
-
-		.Products
-		class for product page
-
-
+		login_style.css
+		for products page
+		
+		products_style.css
+		for products page
+		
+		userprofile_style.css
+		for userprofile page
+		
+		order_style.css
+		for order page
+		
+		return_style.css
+		for return page
+		
+		cart_style.css
+		for cart page
+		
 
 	header.php
 	php containing code to load header
 	
 
-
 	products.php
-	(Product page) main page
-
+	Product page
 
 
 	login.php
 	login page
 	
 
-
 	userprofile.php
 	userprofile page
-
-
-
-
+	
+	BillingAdress.php
+	update billing address form userprofile.php
+	
+	shippingAdress.php
+	update billing address form userprofile.php
+	
+	order.php
+	order page
+	
+	cart.php
+	cart page
+	
+	return.php
+	return page
+	
+	
 
 README.md
 git documentation
