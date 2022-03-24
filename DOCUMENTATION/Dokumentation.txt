@@ -49,17 +49,17 @@ Technologien: HTML5, CSS3, JavaScript ,PHP
 "0" = Offen
 
 Hofferer:			Status		Erledigt
-Login (Backend)			  1   		   0
-Artikel Page (Frontend)		  1	           0
-Warenkorb (Frontend)		  1	  	   0
+Login (Backend)			  1   		   1
+Artikel Page (Frontend)		  1	           1
+Warenkorb (Frontend)		  1	  	   1
 Order (Frontend)		  1		   0
 Return (Frontend)		  1		   0
 
 
 Griesser:			  
-Header (Frontend)		  1		   0
+Header (Frontend)		  1		   1
 Footer (Frontend)		  0		   0
-Artikel Page (Backend)		  1 		   0
+Artikel Page (Backend)		  1 		   1
 Warenkorb (Backend)		  1 		   0
 Profil page (Backend)		  1		   0
 
