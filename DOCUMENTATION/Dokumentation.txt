@@ -31,7 +31,7 @@ Backend
 Aktuelle Versionen:
 Datenbank (Backend) V1.1
 Login (Frontend) V1.1
-Login (Backend) V1.1
+Login (Backend) V1.2
 Artikel Page (Frontend) V1.1
 Artikel Page (Backend) V1.2
 Warenkorb (Frontend) V1.1
@@ -52,16 +52,16 @@ Hofferer:			Status		Erledigt
 Login (Backend)			  1   		   0
 Artikel Page (Frontend)		  1	           0
 Warenkorb (Frontend)		  1	  	   0
-Order (Frontend)		  0		   0
-Return (Frontend)		  0 		   0
+Order (Frontend)		  1		   0
+Return (Frontend)		  1		   0
 
 
 Griesser:			  
 Header (Frontend)		  1		   0
 Footer (Frontend)		  0		   0
-Artikel Page (Backend)		  0 		   0
-Warenkorb (Backend)		  0 		   0
-Profil page (Backend)		  0		   0
+Artikel Page (Backend)		  1 		   0
+Warenkorb (Backend)		  1 		   0
+Profil page (Backend)		  1		   0
 
 
 
@@ -97,3 +97,4 @@ Profil page (Backend)		  0		   0
 24.03.2022:
 	  User Profil (Backend) (V1.2) (ShippingAdress & BillingAdress)
 	  Warenkorb (Backend) (V1.1) (Ausbesserung)
+	  Login (Backend) (V1.2) (Ausbesserung)
