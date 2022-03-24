@@ -94,10 +94,10 @@ www/
 	userprofile page
 	
 	BillingAdress.php
-	update billing address form userprofile.php
+	update billing address in database
 	
 	shippingAdress.php
-	update billing address form userprofile.php
+	update shippingAdress in database 
 	
 	order.php
 	order page
