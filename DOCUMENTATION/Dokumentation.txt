@@ -99,6 +99,14 @@ Profil page (Backend)		  1		   0
 	  Warenkorb (Backend) (V1.1) (Ausbesserung)
 	  Login (Backend) (V1.2) (Ausbesserung)
 
-Backend noch erledigen:
-		Return
-		Bestellen
+Backend noch zu erledigen:
+		Return Page
+		Bestellen Page
+		
+Frontend noch zu erledigen:
+		Responsives Design (Userprofil, Artikel Page, Cart)
+		Login (Header hinzufügen)
+		Cart (Footer reparieren)
+		
+		
+		
