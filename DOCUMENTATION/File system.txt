@@ -93,7 +93,7 @@ www/
 	userprofile.php
 	userprofile page
 	
-	BillingAdress.php
+	billingAdress.php
 	update billing address in database
 	
 	shippingAdress.php
