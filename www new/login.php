@@ -49,7 +49,7 @@
 					passwort,
 					id
 					#‎select data form user where username like the login username
-					FROM user WHERE userName= '".login_username."'";
+					FROM user WHERE userName= '".$login_username."'";
 					$result = $mysqli->query($sql);
 
 					#if a username exists in the database
