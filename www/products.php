@@ -6,23 +6,23 @@
 		#if true the connection failed
 		die("Verbindung fehlgeschlagen: ".$mysqli->connect_error);
 	}
-	
+
 	#if you press the "Add to Shopcart" button the item will be saved in the Database
 	//the REQUEST_METHOD check if the button was pressed
 	if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST['add_to_cart'])) {
 		$idProd = $_POST['add_to_cart'];
-		
+
 		//query to find the cart of the user
 		$sql = "SELECT cartId FROM customer WHERE cartId = '".$_SESSION['userID']."'";
 		$result = $mysqli->query($sql);
-		
+
 		//if there is a user with the searched cardID
 		if($result->num_rows > 0) {
 			while($row = $result->fetch_assoc()) {
 				//saves the cartId in $cartID
 				$cartID = $row['cartId'];
 			}
-		}		
+		}
 		//now the cartitem is saved in the database
 		$sql = "INSERT INTO cartitem(quantity, price, cartId, productId) VALUES ('1','1','".$cartID."', '".$idProd."')";
 		$mysqli->query($sql);
@@ -37,7 +37,7 @@
 		<link rel="shortcut icon" href="../www/img/favicon.ico" type="image/x-icon">
 </head>
 <body>
-	
+
 	<!--Header-->
 	<header class="header-container">
 		<?php include "header.php"?>
@@ -85,19 +85,9 @@
 			</select>
 		</div>
 		<?php
-		#checks if one input input is empty
-		if(empty($input_search))
-		{
-			#if one query is empty, the command of the other is queried
-			#sql query select all products where product name like the selected Value input
-			$sql = "SELECT product.id, product.name, product.price, product.size, product.color, product.categoryid, category.name AS catName FROM product INNER JOIN category ON product.categoryId = category.id WHERE category.Name LIKE'%{$in}%'";
-		}
 
-		if(empty($selectedValue))
-		{
-			#sql query select all products where product name like the search input
-			$sql = "SELECT product.id, product.name, product.price, product.size, product.color, product.categoryid, category.name AS catName FROM product INNER JOIN category ON product.categoryId = category.id WHERE product.name LIKE '%{$input_search}%'";
-		}
+		#sql query select all products where product name like the selected Value and input search
+		$sql = "SELECT product.id, product.name, product.price, product.size, product.color, product.categoryid, category.name AS catName FROM product INNER JOIN category ON product.categoryId = category.id WHERE category.Name LIKE'%{$in}%' and product.name LIKE '%{$input_search}%'";
 		$result = $mysqli->query($sql);
 		#goes through each column of the Product table
 		while($row = mysqli_fetch_assoc($result)){
@@ -122,8 +112,8 @@
 				</div>
 				<div class="card-footer">
 					<!-- button add to card-->
-					<button type="submit" name="add_to_cart" class="button-card" value="<?php echo $row['id'] ?>">Add to cart</button> 
-					
+					<button type="submit" name="add_to_cart" class="button-card" value="<?php echo $row['id'] ?>">Add to cart</button>
+
 				</div>
 			</div>
 			<?php
