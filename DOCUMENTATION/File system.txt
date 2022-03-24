@@ -97,7 +97,7 @@ www/
 	update billing address in database
 	
 	shippingAdress.php
-	update shippingAdress in database 
+	update shipping address in database 
 	
 	order.php
 	order page
