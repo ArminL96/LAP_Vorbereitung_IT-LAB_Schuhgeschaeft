@@ -99,6 +99,6 @@ Profil page (Backend)		  1		   0
 	  Warenkorb (Backend) (V1.1) (Ausbesserung)
 	  Login (Backend) (V1.2) (Ausbesserung)
 
-Backend noch fertigzustellen:
-			Return
-			Bestellen
+Backend noch erledigen:
+		Return
+		Bestellen
