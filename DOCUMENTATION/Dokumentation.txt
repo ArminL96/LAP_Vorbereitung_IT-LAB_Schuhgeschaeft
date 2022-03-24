@@ -37,7 +37,7 @@ Artikel Page (Backend) V1.2
 Warenkorb (Frontend) V1.1
 Warenkorb (Backend) V1.0
 Order (Frontend) V1.1
-Profilpage (Backend) V1.1
+Profilpage (Backend) V1.2
 Return (Frontend) V1.0
 
 Entwickler Version: Windows 10	
@@ -93,3 +93,7 @@ Profil page (Backend)		  0		   0
 23.03.2022:
 	  User Profil (Backend) (V1.1) (ShippingAdress & BillingAdress)
 	  Return (frontend) fertiggestellt (V1.0)
+	  
+24.03.2022:
+	  User Profil (Backend) (V1.2) (ShippingAdress & BillingAdress)
+	  Warenkorb (Backend) (V1.1) (Ausbesserung)
