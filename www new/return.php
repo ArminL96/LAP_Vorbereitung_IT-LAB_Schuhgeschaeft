@@ -20,22 +20,24 @@
     </div>
   </header>
 
+  <!--Input of Address-->
+  <h2 id="text-return">Return</h2>
+  <h2>Your Address</h2>
+  <div class="return-container">
     <!--Input of Address-->
-    <h2 id="text-return">Return</h2>
-    <h2>Your Address</h2>
-      <div class="return-container">
-        <!--Input of Address-->
-        <p>First Name: <input type="text" name="firstname" id="firstname"/></p>
-        <p>Last Name:  <input type="text" name="lastname" id="lastname"/></p>
-        <p>Address:   <input type="text" name="address" id="address"/></p>
-        <p>City:      <input type="text" name="city" id="city"/></p>
-        <p>Country:   <input type="text"name="country" id="country"/></p>
-        <p>ZIP Code:  <input type="text" name="zip" id="zip"/></p>
-        <h2>Reason of Return</h2>
-        <textarea placeholder="Write the Reason of the return here" name="return_text" id="return_text"></textarea>
-        <input type="submit" name="sumit_cancel" value="Cancel" class="button-style"/>
-        <input type="submit" name="sumit_return" value="Return" class="button-style"/>
-      </div>
+    <p>First Name: <input type="text" name="firstname" id="firstname"/></p>
+    <p>Last Name:  <input type="text" name="lastname" id="lastname"/></p>
+    <p>Address:   <input type="text" name="address" id="address"/></p>
+    <p>City:      <input type="text" name="city" id="city"/></p>
+    <p>Country:   <input type="text"name="country" id="country"/></p>
+    <p>ZIP Code:  <input type="text" name="zip" id="zip"/></p>
+    <h2>Reason of Return</h2>
+    <!--Text for Return Reason-->
+    <textarea placeholder="Write the Reason of the return here" name="return_text" id="return_text"></textarea>
+    <!--Buttons for Cancel and Return sumit-->
+    <input type="submit" name="sumit_cancel" value="Cancel" class="button-style"/>
+    <input type="submit" name="sumit_return" value="Return" class="button-style"/>
+  </div>
 
   <footer>
     <!--the footer-->
