@@ -23,3 +23,5 @@ Christoph Preiml
 Zeitplan Status:
 
 Im Zeitplan
+
+Die offnen Punkte sind in der Datei Dokumentation.txt zufinden.
