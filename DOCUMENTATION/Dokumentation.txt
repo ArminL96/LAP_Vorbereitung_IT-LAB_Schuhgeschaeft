@@ -110,3 +110,6 @@ Frontend noch zu erledigen:
 		Artikel Page (Buttons Anreiung ändern)
 		
 		
+28.03.2022:
+	Return angefangen (Backend) (V1.0)
+		
