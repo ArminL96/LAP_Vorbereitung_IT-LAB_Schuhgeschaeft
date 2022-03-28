@@ -98,8 +98,8 @@
 				//deletes all spaces from the string
 				$name = $row['name'];
 				$name = str_replace(' ', '', $name);
-				//output of the image with the same name as the name of the product
-				echo "<img src= img/$name.jpg>"
+				//output of the image with the same name as the name of the product and display a text from product if picture cant be shown
+				echo "<img src='img/$name.jpg' alt="?><?php echo $name;?><?php echo">";
 				?>
 				<div class="article-body">
 					<!-- output data products: name, size, price, category-->
