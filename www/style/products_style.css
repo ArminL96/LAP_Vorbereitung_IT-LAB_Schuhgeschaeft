@@ -1,3 +1,5 @@
+
+
 body {
 	height: 100%;
 }
@@ -127,6 +129,7 @@ p {
 #searchbar{
   margin-left: 30px;
   margin-top: 13px;
+  float: left;
   width: 300px;
   border: solid 1px #DB6C6C;
 }
@@ -136,7 +139,7 @@ p {
   margin-bottom: px;
   height: 50px;
   border-bottom: solid 2px #DB6C6C;
-  margin-top: 83px;
+  margin-top: 140px;
 }
 #drop{
   margin-top: 11px;
@@ -183,3 +186,51 @@ margin-right: -225px;
     width: 153px;
 }
 }
+
+
+/*if screen is bigger than 680px*/
+@media screen and (max-width: 680px)
+{
+#searchbarDiv{
+ 
+  margin-top: 170px;
+}
+
+
+}
+
+@media screen and (max-width: 620px)
+{
+ 
+#searchbar{
+  width: 320px;
+  margin-top: 20px;
+}
+  
+#searchbarDiv{
+ 
+  height: 120px;
+  margin-top: 140px;
+}
+  
+#drop{
+  margin-top: 40px;
+  margin-right: 0px;
+  margin-left: 100px;
+  width: 235px;
+  float: left;
+  border: solid 1px #DB6C6C;
+  
+}
+
+#category-title{
+  margin-top: 80px;
+  float: left;
+  margin-left: -320px;
+}
+  
+  
+}
+
+
+
