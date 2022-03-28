@@ -107,6 +107,6 @@ Frontend noch zu erledigen:
 		Responsives Design (Userprofil, Artikel Page, Cart)
 		Login (Header hinzufügen)
 		Cart (Footer reparieren)
-		
+		Artikel Page (Buttons Anreiung ändern)
 		
 		
