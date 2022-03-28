@@ -77,6 +77,7 @@
 					//if items are found they get saved in their dedicated array
 					array_push($pdid, $row['productId']);
 				}
+				$_SESSION["product_array"] = $pdid;
 			}
 			
 			//foreach product id in $pdid
@@ -119,8 +120,7 @@
 				}
 			}	
 				
-				
-				
+
 				//sql Update totalprice of the cart is updatet here
 				$sql = "UPDATE shopingcart SET totalPrice ='".$Pricetotal."' WHERE id = '".$_SESSION["userID"]."'";
 				$result = $mysqli->query($sql);

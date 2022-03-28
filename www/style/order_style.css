@@ -49,7 +49,7 @@ p {
   padding: 5px 45px;
   float: left;
   text-decoration: none;
-  margin-left: 269px;
+  margin-left: 229px;
   margin-bottom: -28px;
 }
 
@@ -159,7 +159,7 @@ input[type="checkbox"]:checked+label::before {
 /* Order */
 .order-container{
   border: 2px solid #DB6C6C;
-  padding: 20px 374px 37px 0px;
+  padding: 20px 340px 37px 0px;
   float: left;
   margin-bottom: 20px;
   margin-left: 45px;
@@ -192,14 +192,13 @@ tbody{
 }
 
 .table-foot{
-  width: 405px;
+  width: 372px;
   padding-left: 23px;
   border-top: 1px soild;
 }
 
 .table-foot-text{
   width: 405px;
-  padding-left: 23px;
   margin-left: 291px;
   margin-top: -31px;
   border-top: 1px soild;
@@ -224,4 +223,5 @@ tbody{
   .payment-options {
     width: 434px;
 
+}
 }

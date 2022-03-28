@@ -5,6 +5,7 @@
   <link rel="shortcut icon" href="../www/img/favicon.ico" type="image/x-icon">
 </head>
 <body>
+  <form method="POST">
   <!--Header-->
   <header class="header-container">
     <?php include "header.php"?>
@@ -20,72 +21,144 @@
     </div>
   </header>
 
+  <!--gets the shipping and billing adress and pastes it in the form-->
+  <?php
+    session_start();
+    $Pricetotal = 0;
+    $mysqli = new mysqli("localhost", "root", "", "schuhgeschaeft");
+    #checks if no connection could be established
+    if($mysqli->connect_error){
+      #if true the connection failed
+      die("Verbindung fehlgeschlagen: ".$mysqli->connect_error);
+    }
+    $userID = $_SESSION["userID"];
+
+    //gets the shippment and the billing adress from the database to paste it into the inputs
+    $sql = "SELECT `ship_adress`, `ship_country`, `ship_city`, `ship_zipcode`, `ship_firstname`, `ship_lastname`,
+    	            `bill_adress`, `bill_country`, `bill_city`, `bill_zipcode`, `bill_firstname`, `bill_lastname`, `userId` FROM `customer`
+                  INNER JOIN shippingadress ON customer.shippingAddressId = shippingadress.id
+                  INNER JOIN billingadress ON customer.billingAdressId = billingadress.id WHERE userId = '".$userID."'";
+
+    $result = $mysqli->query($sql);
+
+
+    
+    while($row = $result->fetch_assoc()) { 
+
+      //doesnt work yet
+      $customerID = $row["customerId"];
+      $shippingID = $row["shippingAddressId"];
+      $billingID = $row["billingAdressId"];
+      $cartID = $row["cartId"];
+
+      if ($row["ship_country"] == "Austria") {
+        $country = "Austria";
+      }
+      else {
+        $country = "Germany";
+      }
+  ?>
+
   <div class="adress-container">
     <!--Output & input of User Shipping Address-->
     <h2>Your Order</h2>
     <div class="order-shipadd">
       <h2 id="text-adress">Shipping Address</h2>
-      <p>First Name: <input type="text" name="ship_firstname" id="ship_firstname"/></p>
-      <p>Last Name:  <input type="text" name="ship_lastname" id="ship_lastname"/></p>
-      <p>Address:   <input type="text" name="ship_address" id="ship_address"/></p>
-      <p>City:      <input type="text" name="ship_city" id="ship_city"/></p>
-      <p>Country:   <input type="text"name="ship_country" id="ship_country"/></p>
-      <p>ZIP Code:  <input type="text" name="ship_zip" id="ship_zip"/></p>
-      <a href="" name="ship_sumit" class="button-style">Change</a>
+      <p>First Name: <input type="text" name="ship_firstName" id="ship_firstname" value=<?php echo $row['ship_firstname'] ?>></p>
+      <p>Last Name:  <input type="text" name="ship_lastName" id="ship_lastname" value=<?php echo $row['ship_lastname'] ?>></p>
+      <p>Address:   <input type="text" name="ship_adress" id="ship_adress" value=<?php echo $row['ship_adress'] ?>></p>
+      <p>City:      <input type="text" name="ship_city" id="ship_city" value=<?php echo $row['ship_city'] ?>></p>
+      <p>Country:   <input type="text"name="ship_country" id="ship_country" value=<?php echo $row['ship_country'] ?>></p>
+      <p>ZIP Code:  <input type="text" name="ship_zipcode" id="ship_zip" value=<?php echo $row['ship_zipcode'] ?>></p>
+      <button name="ship_sumit" class="button-style" type="submit">Change</button>
     </div>
 
     <div class="order-billadd">
       <!--Output & input of User Billing Address-->
       <h2 id="text-adress">Billing Address</h2>
-      <p>First Name: <input  type="text" name="ship_firstname" id="ship_firstname"/></p>
-      <p>Last Name:  <input type="text" name="ship_lastname" id="ship_lastname"/></p>
-      <p>Address:   <input type="text" name="ship_address" id="ship_address"/></p>
-      <p>City:      <input type="text" name="ship_city" id="ship_city"/></p>
-      <p>Country:   <input type="text"name="ship_country" id="ship_country"/></p>
-      <p>ZIP Code:  <input type="text" name="ship_zip" id="ship_zip"/></p>
-      <a href="" name="ship_sumit" class="button-style">Change</a>
+      <p>First Name: <input  type="text" name="bill_firstName" id="bill_firstName" value=<?php echo $row['bill_firstname'] ?>></p>
+      <p>Last Name:  <input type="text" name="bill_lastName" id="bill_lastName" value=<?php echo $row['bill_lastname'] ?>></p>
+      <p>Address:   <input type="text" name="bill_adress" id="bill_adress" value=<?php echo $row['bill_adress'] ?>></p>
+      <p>City:      <input type="text" name="bill_city" id="bill_city" value=<?php echo $row['bill_city'] ?>></p>
+      <p>Country:   <input type="text"name="bill_country" id="bill_country" value=<?php echo $row['bill_country'] ?>></p>
+      <p>ZIP Code:  <input type="text" name="bill_zipcode" id="bill_zipcode" value=<?php echo $row['bill_zipcode'] ?>></p>
+      <button name="bill_sumit" class="button-style" type="submit">Change</button>
     </div>
   </div>
-  <!--Order View-->
+
+<?php 
+    }
+
+
+?>
   <div class="order-container">
     <div class="order-list">
       <table id="order-table" name="order-table" >
         <tr>
           <!--Header Table-->
           <th>Productname</th>
-          <th>Quantity</th>
+          <th>Size</th>
           <th>Price</th>
         </tr>
+
+  <!--gets all the products form the shopcart-->
+  <?php
+    $pdid = $_SESSION["product_array"];
+
+    //foreach product id in $pdid
+    foreach($pdid as $id) {
+      //gets the product informations
+      $sql = "SELECT product.id, product.name, product.price, product.size FROM product WHERE product.id = '".$id."'";
+
+      $result = $mysqli->query($sql);
+
+      while($row = $result->fetch_assoc()) {     
+        $Pricetotal += $row['price']; //add price of article in pricetotal variable 
+  ?>
         <tr>
-          <!--Input of Order-->
-          <td>Musterprodukt</td>
-          <td>x2</td>
-          <td>55.50€</td>
+          <!--products of Order-->
+          <td><?php echo $row["name"]?></td>
+          <td><?php echo $row["size"]?></td>
+          <td><?php echo $row["price"]?>€</td>
         </tr>
-        <tr>
-          <td>Musterprodukt</td>
-          <td>x2</td>
-          <td>55.50€</td>
-        </tr>
-        <tr>
-          <td>Musterprodukt</td>
-          <td>x2</td>
-          <td>55.50€</td>
-        </tr>
-        <tr>
-          <td>Musterprodukt</td>
-          <td>x2</td>
-          <td>55.50€</td>
-        </tr>
+  <?php 
+      }
+    }
+    //checks if the "change"-button for the shippmentadress was pressed
+    if (isset($_POST["ship_sumit"])) {
+      require "shippingAdress.php";
+      header("Refresh: 0");
+    }
+    else if (isset($_POST["bill_sumit"])) {
+      require "Billingadress.php";
+      header("Refresh: 0");
+    }
+    //checks what the country to calculate the totalprice with the tax
+    if ($country == "Austria") {
+      $Pricetotal *= 1.2;
+      $tax_rate = "20";
+    }
+    else {
+      $Pricetotal *= 1.19;
+      $tax_rate = "19";
+    }
+  ?>
       </table>
+  <?php
+
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    $sql = "INSERT INTO `orders` (`cartId`, `customerId`, `billAddId`, `shipAddId`) VALUES ($cartID, $customerID, $billingID, $shippingID  )";                                                                                    
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  ?>
       <!--Table footer -->
       <p class ="table-foot" style="border-top: 2px solid #db6c6c;">Tax Rate: </p>
-      <p class ="table-foot-text" name="tax_rate"> Austria 20%</p>
+      <p class ="table-foot-text" name="tax_rate"><?php echo $tax_rate ?>%</p>
       <p class ="table-foot">Total Price: </p>
-      <p class ="table-foot-text" name="total_price">5000€</p>
+      <p class ="table-foot-text" name="total_price"><?php echo number_format($Pricetotal, 2) ?>€</p>
       <input type="submit" value="Proceed" class="button-proceed" name="proceed_button"></input>
     </div>
   </div>
+
   <!--Payment Options -->
   <div class="payment-container">
     <div class="payment-options">
@@ -100,9 +173,16 @@
       </div>
     </div>
   </div>
+
 <footer>
   <!--the footer-->
   <div class="container-footer"></div>
 </footer>
+<form>
 </body>
+<script>
+    if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+    }
+</script>
 </html>
