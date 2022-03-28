@@ -40,6 +40,21 @@ Order (Frontend) V1.1
 Profilpage (Backend) V1.2
 Return (Frontend) V1.0
 
+
+
+
+---------------------------Frontend Anforderungen (28.03.2022)------------------------------------
+
+responsiv
+Barrierefreiheit
+SEO - Keywords, Beschreibung, Robots regeln (meta index)
+html s
+screendesigns
+
+--------------------------------------------------------------------------------------------------
+
+
+
 Entwickler Version: Windows 10	
 Datenbank Server: XAMPP
 Technologien: HTML5, CSS3, JavaScript ,PHP
@@ -112,4 +127,9 @@ Frontend noch zu erledigen:
 		
 28.03.2022:
 	Return angefangen (Backend) (V1.0)
+	
+	Login Header hinzugefügt (Frontend) (V1.2)
+	Cart Footer angepasst mit Flexbox (Frontend) (V1.2)
+	Responsives Design Product Page (Frontend) (V1.0)
+	
 		
