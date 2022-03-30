@@ -119,11 +119,12 @@
 				<input type="submit" name="bill_sumit" value="Change" class="button-style"/> <!--Change submit button-->
 			</div>
 		</div>
-
-		<!--footer-->
-		<footer>
-			<div class="container-footer"></div>
-		</footer>
-	</form>
+		</form>
+	<footer>
+		<!--the footer-->
+		<div class="container-footer"> 
+		<a href="impressum.php"><p>Impressum</p></a>
+		</div>
+	</footer>
 </body>
 </html>
