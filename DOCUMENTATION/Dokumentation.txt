@@ -48,9 +48,9 @@ Return (Backend) V1.1
 
 responsiv
 Barrierefreiheit
-SEO - Keywords, Beschreibung, Robots regeln (meta index)
+SEO - Keywords, Beschreibung
 html s
-screendesigns
+Screendesigns
 
 --------------------------------------------------------------------------------------------------
 
@@ -147,4 +147,4 @@ Frontend noch zu erledigen:
 	Impressum hinzugefügt
 	Bilder geändert und eine Beschreibung in das Impressum gegeben
 	Datenbank Tabelle Produkte beschreibung der Produkte hinzugefügt
-	Screendesign mit Seite angepasst, Impressum Screendesign
+	Screendesign mit Seite angepasst, Impressum Screendesign (V1.2)
