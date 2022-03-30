@@ -1,21 +1,40 @@
+/*generel style sheet for some elements*/
 body {
 	margin: 0 auto;
 	height: 100%;
+	display: flex;
+	flex-direction: column;
 }
-h1 {
-font-size: 64px;
-color: #DB6C6C;
+html
+{
+	height: 100%;
+}
+main
+{
+	flex: 1;
 }
 
-h2 {
-font-size: 36px;
-color: #DB6C6C;
+h1 {
+	font-size: 64px;
+	color: #DB6C6C;
+}
+
+h2, h3 {
+	font-size: 36px;
+	color: #DB6C6C;
 }
 
 p {
-font-size: 16px;
-color: black;
+	font-size: 16px;
+	color: black;
 }
+
+/*for header menu, border fits on the header otherwise it would stick out*/
+*, ::before, ::after {
+  box-sizing: border-box;
+}
+
+
 
 /* Header */
 header {
@@ -24,9 +43,6 @@ header {
 	height: 86px;
 }
 
-.header-container {
-	display: flex;
-}
 
 .header-container .header-child1 a {
 	font-size: 48px;
@@ -41,8 +57,10 @@ header {
 }
 
 .header-container .header-child2 {
-	width: 50%;
+	/*! width: 50%; */
 	height: 100%;
+	margin-bottom: 10px;
+	background: #DB6C6C;
 }
 
 .header-container .header-child2 a{
@@ -56,22 +74,35 @@ header {
 .header-container ul{
 	list-style: none;
 	display: flex;
-	width: 100%;
 	height: 100%;
 	margin: 0px;
 	padding: 0px;
-	justify-content: flex-end;
+	
 }
 
 .header-container li {
 	width: 120px;
-	border-left: solid 2px #8B4646;
 	height: 100%;
 	display: flex;
+	border: solid 2px #8B4646;
 }
 
 .header-container a {
 	text-decoration: none;
 	color: white;
 	font-size: 24px;
+}
+
+
+
+
+
+
+/*if screen is bigger than 800px*/
+@media screen and (min-width: 800px)
+{
+			.header-container {
+				display: flex;
+			}
+
 }
