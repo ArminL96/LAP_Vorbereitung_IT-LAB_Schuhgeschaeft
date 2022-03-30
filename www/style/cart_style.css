@@ -1,31 +1,4 @@
-body {
-	height: 100%;
-	display: flex;
-	flex-direction: column;
-}
-html
-{
-	height: 100%;
-}
-main
-{
-	flex: 1;
-}
 
-h1 {
-	font-size: 64px;
-	color: #DB6C6C;
-}
-
-h2 {
-	font-size: 36px;
-	color: #DB6C6C;
-}
-
-p {
-	font-size: 16px;
-	color: black;
-}
 /* ----Buttons---- */
 .button-style {
 	display: inline-block;
@@ -98,10 +71,6 @@ input[name="shopcart"]{
   position: relative;
   width: 100%;
   padding-right: 15px;
-}
-
-*, ::before, ::after {
-  box-sizing: border-box;
 }
 
 /* Article Card Body*/
@@ -207,15 +176,4 @@ input[name="shopcart"]{
   margin-right: 283px;
   color:#DB6C6C;
 
-}
-/* Footer */
-footer
-{
-	background: #DB6C6C;
-}
-/* Footer */
-.container-footer {
-	height: 100px;
-	max-width: 800px;
-	padding: 0 1em;
 }
