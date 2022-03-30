@@ -38,12 +38,14 @@
           <input type="submit" name="sumit_cancel" value="Cancel" class="button-style"/>
           <input type="submit" name="sumit_return" value="Return" class="button-style"/>
         </div>
-
-    <footer>
-      <!--the footer-->
-      <div class="container-footer"></div>
-    </footer>
   </form>
+   <footer>
+		<!--the footer-->
+		<div class="container-footer"> 
+		<a href="impressum.php"><p>Impressum</p></a>
+		</div>
+	</footer>
+
 </body>
 
   <?php
