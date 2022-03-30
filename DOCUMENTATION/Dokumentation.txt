@@ -132,4 +132,7 @@ Frontend noch zu erledigen:
 	Cart Footer angepasst mit Flexbox (Frontend) (V1.2)
 	Responsives Design Product Page (Frontend) (V1.0)
 	
-		
+29.03.2022
+	Bug mit der Suchleiste in products.php behoben (Backend) 
+	Return fertiggestellt (Backend) (V1.1)
+	Mit Bestellung (Backend) angefangen (V1.0)
