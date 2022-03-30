@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 24. Mrz 2022 um 13:22
--- Server-Version: 10.4.18-MariaDB
--- PHP-Version: 8.0.3
+-- Erstellungszeit: 30. Mrz 2022 um 15:57
+-- Server-Version: 10.4.22-MariaDB
+-- PHP-Version: 8.1.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -42,7 +42,7 @@ CREATE TABLE `billingadress` (
 --
 
 INSERT INTO `billingadress` (`id`, `bill_adress`, `bill_country`, `bill_city`, `bill_zipcode`, `bill_firstName`, `bill_lastName`) VALUES
-(1, 'dfsdfggfdf', 'sggdfgffgd', 'sggsdgfdgsf', 555, 'fdgssfg', 'fdddfgf'),
+(1, 'dfsdfggfdf', 'Germany', 'sggsdgfdgsf', 555, 'fdgssfg', 'fdddfgf'),
 (2, 'dsfsdfdfd', 'fdfdfdfd', 'dfdffdfddf', 777, 'refafdd', 'adffsdfsd');
 
 -- --------------------------------------------------------
@@ -58,6 +58,15 @@ CREATE TABLE `cartitem` (
   `cartId` bigint(20) UNSIGNED NOT NULL,
   `productId` bigint(20) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Daten für Tabelle `cartitem`
+--
+
+INSERT INTO `cartitem` (`id`, `quantity`, `price`, `cartId`, `productId`) VALUES
+(167, 1, 1, 1, 4),
+(179, 1, 1, 7, 1),
+(180, 1, 1, 7, 4);
 
 -- --------------------------------------------------------
 
@@ -100,7 +109,7 @@ CREATE TABLE `customer` (
 --
 
 INSERT INTO `customer` (`id`, `firstName`, `lastName`, `shippingAddressId`, `billingAdressId`, `userId`, `cartId`) VALUES
-(1, 'Keanu', 'Griesser', 1, 1, 1, 1),
+(1, 'Keanu', 'Griesser', 1, 1, 1, 7),
 (2, 'test', 'test', 2, 2, 2, 2);
 
 -- --------------------------------------------------------
@@ -117,6 +126,17 @@ CREATE TABLE `orders` (
   `shipAddId` bigint(20) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Daten für Tabelle `orders`
+--
+
+INSERT INTO `orders` (`id`, `cartId`, `customerId`, `billAddId`, `shipAddId`) VALUES
+(1, 1, 1, 1, 1),
+(2, 3, 1, 1, 1),
+(3, 4, 1, 1, 1),
+(4, 5, 1, 1, 1),
+(5, 6, 1, 1, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -129,21 +149,22 @@ CREATE TABLE `product` (
   `price` float NOT NULL,
   `size` int(11) NOT NULL,
   `color` varchar(255) NOT NULL,
-  `categoryId` bigint(20) UNSIGNED NOT NULL
+  `categoryId` bigint(20) UNSIGNED NOT NULL,
+  `description` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Daten für Tabelle `product`
 --
 
-INSERT INTO `product` (`id`, `name`, `price`, `size`, `color`, `categoryId`) VALUES
-(1, 'Scout Gummistiefel', 23.48, 23, 'Weiß', 3),
-(2, 'Casual Looks Sandalette', 15.57, 40, 'Schwarz', 2),
-(3, 'LASCANA Sneaker', 40.17, 45, 'Olivgrün', 1),
-(4, 'Hirschkogel Pumps', 74.5, 38, 'Schwarz', 2),
-(5, 'Ballerina mit Schleife', 30.2, 21, 'Schwarz', 3),
-(10, 'Wensky Sneaker', 50.6, 46, 'Braun', 1),
-(11, 'Birkenstock Pantolette', 74.59, 40, 'schwarz', 1);
+INSERT INTO `product` (`id`, `name`, `price`, `size`, `color`, `categoryId`, `description`) VALUES
+(1, 'Scout Gummistiefel', 22.5, 23, 'Weiß', 3, 'Blaue Kinder Gummistiefel'),
+(2, 'City Walk Stiefel', 69.8, 40, 'Schwarz', 2, 'Dunkelblaue Damen Stiefel auf Kniehöhe'),
+(3, 'Herren Sneaker', 19.6, 45, 'Olivgrün', 1, 'Braune Herren Sneaker'),
+(4, 'Hirschkogel Pumps', 74.5, 38, 'Schwarz', 2, 'Schwarze Damen Stöckelschuhe'),
+(5, 'Sketchers Kids Sneaker', 30.2, 21, 'Schwarz', 3, 'Pinke Sketchers Sneaker'),
+(10, 'Puma Sneaker', 50.6, 46, 'Braun', 1, 'Schwarze Sneaker Puma'),
+(11, 'Birkenstock Pantolette', 10, 40, 'schwarz', 1, 'Braun und schwarze Pantoletten');
 
 -- --------------------------------------------------------
 
@@ -178,7 +199,7 @@ CREATE TABLE `shippingadress` (
 --
 
 INSERT INTO `shippingadress` (`id`, `ship_adress`, `ship_country`, `ship_city`, `ship_zipcode`, `ship_firstName`, `ship_lastName`) VALUES
-(1, 'gdfgdgfdg', 'fgfgfgfg', 'dfggfdfgdfg', 66654, 'dfgfag', 'ggsgs'),
+(1, 'gdfgdgfdg', 'Austria', 'dfggfdfgdfg', 66654, 'dfgfag', 'ggsgs'),
 (2, 'asdfadfsdsfds', 'dsfafdssdffds', 'dsfdfsfdsadfas', 555, 'sfda', 'asdfsfdasd');
 
 -- --------------------------------------------------------
@@ -197,8 +218,13 @@ CREATE TABLE `shopingcart` (
 --
 
 INSERT INTO `shopingcart` (`id`, `totalPrice`) VALUES
-(1, 0),
-(2, 0);
+(1, 97),
+(2, 0),
+(3, 0),
+(4, 0),
+(5, 0),
+(6, 0),
+(7, 0);
 
 -- --------------------------------------------------------
 
@@ -310,7 +336,7 @@ ALTER TABLE `billingadress`
 -- AUTO_INCREMENT für Tabelle `cartitem`
 --
 ALTER TABLE `cartitem`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=181;
 
 --
 -- AUTO_INCREMENT für Tabelle `category`
@@ -328,7 +354,7 @@ ALTER TABLE `customer`
 -- AUTO_INCREMENT für Tabelle `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT für Tabelle `product`
@@ -352,7 +378,7 @@ ALTER TABLE `shippingadress`
 -- AUTO_INCREMENT für Tabelle `shopingcart`
 --
 ALTER TABLE `shopingcart`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT für Tabelle `user`
