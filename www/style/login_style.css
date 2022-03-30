@@ -1,22 +1,4 @@
-body {
-	margin: 0 auto;
-	height: 100%;
-}
 
-h1 {
-	font-size: 64px;
-	color: #DB6C6C;
-}
-
-h2 {
-	font-size: 36px;
-	color: #DB6C6C;
-}
-
-p {
-	font-size: 16px;
-	color: black;
-}
 /* Buttons */
 .button-style {
 	display: inline-block;
@@ -70,10 +52,3 @@ p {
 	margin-left: 358px;
 }
 
-/* Footer */
-.container-footer {
-	background: #DB6C6C;
-	width:100%;
-	bottom: 0px;
-	height: 100px;
-}
