@@ -91,7 +91,7 @@
 		<?php
 
 		#sql query select all products where product name like the selected Value and input search
-		$sql = "SELECT product.id, product.name, product.price, product.size, product.color, product.categoryid, category.name AS catName FROM product 
+		$sql = "SELECT product.id, product.name, product.price, product.size, product.color, product.categoryid, product.description, category.name AS catName FROM product 
 				INNER JOIN category ON product.categoryId = category.id WHERE category.Name LIKE'%{$in}%' and product.name LIKE '%{$input_search}%'";
 		$result = $mysqli->query($sql);
 		#goes through each column of the Product table
