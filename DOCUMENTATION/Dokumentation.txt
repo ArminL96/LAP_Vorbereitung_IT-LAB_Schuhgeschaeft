@@ -142,3 +142,7 @@ Frontend noch zu erledigen:
 	
 30.03.2022
 	Datenbank aktualiesiert (V1.2)
+	CSS Dateien aufgeteilt das keine doppelten Elemente mehr vorhanden sind (Frontend)
+	Impressum hinzugefügt
+	Bilder geändert und eine Beschreibung in das Impressum gegeben
+	Datenbank Tabelle Produkte beschreibung der Produkte hinzugefügt
