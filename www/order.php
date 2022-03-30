@@ -204,12 +204,15 @@
       </div>
     </div>
   </div>
+  
+</form>
 
 <footer>
-  <!--the footer-->
-  <div class="container-footer"></div>
-</footer>
-<form>
+		<!--the footer-->
+		<div class="container-footer"> 
+		<a href="impressum.php"><p>Impressum</p></a>
+		</div>
+	</footer>
 </body>
 <script>
     if ( window.history.replaceState ) {
