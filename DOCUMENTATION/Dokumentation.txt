@@ -29,7 +29,7 @@ Backend
 -----------------------------------------------------IN ARBEIT-------------------------------------------------------------
 												
 Aktuelle Versionen:
-Datenbank (Backend) V1.1
+Datenbank (Backend) V1.2
 Login (Frontend) V1.1
 Login (Backend) V1.2
 Artikel Page (Frontend) V1.1
@@ -39,6 +39,7 @@ Warenkorb (Backend) V1.0
 Order (Frontend) V1.1
 Profilpage (Backend) V1.2
 Return (Frontend) V1.0
+Return (Backend) V1.1
 
 
 
@@ -136,3 +137,8 @@ Frontend noch zu erledigen:
 	Bug mit der Suchleiste in products.php behoben (Backend) 
 	Return fertiggestellt (Backend) (V1.1)
 	Mit Bestellung (Backend) angefangen (V1.0)
+	
+	
+	
+30.03.2022
+	Datenbank aktualiesiert (V1.2)
