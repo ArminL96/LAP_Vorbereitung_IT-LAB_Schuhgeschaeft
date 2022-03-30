@@ -1,24 +1,5 @@
 
 
-body {
-	height: 100%;
-}
-
-h1 {
-	font-size: 64px;
-	color: #DB6C6C;
-}
-
-h2 {
-	font-size: 36px;
-	color: #DB6C6C;
-}
-
-p {
-	font-size: 16px;
-	color: black;
-}
-
 /* Buttons */
 .button-style {
 	display: inline-block;
@@ -73,18 +54,15 @@ p {
   padding-right: 15px;
 }
 
-*, ::before, ::after {
-  box-sizing: border-box;
-}
+
 /* Card Body */
 .article-card{
   background-color: #fff;
   background-clip: border-box;
-  border-radius: 0.25rem;
   border: 2px solid #db6c6c;
   box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
   float: left;
-  margin-left: 30px;
+  margin-left: 80px;
   margin-right: 10px;
   margin-bottom: 30px;
   width: 300px;
@@ -140,6 +118,8 @@ p {
   height: 50px;
   border-bottom: solid 2px #DB6C6C;
   margin-top: 140px;
+  width: 85%;
+  margin-left: 80px;
 }
 #drop{
   margin-top: 11px;
@@ -158,16 +138,7 @@ p {
   color:#DB6C6C;
 }
 
-/*footer */
-.container-footer {
-	background: #DB6C6C;
-	height: 100px;
-	clear: both;
-	bottom: 0;
-	display: block;
-	margin: auto;
-	margin-top: -1%;
-}
+
 
 /* Responsiv */
 @media (max-width: 800px) {
@@ -188,6 +159,9 @@ margin-right: -225px;
 }
 
 
+
+
+
 /*if screen is bigger than 680px*/
 @media screen and (max-width: 680px)
 {
@@ -199,11 +173,11 @@ margin-right: -225px;
 
 }
 
-@media screen and (max-width: 620px)
+@media screen and (max-width: 635px)
 {
  
 #searchbar{
-  width: 320px;
+  width: 90%;
   margin-top: 20px;
 }
   
@@ -211,26 +185,25 @@ margin-right: -225px;
  
   height: 120px;
   margin-top: 140px;
+  width: 70%;
 }
   
 #drop{
-  margin-top: 40px;
+  margin-top: 30px;
   margin-right: 0px;
-  margin-left: 100px;
-  width: 235px;
+  margin-left: 10px;
+  width: 100px;
   float: left;
-  border: solid 1px #DB6C6C;
   
 }
 
 #category-title{
-  margin-top: 80px;
+  margin-top: 30px;
   float: left;
-  margin-left: -320px;
+  margin-left: 15px;
+  margin-right: 0px;
 }
   
+
   
 }
-
-
-
