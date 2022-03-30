@@ -1,0 +1,19 @@
+/* Footer */
+footer
+{
+	margin-top: 50px;
+	background: #DB6C6C;
+}
+
+a
+{
+	text-decoration: none;
+}
+a p
+{
+	font-size: 30px;
+	width: 100%;
+	text-align: center;
+	text-decoration: none;
+	color: black;
+}
