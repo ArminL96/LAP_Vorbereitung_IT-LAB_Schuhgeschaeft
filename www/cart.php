@@ -84,7 +84,9 @@
 			foreach($pdid as $id) {
 				//it joins the product table, cartitem tabel, and category table
 				//you save the cart items in the product ID
-				$sql = "SELECT cartitem.id AS cartitemId, product.id, product.name, product.price, product.size, product.color, product.categoryid, category.name AS catName FROM product INNER JOIN category ON product.categoryId = category.id INNER JOIN cartitem ON product.id = cartitem.productId WHERE product.id = '".$id."'";
+				$sql = "SELECT cartitem.id AS cartitemId, product.id, product.name, product.price, product.size, product.color, product.categoryid, category.name AS catName FROM product 
+				INNER JOIN category ON product.categoryId = category.id 
+				INNER JOIN cartitem ON product.id = cartitem.productId WHERE product.id = '".$id."'";
 				$result = $mysqli->query($sql);
 				
 				
@@ -119,10 +121,16 @@
 					
 				}
 			}	
-				
+				//
+				//new update query for the shopingcart needs still to be tested	
+				//problem with the old query is that the userID is bind to the shopcartID
+				//this is a problem because when the user confirmed the order a new shopcart gets created in the database
+				$sql = "UPDATE shopingcart
+				INNER JOIN customer ON shopingcart.id = customer.cartId AND shopingcart.id = customer.cartId
+				SET shopingcart.totalPrice = $Pricetotal";
 
 				//sql Update totalprice of the cart is updatet here
-				$sql = "UPDATE shopingcart SET totalPrice ='".$Pricetotal."' WHERE id = '".$_SESSION["userID"]."'";
+				//$sql = "UPDATE shopingcart SET totalPrice ='".$Pricetotal."' WHERE id = '".$_SESSION["userID"]."'";
 				$result = $mysqli->query($sql);
 
 			?>	

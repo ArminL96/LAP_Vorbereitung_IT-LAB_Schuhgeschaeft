@@ -9,11 +9,11 @@
 
 	#if you press the "Add to Shopcart" button the item will be saved in the Database
 	//the REQUEST_METHOD check if the button was pressed
-	if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST['add_to_cart'])) {
+	if (isset($_POST['add_to_cart'])) {
 		$idProd = $_POST['add_to_cart'];
 
 		//query to find the cart of the user
-		$sql = "SELECT cartId FROM customer WHERE cartId = '".$_SESSION['userID']."'";
+		$sql = "SELECT cartId FROM customer WHERE id = '".$_SESSION['userID']."'";
 		$result = $mysqli->query($sql);
 
 		//if there is a user with the searched cardID
@@ -57,7 +57,11 @@
 		<div id="searchbarDiv">
 			<!--searchbar to search products -->
 			<input id="searchbar" name="search" type="text" placeholder="Search..">
-				<p id="category-title">Category</p>
+
+			<!--this button prevents the 'add to cart'-button to be pressed when the user pressed enter to search an article in the searchbar-->
+			<button style="display:none"></button>
+
+			<p id="category-title">Category</p>
 			<select  type="submit" name="category-selection" id="drop" onchange="form.submit()">
 				<option value=""></option>
 				<option value="herren">Herren</option>
@@ -87,7 +91,8 @@
 		<?php
 
 		#sql query select all products where product name like the selected Value and input search
-		$sql = "SELECT product.id, product.name, product.price, product.size, product.color, product.categoryid, category.name AS catName FROM product INNER JOIN category ON product.categoryId = category.id WHERE category.Name LIKE'%{$in}%' and product.name LIKE '%{$input_search}%'";
+		$sql = "SELECT product.id, product.name, product.price, product.size, product.color, product.categoryid, category.name AS catName FROM product 
+				INNER JOIN category ON product.categoryId = category.id WHERE category.Name LIKE'%{$in}%' and product.name LIKE '%{$input_search}%'";
 		$result = $mysqli->query($sql);
 		#goes through each column of the Product table
 		while($row = mysqli_fetch_assoc($result)){

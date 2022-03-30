@@ -40,7 +40,7 @@
 				?>
 				<input type="submit" name="login" value="Login" class="button-style"/>
 				<?php
-				#if button login is klicked
+				#if button login is clicked
 				if ($_SERVER["REQUEST_METHOD"] == "POST")
 				{
 					#‎select data form database

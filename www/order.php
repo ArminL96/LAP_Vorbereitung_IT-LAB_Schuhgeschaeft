@@ -25,6 +25,7 @@
   <?php
     session_start();
     $Pricetotal = 0;
+    $country = null;
     $mysqli = new mysqli("localhost", "root", "", "schuhgeschaeft");
     #checks if no connection could be established
     if($mysqli->connect_error){
@@ -35,7 +36,7 @@
 
     //gets the shippment and the billing adress from the database to paste it into the inputs
     $sql = "SELECT `ship_adress`, `ship_country`, `ship_city`, `ship_zipcode`, `ship_firstname`, `ship_lastname`,
-    	            `bill_adress`, `bill_country`, `bill_city`, `bill_zipcode`, `bill_firstname`, `bill_lastname`, `userId` FROM `customer`
+    	            `bill_adress`, `bill_country`, `bill_city`, `bill_zipcode`, `bill_firstname`, `bill_lastname`, customer.id, shippingAddressId, billingAdressId, cartId FROM `customer`
                   INNER JOIN shippingadress ON customer.shippingAddressId = shippingadress.id
                   INNER JOIN billingadress ON customer.billingAdressId = billingadress.id WHERE userId = '".$userID."'";
 
@@ -45,18 +46,20 @@
     
     while($row = $result->fetch_assoc()) { 
 
-      //doesnt work yet
-      $customerID = $row["customerId"];
+      //saves the the information needed to insert the order in the database
+      $customerID = $row["id"];
       $shippingID = $row["shippingAddressId"];
       $billingID = $row["billingAdressId"];
       $cartID = $row["cartId"];
 
+      //checks if the country is Austria or Germany and saves it in a variable
       if ($row["ship_country"] == "Austria") {
         $country = "Austria";
       }
-      else {
+      else if ($row["ship_country"] == "Germany")  {
         $country = "Germany";
       }
+
   ?>
 
   <div class="adress-container">
@@ -70,6 +73,12 @@
       <p>City:      <input type="text" name="ship_city" id="ship_city" value=<?php echo $row['ship_city'] ?>></p>
       <p>Country:   <input type="text"name="ship_country" id="ship_country" value=<?php echo $row['ship_country'] ?>></p>
       <p>ZIP Code:  <input type="text" name="ship_zipcode" id="ship_zip" value=<?php echo $row['ship_zipcode'] ?>></p>
+      <?php
+      if ($country == null) {
+        echo "<p style='color:red'>Invalid Country, please choose between Austria or Germany</p>"; 
+        $country = NULL;
+      }
+      ?>
       <button name="ship_sumit" class="button-style" type="submit">Change</button>
     </div>
 
@@ -88,8 +97,6 @@
 
 <?php 
     }
-
-
 ?>
   <div class="order-container">
     <div class="order-list">
@@ -112,8 +119,9 @@
 
       $result = $mysqli->query($sql);
 
-      while($row = $result->fetch_assoc()) {     
-        $Pricetotal += $row['price']; //add price of article in pricetotal variable 
+      while($row = $result->fetch_assoc()) {  
+        //add price of article in pricetotal variable    
+        $Pricetotal += $row['price']; 
   ?>
         <tr>
           <!--products of Order-->
@@ -121,10 +129,11 @@
           <td><?php echo $row["size"]?></td>
           <td><?php echo $row["price"]?>€</td>
         </tr>
+
   <?php 
       }
     }
-    //checks if the "change"-button for the shippmentadress was pressed
+    //checks if the change-button for the shippment adress or the billing adress was pressed
     if (isset($_POST["ship_sumit"])) {
       require "shippingAdress.php";
       header("Refresh: 0");
@@ -143,13 +152,35 @@
       $tax_rate = "19";
     }
   ?>
+  
       </table>
+
   <?php
 
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    $sql = "INSERT INTO `orders` (`cartId`, `customerId`, `billAddId`, `shipAddId`) VALUES ($cartID, $customerID, $billingID, $shippingID  )";                                                                                    
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  //checks if the proceed-button is pressed
+  if (isset($_POST["proceed_button"])) {
+
+    //the first INSERT INTO insert the cardId, customerId, billAddId and the shipAddId into the order table
+    $sql = "INSERT INTO `orders` (`cartId`, `customerId`, `billAddId`, `shipAddId`) VALUES ($cartID, $customerID, $billingID, $shippingID  );";
+    $result = $mysqli->query($sql); 
+  
+    //creates a new shoppingcart for the user
+    //a new shoppingcart has to be created so the old shoppingcart doesnt get overwritten
+    $sql = "INSERT INTO `shopingcart` (`totalPrice`) VALUES (0)";
+    $result = $mysqli->query($sql); 
+
+    //Selects the last shoppingcart to save the id in an variable
+    $sql = "SELECT `id` FROM `shopingcart` ORDER BY id DESC LIMIT 1;";
+    $result = $mysqli->query($sql);
+    $row = $result->fetch_assoc();
+    $newShopCartID = $row["id"];    
+
+    //Updates the cardId in the customer-table so the customer gets a new shopcart
+    $sql = "UPDATE customer SET cartId = $newShopCartID WHERE id = '".$_SESSION['userID']."'";
+    $result = $mysqli->query($sql);
+  }                                                               
   ?>
+
       <!--Table footer -->
       <p class ="table-foot" style="border-top: 2px solid #db6c6c;">Tax Rate: </p>
       <p class ="table-foot-text" name="tax_rate"><?php echo $tax_rate ?>%</p>
