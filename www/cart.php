@@ -38,6 +38,7 @@
 <head>
 	<link rel="stylesheet" href="style/cart_style.css">
 		<link rel="shortcut icon" href="../www/img/favicon.ico" type="image/x-icon">
+		
 </head>
 	<body>
 		<!--Header-->
@@ -52,8 +53,11 @@
 					</li>
 					<li><a href='products.php'>Products</a></li>
 				</ul>
+				
+				
 			</div>
 		</header>
+		<main>
 		<form method="post">
 		<?php
 		//Array to save all Product IDs
@@ -77,16 +81,13 @@
 					//if items are found they get saved in their dedicated array
 					array_push($pdid, $row['productId']);
 				}
-				$_SESSION["product_array"] = $pdid;
 			}
 			
 			//foreach product id in $pdid
 			foreach($pdid as $id) {
 				//it joins the product table, cartitem tabel, and category table
 				//you save the cart items in the product ID
-				$sql = "SELECT cartitem.id AS cartitemId, product.id, product.name, product.price, product.size, product.color, product.categoryid, category.name AS catName FROM product 
-				INNER JOIN category ON product.categoryId = category.id 
-				INNER JOIN cartitem ON product.id = cartitem.productId WHERE product.id = '".$id."'";
+				$sql = "SELECT cartitem.id AS cartitemId, product.id, product.name, product.price, product.size, product.color, product.categoryid, category.name AS catName FROM product INNER JOIN category ON product.categoryId = category.id INNER JOIN cartitem ON product.id = cartitem.productId WHERE product.id = '".$id."'";
 				$result = $mysqli->query($sql);
 				
 				
@@ -99,7 +100,7 @@
 					$name = $row['name'];
 					$name = str_replace(' ', '', $name);
 					//output of the image with the same name as the name of the product
-					echo "<img src= img/$name.jpg>"
+					echo "<img src='img/$name.jpg' alt="?><?php echo $name;?><?php echo">";
 					?>
 					<div class="article-body">
 						<!-- output data products: name, size, price, category-->
@@ -121,16 +122,11 @@
 					
 				}
 			}	
-				//
-				//new update query for the shopingcart needs still to be tested	
-				//problem with the old query is that the userID is bind to the shopcartID
-				//this is a problem because when the user confirmed the order a new shopcart gets created in the database
-				$sql = "UPDATE shopingcart
-				INNER JOIN customer ON shopingcart.id = customer.cartId AND shopingcart.id = customer.cartId
-				SET shopingcart.totalPrice = $Pricetotal";
-
+				
+				
+				
 				//sql Update totalprice of the cart is updatet here
-				//$sql = "UPDATE shopingcart SET totalPrice ='".$Pricetotal."' WHERE id = '".$_SESSION["userID"]."'";
+				$sql = "UPDATE shopingcart SET totalPrice ='".$Pricetotal."' WHERE id = '".$_SESSION["userID"]."'";
 				$result = $mysqli->query($sql);
 
 			?>	
@@ -140,11 +136,13 @@
 				<p id="price_totalId" name="price_total"> Price: <?php echo $Pricetotal;?>€</p> <!--Output from the total-->
 			</div>		
 		</form>
-	</body>
+	</main>
 	<footer>
-			<!--footer-->
-		<div class="container-footer"></div>
-</footer>
-</form>
+		<!--the footer-->
+		<div class="container-footer"> 
+		<a href="impressum.php"><p>Impressum</p></a>
+		</div>
+	</footer>
+
 </body>
 </html>
