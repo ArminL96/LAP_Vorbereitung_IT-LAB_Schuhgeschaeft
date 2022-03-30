@@ -101,10 +101,13 @@
 				<?php
 				//Important: the image name must match the product name in the database
 				//deletes all spaces from the string
+				//takes the name and description of the product out of database
+				$description = $row['description'];
 				$name = $row['name'];
 				$name = str_replace(' ', '', $name);
-				//output of the image with the same name as the name of the product and display a text from product if picture cant be shown
-				echo "<img src='img/$name.jpg' alt="?><?php echo $name;?><?php echo">";
+				$description = str_replace(' ', '', $description);
+				//output of the picture from the product and description if theres no picture found
+				echo "<img src='img/$name.jpg' alt="?><?php echo $description;?><?php echo">";
 				?>
 				<div class="article-body">
 					<!-- output data products: name, size, price, category-->
@@ -127,7 +130,9 @@
 	</form>
 	<footer>
 		<!--the footer-->
-		<div class="container-footer"></div>
+		<div class="container-footer"> 
+		<a href="impressum.php"><p>Impressum</p></a>
+		</div>
 	</footer>
 </body>
 </html>
