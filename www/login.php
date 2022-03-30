@@ -3,7 +3,21 @@
 <head>
 	<link rel="stylesheet" href="style/login_style.css">
 	<link rel="shortcut icon" href="../www/img/favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" href="style/header_style.css">
+	<?php include 'seo.php'?>
 </head>
+
+
+
+
+<header class="header-container">
+		
+		<div class='header-child1'>
+				<!--website title with a redirect to product page-->
+			<a href='login.php'>Schuhversand</a>
+			
+		</div>
+	</header>
 <body>
 	<div class="login-page-container">
 		<div class="login-container">
