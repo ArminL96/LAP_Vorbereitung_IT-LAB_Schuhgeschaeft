@@ -34,7 +34,8 @@
     }
     $userID = $_SESSION["userID"];
 
-    //gets the shippment and the billing adress from the database to paste it into the inputs
+    //gets the shipment and the billing adress from the database to paste it into the inputs
+    //and gets the needed information for the order table in the database
     $sql = "SELECT `ship_adress`, `ship_country`, `ship_city`, `ship_zipcode`, `ship_firstname`, `ship_lastname`,
     	            `bill_adress`, `bill_country`, `bill_city`, `bill_zipcode`, `bill_firstname`, `bill_lastname`, customer.id, shippingAddressId, billingAdressId, cartId FROM `customer`
                   INNER JOIN shippingadress ON customer.shippingAddressId = shippingadress.id
@@ -144,42 +145,18 @@
     }
     //checks what the country to calculate the totalprice with the tax
     if ($country == "Austria") {
-      $Pricetotal *= 1.2;
-      $tax_rate = "20";
+        //20% tax rate in Austria
+        $Pricetotal *= 1.2;
+        $tax_rate = "20";
     }
     else {
-      $Pricetotal *= 1.19;
-      $tax_rate = "19";
+        //19% tax rate in Austria
+        $Pricetotal *= 1.19;
+        $tax_rate = "19";
     }
   ?>
   
       </table>
-
-  <?php
-
-  //checks if the proceed-button is pressed
-  if (isset($_POST["proceed_button"])) {
-
-    //the first INSERT INTO insert the cardId, customerId, billAddId and the shipAddId into the order table
-    $sql = "INSERT INTO `orders` (`cartId`, `customerId`, `billAddId`, `shipAddId`) VALUES ($cartID, $customerID, $billingID, $shippingID  );";
-    $result = $mysqli->query($sql); 
-  
-    //creates a new shoppingcart for the user
-    //a new shoppingcart has to be created so the old shoppingcart doesnt get overwritten
-    $sql = "INSERT INTO `shopingcart` (`totalPrice`) VALUES (0)";
-    $result = $mysqli->query($sql); 
-
-    //Selects the last shoppingcart to save the id in an variable
-    $sql = "SELECT `id` FROM `shopingcart` ORDER BY id DESC LIMIT 1;";
-    $result = $mysqli->query($sql);
-    $row = $result->fetch_assoc();
-    $newShopCartID = $row["id"];    
-
-    //Updates the cardId in the customer-table so the customer gets a new shopcart
-    $sql = "UPDATE customer SET cartId = $newShopCartID WHERE id = '".$_SESSION['userID']."'";
-    $result = $mysqli->query($sql);
-  }                                                               
-  ?>
 
       <!--Table footer -->
       <p class ="table-foot" style="border-top: 2px solid #db6c6c;">Tax Rate: </p>
@@ -196,24 +173,89 @@
       <h2 id="text-payment">Payment Options</h2>
       <!--Checkboxs for Payment Options-->
       <div class="checkbox-payment">
-        <input type="checkbox" name="pay_card" id="pay_card" value=""> Pay with card
+        <input type="checkbox" name="method[]" id="pay_card" value="card"> Pay with card
         <label for="pay_card"></label>
         <br>
-        <input type="checkbox" name="payment_site" id="payment_site" value=""> Payment on site
+        <input type="checkbox" name="method[]" id="payment_site" value="cash"> Payment on site
         <label for="payment_site"></label>
       </div>
     </div>
   </div>
 
+
+  <!--Payment Informations (this structure is only for testing) -->
+  <div class="payment-container">
+    <div class="payment-options">
+      <h2 id="text-payment">Payment Information</h2>
+      <div class="checkbox-payment">
+        <input type="text" name="card_number" id="card_number" placeholder="cardnumber"/>
+        <br>
+        <input type="text" name="month" id="month" placeholder="month"/>
+        <br>
+        <input type="text" name="year" id="year" placeholder="year"/>
+        <br>
+        <input type="text" name="securitycode" id="securitycode" placeholder="securitycode"/>
+      </div>
+    </div>
+  </div>
+
+
 <footer>
   <!--the footer-->
   <div class="container-footer"></div>
 </footer>
-<form>
+  </form>
+  <footer>
+		<!--the footer-->
+		<div class="container-footer"> 
+		<a href="impressum.php"><p>Impressum</p></a>
+		</div>
+	</footer>
 </body>
-<script>
+<?php
+
+//checks if the proceed-button is pressed
+if (isset($_POST["proceed_button"])) {
+
+    //gets the checked value from the checkboxes for the paymentmethod
+    foreach($_POST['method'] as $value){
+        echo $value;
+    }
+
+    //update query for the total price in the shopingcart
+    //shopingcart and customer gets joined to only update where the userId in the database matches the current userID
+    $sql = "UPDATE shopingcart 
+            INNER JOIN customer ON shopingcart.id = customer.cartId
+            SET shopingcart.totalPrice = $Pricetotal
+            WHERE customer.userId = '".$_SESSION["userID"]."'";
+
+    //sql Update totalprice of the cart is updatet here
+    $result = $mysqli->query($sql);
+
+    //inserts the cardId, customerId, billAddId and the shipAddId into the order table
+    $sql = "INSERT INTO `orders` (`cartId`, `customerId`, `billAddId`, `shipAddId`, `paymentMethod`) VALUES ($cartID, $customerID, $billingID, $shippingID, '$value' );";
+    $mysqli->error;
+    $result = $mysqli->query($sql); 
+
+    //creates a new shopingcart for the user
+    //a new shopingcart has to be created so the old shopingcart doesnt get overwritten
+    $sql = "INSERT INTO `shopingcart` (`totalPrice`) VALUES (0)";
+    $result = $mysqli->query($sql); 
+
+    //Selects the last shopingcart to save the id in an variable
+    $sql = "SELECT `id` FROM `shopingcart` ORDER BY id DESC LIMIT 1;";
+    $result = $mysqli->query($sql);
+    $row = $result->fetch_assoc();
+    $newShopCartID = $row["id"];    
+
+    //Updates the cardId in the customer-table to the id of the newly created shopingcart
+    $sql = "UPDATE customer SET cartId = $newShopCartID WHERE id = '".$_SESSION['userID']."'";
+    $result = $mysqli->query($sql);
+}                                                               
+?>
+  <script>
     if ( window.history.replaceState ) {
         window.history.replaceState( null, null, window.location.href );
     }
-</script>
+  </script>
 </html>

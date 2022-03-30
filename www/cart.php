@@ -54,6 +54,7 @@
 				</ul>
 			</div>
 		</header>
+		<main>
 		<form method="post">
 		<?php
 		//Array to save all Product IDs
@@ -99,7 +100,7 @@
 					$name = $row['name'];
 					$name = str_replace(' ', '', $name);
 					//output of the image with the same name as the name of the product
-					echo "<img src= img/$name.jpg>"
+					echo "<img src='img/$name.jpg' alt="?><?php echo $name;?><?php echo">";
 					?>
 					<div class="article-body">
 						<!-- output data products: name, size, price, category-->
@@ -121,30 +122,21 @@
 					
 				}
 			}	
-				//
-				//new update query for the shopingcart needs still to be tested	
-				//problem with the old query is that the userID is bind to the shopcartID
-				//this is a problem because when the user confirmed the order a new shopcart gets created in the database
-				$sql = "UPDATE shopingcart
-				INNER JOIN customer ON shopingcart.id = customer.cartId AND shopingcart.id = customer.cartId
-				SET shopingcart.totalPrice = $Pricetotal";
-
-				//sql Update totalprice of the cart is updatet here
-				//$sql = "UPDATE shopingcart SET totalPrice ='".$Pricetotal."' WHERE id = '".$_SESSION["userID"]."'";
-				$result = $mysqli->query($sql);
 
 			?>	
 			<!--Proceed to Checkout button-->
 			<div class="proceed-checkout">
-				<a href="order.php" class="proceed">Proceed to Checkout</a>
-				<p id="price_totalId" name="price_total"> Price: <?php echo $Pricetotal;?>€</p> <!--Output from the total-->
+				<a href="order.php" id="proceed" class="proceed">Proceed to Checkout</a>
+				<p id="price_totalId" name="price_total"> Price without MwSt.: <?php echo $Pricetotal;?>€</p> <!--Output from the total-->
 			</div>		
 		</form>
-	</body>
-	<footer>
-			<!--footer-->
-		<div class="container-footer"></div>
-</footer>
+		</main>
+		<footer>
+		<!--the footer-->
+		<div class="container-footer"> 
+		<a href="impressum.php"><p>Impressum</p></a>
+		</div>
+	</footer>
 </form>
 </body>
 </html>
