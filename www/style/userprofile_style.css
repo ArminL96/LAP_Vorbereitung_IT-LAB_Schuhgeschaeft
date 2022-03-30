@@ -1,22 +1,5 @@
-body {
-	margin: 0 auto;
-	height: 100%;
-}
 
-h1 {
-	font-size: 64px;
-	color: #DB6C6C;
-}
 
-h2 {
-	font-size: 36px;
-	color: #DB6C6C;
-}
-
-p {
-	font-size: 16px;
-	color: black;
-}
 /* Buttons */
 .button-style {
 	display: inline-block;
@@ -77,12 +60,16 @@ p {
 	border: 2px solid #DB6C6C;
 	padding: 0px 20px 20px 20px;
 	margin-bottom: 20px;
+	margin-left: 400px;
+	margin-right: 190px;
 }
 
 .profile-billadd {
 	border: 2px solid #DB6C6C;
 	padding: 0px 20px 20px 20px;
-	margin-bottom: 20px;
+	margin-bottom: 70px;
+	margin-left: 400px;
+	margin-right: 190px;
 }
 
 .profile-main input[type=button] {
@@ -98,13 +85,32 @@ input{
 	margin-top: 30px;
 }
 
-/* Footer */
-.container-footer {
-		background: #DB6C6C;
-		height: 100px;
-		clear: both;
-		bottom: 0;
-		display: block;
-		margin: auto;
-		margin-top: -1%;
+@media screen and (max-width: 1200px){
+	
+	.profile-shipadd {
+
+	margin-left: 100px;
+	margin-right: 300px;
+}
+	.profile-billadd {
+
+	margin-left: 100px;
+	margin-right: 300px;
+}
+	
+}
+
+@media screen and (max-width: 650px){
+	
+	.profile-shipadd {
+
+	margin-left: 20px;
+	margin-right: 150px;
+}
+	.profile-billadd {
+
+	margin-left: 20px;
+	margin-right: 150px;
+}
+	
 }
