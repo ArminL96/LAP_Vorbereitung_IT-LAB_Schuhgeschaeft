@@ -101,7 +101,7 @@
 ?>
   <div class="order-container">
     <div class="order-list">
-      <table id="order-table" name="order-table" >
+      <table id="order-table" name="order-table">
         <tr>
           <!--Header Table-->
           <th>Productname</th>
@@ -124,6 +124,7 @@
         //add price of article in pricetotal variable    
         $Pricetotal += $row['price']; 
   ?>
+  
         <tr>
           <!--products of Order-->
           <td><?php echo $row["name"]?></td>
