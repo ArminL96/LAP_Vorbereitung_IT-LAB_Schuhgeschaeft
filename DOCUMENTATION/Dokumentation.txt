@@ -29,7 +29,7 @@ Backend
 -----------------------------------------------------IN ARBEIT-------------------------------------------------------------
 												
 Aktuelle Versionen:
-Datenbank (Backend) V1.2
+Datenbank (Backend) V1.3
 Login (Frontend) V1.1
 Login (Backend) V1.2
 Artikel Page (Frontend) V1.1
@@ -37,6 +37,7 @@ Artikel Page (Backend) V1.2
 Warenkorb (Frontend) V1.1
 Warenkorb (Backend) V1.0
 Order (Frontend) V1.1
+Order (Backend) V1.1
 Profilpage (Backend) V1.2
 Return (Frontend) V1.0
 Return (Backend) V1.1
