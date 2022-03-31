@@ -148,3 +148,9 @@ Frontend noch zu erledigen:
 	Bilder geändert und eine Beschreibung in das Impressum gegeben
 	Datenbank Tabelle Produkte beschreibung der Produkte hinzugefügt
 	Screendesign mit Seite angepasst, Impressum Screendesign (V1.2)
+
+
+31.03.2022
+	Datenbank aktulisiert (V1.3)
+	Bestellungen werden nun der Datenbank hinzugefügt
+	Zahlungsinformation können nun in der Datenbank aktualisiert werden
