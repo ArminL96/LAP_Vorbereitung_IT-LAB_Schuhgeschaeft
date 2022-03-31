@@ -38,6 +38,7 @@
 <head>
 	<link rel="stylesheet" href="style/cart_style.css">
 		<link rel="shortcut icon" href="../www/img/favicon.ico" type="image/x-icon">
+		
 </head>
 	<body>
 		<!--Header-->
@@ -52,6 +53,8 @@
 					</li>
 					<li><a href='products.php'>Products</a></li>
 				</ul>
+				
+				
 			</div>
 		</header>
 		<main>
@@ -78,16 +81,13 @@
 					//if items are found they get saved in their dedicated array
 					array_push($pdid, $row['productId']);
 				}
-				$_SESSION["product_array"] = $pdid;
 			}
 			
 			//foreach product id in $pdid
 			foreach($pdid as $id) {
 				//it joins the product table, cartitem tabel, and category table
 				//you save the cart items in the product ID
-				$sql = "SELECT cartitem.id AS cartitemId, product.id, product.name, product.price, product.size, product.color, product.categoryid, category.name AS catName FROM product 
-				INNER JOIN category ON product.categoryId = category.id 
-				INNER JOIN cartitem ON product.id = cartitem.productId WHERE product.id = '".$id."'";
+				$sql = "SELECT cartitem.id AS cartitemId, product.id, product.name, product.price, product.size, product.color, product.categoryid, category.name AS catName FROM product INNER JOIN category ON product.categoryId = category.id INNER JOIN cartitem ON product.id = cartitem.productId WHERE product.id = '".$id."'";
 				$result = $mysqli->query($sql);
 				
 				
@@ -130,13 +130,12 @@
 				<p id="price_totalId" name="price_total"> Price without MwSt.: <?php echo $Pricetotal;?>€</p> <!--Output from the total-->
 			</div>		
 		</form>
-		</main>
-		<footer>
+	</main>
+	<footer>
 		<!--the footer-->
 		<div class="container-footer"> 
 		<a href="impressum.php"><p>Impressum</p></a>
 		</div>
 	</footer>
-</form>
 </body>
 </html>

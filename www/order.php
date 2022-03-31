@@ -181,6 +181,8 @@
       </div>
     </div>
   </div>
+  
+</form>
 
 
   <!--Payment Informations (this structure is only for testing) -->
@@ -201,11 +203,6 @@
 
 
 <footer>
-  <!--the footer-->
-  <div class="container-footer"></div>
-</footer>
-  </form>
-  <footer>
 		<!--the footer-->
 		<div class="container-footer"> 
 		<a href="impressum.php"><p>Impressum</p></a>

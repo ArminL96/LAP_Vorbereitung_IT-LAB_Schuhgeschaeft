@@ -1,54 +1,211 @@
 
+/*Header for Payment Options*/
+#text-payment
+{
+  font-size: 36px;
+  color: black;
+  inline-size: 10p;
+  text-align: center;
+}
+
 /* Buttons */
 .button-style {
-	display: inline-block;
-	font-size: 16px;
-	font-weight: bold;
-	color: white;
-	border: 2px solid #D44444;
-	background-color: #DB6C6C;
-	padding: 5px 45px;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 10px;
+  color: white;
+  border: 2px solid #D44444;
+  background-color: #DB6C6C;
+  padding: 5px 45px;
+  float: right;
+  text-decoration: none;
 }
+
+.button-proceed{
+  display: inline-block;
+  font-size: 16px;
+  color: white;
+  border: 2px solid #D44444;
+  background-color: #DB6C6C;
+  padding: 5px 45px;
+  float: left;
+  text-decoration: none;
+  margin-left: 269px;
+  margin-bottom: -28px;
+}
+
+
+.button-proceed:hover {
+  color: #DB6C6C;
+  background-color: white;
+  border: 2px solid #D44444;
+}
+
 
 .button-style:hover {
-	color: #DB6C6C;
-	background-color: white;
-	border: 2px solid #D44444;
+  color: #DB6C6C;
+  background-color: white;
+  border: 2px solid #D44444;
 }
 
-/* Login Page */
-.login-page-container {
-	display: flex;
-	justify-content: center;
-	margin-top: -150px;
+/*Shipping Address */
+.order-shipadd {
+  border: 2px solid #DB6C6C;
+  padding: 40px 20px 20px 20px;
+  margin-bottom: 20px;
+  float: left;
+  margin-top: 15px;
+  margin-left: 15px;
 }
 
-.login-container {
-    display: flex;
-    border: 2px solid #DB6C6C;
-    height: 400px;
-    width: 600px;
-    flex-wrap: wrap;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 300px;
-}
-/* Login Inputs */
-.login-container input[type=text], input[type=password]{
-	width: 400px;
-	padding: 12px 20px;
-	margin: 8px 0;
-	display: inline-block;
-	border: 1px solid #ccc;
-	box-sizing: border-box;
+/*Billing Address */
+.order-billadd {
+  border: 2px solid #DB6C6C;
+  padding: 40px 20px 20px 20px;
+  margin-bottom: 20px;
+  float: left;
+  margin-top: 15px;
+  margin-left: 15px;
 }
 
-.login-container label {
-	margin-right: 20px;
+/*Header of Page*/
+.adress-container h2 {
+  text-align: center;
 }
-/* Login Container & Button Style */
-.login-container .button-style {
-	margin-top: 15px;
-	margin-left: 358px;
+/* Input Fields of Billing Address*/
+.order-billadd input{
+  border: none;
+  background-color: #C4C4C4;
+  float: right;
+  height: 25px;
+  width: 300px;
+  margin-left: 10px;
 }
 
+/* Input Fields of Shipping Address*/
+.order-shipadd input{
+  border: none;
+  background-color: #C4C4C4;
+  float: right;
+  height: 25px;
+  width: 300px;
+  margin-left: 10px;
+}
+
+/* Payments Options*/
+.payment-options{
+  border: 2px solid #DB6C6C;
+  padding: 0px 0px 90px 0px;
+  float: left;
+  margin-bottom: 32px;
+  width: 890px;
+  margin-left: 10;
+
+}
+
+.payment-container{
+  margin-left: 10px;
+  width: 300px;
+}
+
+
+/* Checkbox Payment*/
+.checkbox-payment{
+  margin-top: 33px;
+  margin-left: 56px;
+  column-span: initial;
+  line-height: 69px;
+  margin-bottom: 0px;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+input[type="checkbox"] + label::before {
+  width: 14px;
+  height: 15px;
+  border-radius: 9px;
+  border: 2px solid #c4c4c4;
+  background-color: #fff;
+  display: block;
+  content: "";
+  margin-top: -44px;
+  margin-left: -31px;
+}
+
+input[type="checkbox"]:checked+label::before {
+  background-color: #c4c4c4;
+}
+
+/* Order */
+.order-container{
+  border: 2px solid #DB6C6C;
+  padding: 20px 374px 37px 10px;
+  float: right;
+  width: 600px;
+  margin-bottom: 20px;
+  margin-left: 45px;
+  margin-top: 0px;
+  margin-right: 200px;
+}
+
+.order-list{
+  width: 540px;
+}
+
+/* Table Order */
+table{
+  margin-bottom: 230px;
+  width: 100%;
+  border-collapse: collapse;
+}
+th{
+  height: 22px;
+  padding-right: 62px;
+  padding-left: 18px;
+}
+td{
+  padding-top: 15px;
+  padding-bottom: 12px;
+  padding-left: 29px;
+  border-top: 2px solid #DB6C6C;
+}
+tbody{
+  border-bottom: 2px solid #DB6C6C;
+}
+
+.table-foot{
+  width: 540px;
+  padding-left: 23px;
+  border-top: 1px soild;
+}
+
+.table-foot-text{
+  width: 405px;
+  padding-left: 23px;
+  margin-left: 291px;
+  margin-top: -31px;
+  border-top: 1px soild;
+}
+
+
+.adress-container
+{
+  	margin-top: 0px;
+}
+
+/* Responsiv */
+@media screen and (max-width: 800px) {
+  .order-container {
+    margin-left: 16px;
+  }
+  .payment-options {
+    width: 434px;
+
+}
+  .adress-container
+{
+  	margin-top: 120px;
+}
+}
