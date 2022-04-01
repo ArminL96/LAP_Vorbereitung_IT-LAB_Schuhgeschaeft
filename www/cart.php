@@ -81,8 +81,9 @@
 					//if items are found they get saved in their dedicated array
 					array_push($pdid, $row['productId']);
 				}
-				$_SESSION["product_array"] = $pdid;
 			}
+			$_SESSION["product_array"] = $pdid;
+
 			
 			//foreach product id in $pdid
 			foreach($pdid as $id) {
@@ -122,6 +123,7 @@
 						$Pricetotal += $row['price']; //add price of article in pricetotal variable
 					
 				}
+			
 			}	
 
 			?>	

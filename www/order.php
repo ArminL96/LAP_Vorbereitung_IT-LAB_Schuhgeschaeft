@@ -25,7 +25,6 @@
   <?php
     session_start();
     $Pricetotal = 0;
-    $country = null;
     $mysqli = new mysqli("localhost", "root", "", "schuhgeschaeft");
     #checks if no connection could be established
     if($mysqli->connect_error){
@@ -53,13 +52,7 @@
       $billingID = $row["billingAdressId"];
       $cartID = $row["cartId"];
 
-      //checks if the country is Austria or Germany and saves it in a variable
-      if ($row["ship_country"] == "Austria") {
-        $country = "Austria";
-      }
-      else if ($row["ship_country"] == "Germany")  {
-        $country = "Germany";
-      }
+
 
   ?>
 
@@ -75,9 +68,18 @@
       <p>Country:   <input type="text"name="ship_country" id="ship_country" value=<?php echo $row['ship_country'] ?>></p>
       <p>ZIP Code:  <input type="text" name="ship_zipcode" id="ship_zip" value=<?php echo $row['ship_zipcode'] ?>></p>
       <?php
-      if ($country == null) {
+
+      //checks if the country is Austria or Germany and saves it in a variable
+      if ($row["bill_country"] == "Austria") {
+        $country = "Austria";
+      }
+      else if ($row["bill_country"] == "Germany")  {
+        $country = "Germany";
+      }
+      else {
         echo "<p style='color:red'>Invalid Country, please choose between Austria or Germany</p>"; 
         $country = NULL;
+
       }
       ?>
       <button name="ship_sumit" class="button-style" type="submit">Change</button>
@@ -144,6 +146,7 @@
       require "Billingadress.php";
       header("Refresh: 0");
     }
+
     //checks what the country to calculate the totalprice with the tax
     if ($country == "Austria") {
         //20% tax rate in Austria
@@ -164,7 +167,7 @@
       <p class ="table-foot-text" name="tax_rate"><?php echo $tax_rate ?>%</p>
       <p class ="table-foot">Total Price: </p>
       <p class ="table-foot-text" name="total_price"><?php echo number_format($Pricetotal, 2) ?>€</p>
-      <input type="submit" value="Proceed" class="button-proceed" name="proceed_button"></input>
+      <input type="submit" value="confirm order" class="button-proceed" name="order_button"></input>
     </div>
   </div>
 
@@ -183,7 +186,7 @@
     </div>
   </div>
   
-</form>
+
 
 
   <!--Payment Informations (this structure is only for testing) -->
@@ -193,15 +196,15 @@
       <div class="checkbox-payment">
         <input type="text" name="card_number" id="card_number" placeholder="cardnumber"/>
         <br>
-        <input type="text" name="month" id="month" placeholder="month"/>
+        <input type="number" name="month" id="month" placeholder="month" min="1" max="12"/>
         <br>
-        <input type="text" name="year" id="year" placeholder="year"/>
+        <input type="text" name="year" id="year" placeholder="year" pattern="[0-9]{4}"/> <!--the user have to write 4 number-->
         <br>
-        <input type="text" name="securitycode" id="securitycode" placeholder="securitycode"/>
+        <input type="text" name="securitycode" id="securitycode" placeholder="securitycode" pattern="[0-9]{4}"/>
       </div>
     </div>
   </div>
-
+  </form>
 
 <footer>
 		<!--the footer-->
@@ -212,13 +215,32 @@
 </body>
 <?php
 
-//checks if the proceed-button is pressed
-if (isset($_POST["proceed_button"])) {
+//checks if the confirmm order-button is pressed
+if (isset($_POST["order_button"])) {
+
+
 
     //gets the checked value from the checkboxes for the paymentmethod
     foreach($_POST['method'] as $value){
-        echo $value;
+
     }
+    //if the user checked "cart" as the payment option the inputs fields for the cardinformation gets saved in varibles
+    if ($value == "card") {
+      $cardnumber = $_POST["card_number"];
+      $month = $_POST["month"];
+      $year = $_POST["year"];
+      $securitycode = $_POST["securitycode"];
+
+      //updates the credit-cart information
+      $sql = "UPDATE `creditcart` 
+      INNER JOIN customer ON customer.creditId = creditcart.id
+      SET `cardnumber` = '$cardnumber',
+      `securitycode` = '$securitycode',
+      `expiredate` = '$year"."-".$month."-01'
+      WHERE customer.userId = '".$_SESSION["userID"]."'";
+      $result = $mysqli->query($sql);
+    }  
+    echo $mysqli->error;
 
     //update query for the total price in the shopingcart
     //shopingcart and customer gets joined to only update where the userId in the database matches the current userID
@@ -257,4 +279,3 @@ if (isset($_POST["proceed_button"])) {
     }
   </script>
 </html>
-//

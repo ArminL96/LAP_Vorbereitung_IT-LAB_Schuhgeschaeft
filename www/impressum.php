@@ -4,6 +4,7 @@
 	<title>Impressum</title>
 	<meta charset="UTF-8">
 	<link href="style_sheet.css" rel="stylesheet">
+	<link rel="shortcut icon" href="../www/img/favicon.ico" type="image/x-icon">
 	<style>
 
 	h1, h2, h3, h4, p{
