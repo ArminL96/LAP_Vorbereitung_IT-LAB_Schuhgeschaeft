@@ -161,4 +161,5 @@ Frontend noch zu erledigen:
 	Bestätigung der Bestellung durch eine popup-box
 
 	Menü Problem gefixt da man nicht mehr auf den Seiten navigieren konnte
+	Ein - und Ausblenden der Payment buttons je nachdem was man für eine Zahlungsmethode auswählt
 	
