@@ -155,3 +155,7 @@ Frontend noch zu erledigen:
 	Datenbank aktulisiert (V1.3)
 	Bestellungen werden nun der Datenbank hinzugefügt
 	Zahlungsinformation können nun in der Datenbank aktualisiert werden
+
+04.04.2022
+	Menü Problem gefixt da man nicht mehr auf den Seiten navigieren konnte
+	
