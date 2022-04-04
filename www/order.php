@@ -177,11 +177,11 @@
       <h2 id="text-payment">Payment Options</h2>
       <!--Checkboxs for Payment Options-->
       <div class="checkbox-payment">
-        <input type="checkbox" name="method[]" id="pay_card" value="card"> Pay with card
-        <label for="pay_card"></label>
+        <input type="checkbox" name="method[]" id="pay_card" value="card" onclick="check_card('pay_card')">
+        <label for="pay_card">Pay with card</label>
         <br>
-        <input type="checkbox" name="method[]" id="payment_site" value="cash"> Payment on site
-        <label for="payment_site"></label>
+        <input type="checkbox" name="method[]" id="payment_site" value="cash" onclick="check_card('payment_site')"> 
+        <label for="payment_site">Payment on site</label>
       </div>
     </div>
   </div>
@@ -273,9 +273,42 @@ if (isset($_POST["order_button"])) {
     $result = $mysqli->query($sql);
 }                                                               
 ?>
-  <script>
+  <script type="text/javascript">
     if ( window.history.replaceState ) {
         window.history.replaceState( null, null, window.location.href );
     }
+	
+	//function to check if card or cash is activated and disables options for card if its cash and enables if not
+	function check_card(id)
+	{
+			const credit = document.querySelector('#pay_card');
+			const cash = document.querySelector('#payment_site');
+
+            document.getElementById("pay_card").checked = false;
+            document.getElementById("payment_site").checked = false;
+            document.getElementById(id).checked = true;
+
+            if (credit.checked == true) { 
+				document.getElementById("card_number").disabled = false;
+				document.getElementById("month").disabled = false;
+				document.getElementById("year").disabled = false;
+				document.getElementById("securitycode").disabled = false;
+
+			}  
+              
+            if (cash.checked == true) {
+				document.getElementById("card_number").disabled = true;
+				document.getElementById("month").disabled = true;
+				document.getElementById("year").disabled = true;
+				document.getElementById("securitycode").disabled = true;
+            }
+        
+		
+	}
+	
   </script>
 </html>
+
+
+
+  
