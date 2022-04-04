@@ -158,7 +158,7 @@ Frontend noch zu erledigen:
 
 04.04.2022
 	Bei leeren Warenkorb werden die Buttons deaktviert
-	
+	Bestätigung der Bestellung durch eine popup-box
 
 	Menü Problem gefixt da man nicht mehr auf den Seiten navigieren konnte
 	
