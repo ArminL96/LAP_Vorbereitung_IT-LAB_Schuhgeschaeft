@@ -302,7 +302,7 @@ if (isset($_POST["order_button"])) {
     echo '<script type="text/javascript">toastr.success("Order confirmed!")</script>';
   }                                                              
 ?>
-  <script>
+  <script type="text/javascript">
     if ( window.history.replaceState ) {
         window.history.replaceState( null, null, window.location.href );
     }
@@ -347,3 +347,7 @@ if (isset($_POST["order_button"])) {
 
   </script>
 </html>
+
+
+
+  
