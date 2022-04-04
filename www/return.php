@@ -37,17 +37,7 @@
           <textarea placeholder="Write the Reason of the return here" name="return_text" id="return_text"></textarea>
           <input type="submit" name="sumit_cancel" value="Cancel" class="button-style"/>
           <input type="submit" name="sumit_return" value="Return" class="button-style"/>
-        </div>
-  </form>
-   <footer>
-		<!--the footer-->
-		<div class="container-footer"> 
-		<a href="impressum.php"><p>Impressum</p></a>
-		</div>
-	</footer>
-
-</body>
-
+          
   <?php
     //if the submit button is pressed
     if (isset($_POST["orderID"])) {
@@ -64,12 +54,23 @@
       //Inserts the orderid, reason and the returned into the returns table
       if (!$mysqli -> query("INSERT INTO `returns` (`orderId`, `reason`, `returned`) VALUES ($orderID, '$reason', 1)")) {
 
-        echo "the ordernumber entered does not exsist or is already returned";
+        echo "<p>the ordernumber entered does not exsist or is already returned</p>";
         #echo $mysqli -> error;
       }
 
     }
   ?>
+        </div>
+  </form>
+   <footer>
+		<!--the footer-->
+		<div class="container-footer"> 
+		<a href="impressum.php"><p>Impressum</p></a>
+		</div>
+	</footer>
+
+</body>
+
   <!--prevents the browser from resending the data on a reload-->
   <script>
     if ( window.history.replaceState ) {

@@ -82,6 +82,7 @@
 					array_push($pdid, $row['productId']);
 				}
 			}
+			//save the product_array in the session so the order.php can get the product_array
 			$_SESSION["product_array"] = $pdid;
 
 			
@@ -129,7 +130,10 @@
 			?>	
 			<!--Proceed to Checkout button-->
 			<div class="proceed-checkout">
-				<a href="order.php" id="proceed" class="proceed">Proceed to Checkout</a>
+				<!--<a href="order.php" id="proceed" class="proceed">Proceed to Checkout</a>-->
+
+				<!-- if the cart is empty the button gets disabled -->
+				<button id="proceed" class="proceed" type="button" onclick="location.href='order.php'" <?php if (empty($pdid)) {echo "disabled ";} ?>>Proceed to Checkout</button>
 				<p id="price_totalId" name="price_total"> Price without MwSt.: <?php echo $Pricetotal;?>€</p> <!--Output from the total-->
 			</div>		
 		</form>
@@ -141,4 +145,10 @@
 		</div>
 	</footer>
 </body>
+<script>
+//if the proceed to order button is disabled set the opactiy to 0.5 so the user can see that the button is disabled
+if (document.getElementById('proceed').disabled) {
+	document.getElementById('proceed').style.opacity = '0.5';
+}
+</script>
 </html>
