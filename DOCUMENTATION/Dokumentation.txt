@@ -163,3 +163,7 @@ Frontend noch zu erledigen:
 	Menü Problem gefixt da man nicht mehr auf den Seiten navigieren konnte
 	Ein - und Ausblenden der Payment buttons je nachdem was man für eine Zahlungsmethode auswählt
 	
+05.04.2022
+	Fehler mit dem delete-button im Warenkorb behoben
+	country input in der Bestellung mit einem select getauscht
+	popup-box zur products-page verschoben
