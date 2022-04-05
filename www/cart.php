@@ -14,7 +14,7 @@
 		$idProd = $_POST['delete_from_shopcart'];
 		
 		//there we find the Cart ID of the currently logged in user
-		$sql = "SELECT cartId FROM customer WHERE cartId = '".$_SESSION['userID']."'";
+		$sql = "SELECT cartId FROM customer WHERE userId = '".$_SESSION['userID']."'";
 		$result = $mysqli->query($sql);
 		
 		//if there is a user with the searched cardID
@@ -85,16 +85,17 @@
 			//save the product_array in the session so the order.php can get the product_array
 			$_SESSION["product_array"] = $pdid;
 
-			
+
 			//foreach product id in $pdid
 			foreach($pdid as $id) {
 				//it joins the product table, cartitem tabel, and category table
 				//you save the cart items in the product ID
-				$sql = "SELECT cartitem.id AS cartitemId, product.id, product.name, product.price, product.size, product.color, product.categoryid, category.name AS catName FROM product INNER JOIN category ON product.categoryId = category.id INNER JOIN cartitem ON product.id = cartitem.productId WHERE product.id = '".$id."'";
+				$sql = 'SELECT cartitem.id AS cartitemId, product.id, product.name, product.price, product.size, product.color, product.categoryid, category.name AS catName FROM product 
+				INNER JOIN category ON product.categoryId = category.id INNER JOIN cartitem ON product.id = cartitem.productId 
+				WHERE product.id ="' . $id . '" AND cartitem.cartId ="' . $cartID . '"';
+				
 				$result = $mysqli->query($sql);
-				
-				
-				$row = $result->fetch_assoc()
+				$row = $result->fetch_assoc();
 				?>
 				<div class="article-card">
 					<?php
