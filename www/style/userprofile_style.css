@@ -56,21 +56,21 @@
 	border-radius: 100%;
 }
 
-.profile-shipadd {
+.profile-shipadd, .profile-billadd {
 	border: 2px solid #DB6C6C;
 	padding: 0px 20px 20px 20px;
 	margin-bottom: 20px;
-	margin-left: 400px;
-	margin-right: 190px;
+	margin-left: 100px;
+	margin-right: 100px;
 }
 
-.profile-billadd {
+/*.profile-billadd {
 	border: 2px solid #DB6C6C;
 	padding: 0px 20px 20px 20px;
 	margin-bottom: 70px;
 	margin-left: 400px;
 	margin-right: 190px;
-}
+}*/
 
 .profile-main input[type=button] {
 	margin-left: 235px;
@@ -87,30 +87,30 @@ input{
 
 @media screen and (max-width: 1200px){
 	
-	.profile-shipadd {
+	.profile-shipadd, .profile-billadd {
+
+	margin-left: 100px;
+	margin-right: 100px;
+}
+/*	.profile-billadd {
 
 	margin-left: 100px;
 	margin-right: 300px;
-}
-	.profile-billadd {
-
-	margin-left: 100px;
-	margin-right: 300px;
-}
+}*/
 	
 }
 
 @media screen and (max-width: 650px){
 	
-	.profile-shipadd {
+	.profile-shipadd, .profile-billadd {
+
+	margin-left: 100px;
+	margin-right: 100px;
+}
+/*	.profile-billadd {
 
 	margin-left: 20px;
 	margin-right: 150px;
-}
-	.profile-billadd {
-
-	margin-left: 20px;
-	margin-right: 150px;
-}
+}*/
 	
 }

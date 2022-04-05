@@ -73,7 +73,7 @@
   text-align: center;
 }
 /* Input Fields of Billing Address*/
-.order-billadd input{
+.order-billadd input, select{
   border: none;
   background-color: #C4C4C4;
   float: right;
@@ -83,7 +83,7 @@
 }
 
 /* Input Fields of Shipping Address*/
-.order-shipadd input{
+.order-shipadd input, select{
   border: none;
   background-color: #C4C4C4;
   float: right;

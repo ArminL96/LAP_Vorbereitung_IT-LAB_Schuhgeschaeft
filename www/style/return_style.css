@@ -1,10 +1,12 @@
 
 h2{
   margin-left: 15px;
-}h2
+  text-align: center;
+}
+/*h2
 {
   margin-left: 300px;
-}
+}*/
 
 #text-return{
   color: black;
@@ -45,6 +47,7 @@ h2{
   width: 612px;
   font-size: 18px;
   color: black;
+  resize: none;
 }
 
 
@@ -54,7 +57,8 @@ h2{
   padding: 20px 20px 209px 20px;
   margin-bottom: 20px;
   margin-top: 15px;
-  margin-left: 300px;
+  margin-right: auto;
+  margin-left: auto;
   width: 621px;
   position: center;
   box-sizing: content-box;
