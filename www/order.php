@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.css" rel="stylesheet"/>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
+
   <link rel="stylesheet" href="style/order_style.css">
   <link rel="shortcut icon" href="../www/img/favicon.ico" type="image/x-icon">
 </head>
@@ -69,25 +67,17 @@
       <p>Last Name:  <input type="text" name="ship_lastName" id="ship_lastname" value=<?php echo $row['ship_lastname'] ?>></p>
       <p>Address:   <input type="text" name="ship_adress" id="ship_adress" value=<?php echo $row['ship_adress'] ?>></p>
       <p>City:      <input type="text" name="ship_city" id="ship_city" value=<?php echo $row['ship_city'] ?>></p>
-      <p>Country:   <input type="text"name="ship_country" id="ship_country" value=<?php echo $row['ship_country'] ?>></p>
+      <p>Country: <select name="ship_country">
+                    <option value="Austria" <?php if ($row["ship_country"] == "Austria") {echo "selected";}?>>Austria</option>
+                    <option value="Germany" <?php if ($row["ship_country"] == "Germany") {echo "selected";}?>>Germany</option>
+                  </select>
+      </p>
       <p>ZIP Code:  <input type="text" name="ship_zipcode" id="ship_zip" value=<?php echo $row['ship_zipcode'] ?>></p>
-      <?php
 
-      //checks if the shipping adress is valid and saves if the order-button should be disabeld
-      if ($row["ship_country"] == "Austria") {
-        $shipping_disabled = false;
-      }
-      else if ($row["ship_country"] == "Germany")  {
-        $shipping_disabled = false;
-      }
-      else {
-        $shipping_disabled = true;
-        echo "<p style='color:red'>Invalid Country, please choose between Austria or Germany</p>";
 
-      }
-      ?>
       <button name="ship_sumit" class="button-style" type="submit">Change</button>
     </div>
+
 
     <div class="order-billadd">
       <!--Output & input of User Billing Address-->
@@ -96,40 +86,20 @@
       <p>Last Name:  <input type="text" name="bill_lastName" id="bill_lastName" value=<?php echo $row['bill_lastname'] ?>></p>
       <p>Address:   <input type="text" name="bill_adress" id="bill_adress" value=<?php echo $row['bill_adress'] ?>></p>
       <p>City:      <input type="text" name="bill_city" id="bill_city" value=<?php echo $row['bill_city'] ?>></p>
-      <p>Country:   <input type="text"name="bill_country" id="bill_country" value=<?php echo $row['bill_country'] ?>></p>
+      <p>Country: <select name="bill_country">
+                    <option value="Austria" <?php if ($row["bill_country"] == "Austria") {echo "selected";}?>>Austria</option>
+                    <option value="Germany" <?php if ($row["bill_country"] == "Germany") {echo "selected";}?>>Germany</option>
+                  </select>
+      </p>
       <p>ZIP Code:  <input type="text" name="bill_zipcode" id="bill_zipcode" value=<?php echo $row['bill_zipcode'] ?>></p>
-      <?php
 
-        //checks if the billing adress is valid and sets the country and saves if the order-button should be disabeld
-        if ($row["bill_country"] == "Austria") {
-          $billing_country = "Austria";
-          $billing_disabled = false;
-        }
-        else if ($row["bill_country"] == "Germany")  {
-          $billing_country = "Germany";
-          $billing_disabled = false;
-        }
-        else {
-          echo "<p style='color:red'>Invalid Country, please choose between Austria or Germany</p>";
-          $billing_disabled = true;
-          $billing_country = NULL;
-
-        }
-
-        //checks if both countries are valid and saves it in variable
-        if (!$billing_disabled AND !$shipping_disabled) {
-          $disabled = false;
-        }
-        else {
-          $disabled = true;
-        }
-
-      ?>
       <button name="bill_sumit" class="button-style" type="submit">Change</button>
     </div>
   </div>
 
 <?php 
+    $billing_country = $row["bill_country"];
+
     }
 ?>
   <div class="order-container">
@@ -171,10 +141,12 @@
 
     //checks if the change-button for the shippment adress or the billing adress was pressed
     if (isset($_POST["ship_sumit"])) {
+
       require "shippingAdress.php";
       header("Refresh: 0");
     }
     else if (isset($_POST["bill_sumit"])) {
+
       require "Billingadress.php";
       header("Refresh: 0");
     }
@@ -199,7 +171,7 @@
       <p class ="table-foot-text" name="tax_rate"><?php echo $tax_rate ?></p>
       <p class ="table-foot">Total Price: </p>
       <p class ="table-foot-text" name="total_price"><?php echo number_format($Pricetotal, 2) ?>€</p>
-      <input type="submit" value="confirm order" class="button-proceed" name="order_button" id="order_button" <?php if ($disabled){echo "disabled";} ?>></input> <!--writes the saved $disabled variable to disable or enable the input-->
+      <input type="submit" value="confirm order" class="button-proceed" name="order_button" id="order_button"></input> <!--writes the saved $disabled variable to disable or enable the input-->
     </div>
   </div>
 
@@ -299,13 +271,28 @@ if (isset($_POST["order_button"])) {
     $sql = "UPDATE customer SET cartId = $newShopCartID WHERE id = '".$_SESSION['userID']."'";
     $result = $mysqli->query($sql);
 
-    echo '<script type="text/javascript">toastr.success("Order confirmed!")</script>';
+    //create a SESSION variable so the the popup gets shown on the product-page
+    $_SESSION["order_confirm"] = true;
+
+    //redirects the user to the products-page after his order
+    $URL="products.php";
+    echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+    echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+
+   
   }                                                              
 ?>
   <script type="text/javascript">
+    
     if ( window.history.replaceState ) {
         window.history.replaceState( null, null, window.location.href );
     }
+
+    //because pay with card is checked at the start the inputs are required
+    //document.getElementById("card_number").required = true;
+    //document.getElementById("month").required = true;
+    //document.getElementById("year").required = true;
+    //document.getElementById("securitycode").required = true;
 
     //shows the form for the credit card inforamtion if the user chooses to pay with the card
     //if the user pays with cash the form will be hidden
@@ -323,21 +310,34 @@ if (isset($_POST["order_button"])) {
       document.getElementById(id).checked = true;
 
       if (credit.checked == true) { 
+        //enable inputs
 				document.getElementById("card_number").disabled = false;
 				document.getElementById("month").disabled = false;
 				document.getElementById("year").disabled = false;
 				document.getElementById("securitycode").disabled = false;
 
+        //enable required
+        document.getElementById("card_number").required = true;
+				ocument.getElementById("month").required = true;
+				document.getElementById("year").required = true;
+				document.getElementById("securitycode").required = true;
 			}  
 
       if (cash.checked == true) {
+        //disable inputs 
 				document.getElementById("card_number").disabled = true;
 				document.getElementById("month").disabled = true;
 				document.getElementById("year").disabled = true;
 				document.getElementById("securitycode").disabled = true;
+
+        //disable required
+        document.getElementById("card_number").required = false;
+				document.getElementById("month").required = false;
+				document.getElementById("year").required = false;
+				document.getElementById("securitycode").required = false;
+
+
       }
-
-
 	}
 
     //if the order button is disabled set the opactiy to 0.5 so the user can see that the button is disabled
@@ -347,7 +347,4 @@ if (isset($_POST["order_button"])) {
 
   </script>
 </html>
-
-
-
   
