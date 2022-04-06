@@ -41,6 +41,7 @@
 		
 </head>
 	<body>
+		<form method="post">
 		<!--Header-->
 		<header class="header-container">
 			<?php include "header.php"?>
@@ -58,7 +59,7 @@
 			</div>
 		</header>
 		<main>
-		<form method="post">
+		
 		<?php
 		//Array to save all Product IDs
 		$pdid = array();
