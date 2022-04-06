@@ -52,3 +52,27 @@
 	margin-left: 358px;
 }
 
+@media screen and (max-width: 700px)
+{
+	.login-container {
+    height: 600px;
+    width: 400px;
+  
+}
+	.login-container input[type=text], input[type=password]{
+	width: 200px;
+	padding: 12px 20px;
+	margin: 8px 10px;
+		margin-top: 60px;
+}
+	.login-container label {
+	margin-right: 20px;
+		margin-left: 0px;
+}
+
+	.login-container .button-style {
+	margin-top: 50px;
+	margin-left: 80px;
+}
+
+}
