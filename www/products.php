@@ -10,7 +10,7 @@
 	<link rel="shortcut icon" href="../www/img/favicon.ico" type="image/x-icon">
 	
 </head>
-
+<form method="post">
 <?php
 	//prevents the document from expiring
 	ini_set('session.cache_limiter', 'private');
@@ -46,7 +46,7 @@
 
 
 <body>
-<form method="post">
+
 	<!--Header-->
 	<header class="header-container">
 		<?php include "header.php"?>
