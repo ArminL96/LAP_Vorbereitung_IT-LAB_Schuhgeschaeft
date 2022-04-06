@@ -8,6 +8,7 @@
 	<?php
 		$test = "";
 	?>
+	<form method="POST">
 	<!--Include the header.php-->
 	<header class="header-container">
 		<?php include "header.php"?>
