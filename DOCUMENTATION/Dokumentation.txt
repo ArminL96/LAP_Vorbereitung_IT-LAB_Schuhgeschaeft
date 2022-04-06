@@ -167,3 +167,11 @@ Frontend noch zu erledigen:
 	Fehler mit dem delete-button im Warenkorb behoben
 	country input in der Bestellung mit einem select getauscht
 	popup-box zur products-page verschoben
+
+06.04.2022
+	Order Page Responsive gestaltet
+	kleine änderungen wegen form attribut
+	Responsive im Header wegen nav noch anpassen und verbessern
+	Login Page responsiv
+	Präsentation vorbereitung, gestellte anforderungen, was haben wir aus der arbeit mitgenommen
+	teamaufteilung
