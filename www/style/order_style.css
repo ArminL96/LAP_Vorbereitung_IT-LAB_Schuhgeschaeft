@@ -144,12 +144,16 @@ input[type="checkbox"]:checked+label::before {
   border: 2px solid #DB6C6C;
   padding: 20px 374px 37px 10px;
   float: right;
-  width: 700px;
+  width: 500px;
   margin-bottom: 20px;
   margin-left: 950px;
   margin-top: 15px;
   margin-right: 200px;
   position: absolute;
+}
+.button-proceed
+{
+  margin-right: 10px;
 }
 
 .order-list{
@@ -159,7 +163,7 @@ input[type="checkbox"]:checked+label::before {
 /* Table Order */
 table{
   margin-bottom: 230px;
-  width: 100%;
+  width: 85%; 
   border-collapse: collapse;
 }
 th{
@@ -178,7 +182,7 @@ tbody{
 }
 
 .table-foot{
-  width: 540px;
+  width: 85%;
   padding-left: 23px;
   border-top: 1px soild;
 }
@@ -208,8 +212,9 @@ tbody{
     width: 430px;
      margin-left: 900px;
   }
-   .order-list{
-    width: 100px;
+  .order-list
+  {
+    width: 300px;
   }
   .table-foot
   {
@@ -220,21 +225,8 @@ tbody{
     margin-left: 200px;
   }
 }
-@media screen and (max-width: 1500px)
-{
-  .order-container {
-    float: left;
-    margin-left: 460px;
-    margin-top: 446px;
-    width: 430px;
-  }
-  
-  .payment-options {
-    width: 430px;
 
-  }
-}
-@media screen and (max-width: 1200px)
+@media screen and (max-width: 1500px)
 {
   .order-container {
     float: left;
@@ -243,8 +235,8 @@ tbody{
     margin-top: 0px;
     width: 730px;
   }
-   .order-list{
-    width: 700px;
+  .order-list{
+   width: 820px;
   }
   .table-foot
   {
@@ -264,19 +256,24 @@ tbody{
   .payment-options {
     width: 430px;
   } 
-  .order-container {    
+  .order-container { 
     width: 430px;
-    margin-left: 0px;
   }
-  .order-list{
-    width: 400px;
+  .order-list
+  {
+    width: 100px;
   }
+
   .table-foot
   {
-    width: 400px;
+    width: 350px;
   }
   .button-proceed
   {
-    margin-left: 210px;
+    margin-left: 160px;
+  }
+  .all-container
+  {
+    margin-left: -80px;
   }
 }
