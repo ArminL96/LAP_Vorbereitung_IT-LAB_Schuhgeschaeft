@@ -46,7 +46,7 @@
 
 
 <body>
-
+<form method="post">
 	<!--Header-->
 	<header class="header-container">
 		<?php include "header.php"?>
@@ -62,7 +62,7 @@
 		</div>
 	</header>
 
-	<form method="post">
+	
 		<div id="searchbarDiv">
 			<!--searchbar to search products -->
 			<input id="searchbar" name="search" type="text" placeholder="Search..">
