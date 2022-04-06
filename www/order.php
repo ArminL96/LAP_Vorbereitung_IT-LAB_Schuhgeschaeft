@@ -57,7 +57,7 @@
 
 
   ?>
-
+<div class="all-container">
   <div class="adress-container">
     <!--Output & input of User Shipping Address-->
     <h2>Your Order</h2>
@@ -102,6 +102,36 @@
 
     }
 ?>
+  <!--Payment Options -->
+  <div class="payment-container">
+    <div class="payment-options">
+      <h2 id="text-payment">Payment Options</h2>
+      <!--Checkboxs for Payment Options-->
+      <div class="checkbox-payment">
+        <input type="checkbox" name="method[]" id="pay_card" value="card" onClick="check_card('pay_card')" checked> Pay with card
+        <label for="pay_card"></label>
+        <br>
+        <input type="checkbox" name="method[]" id="payment_site" value="cash" onClick="check_card('payment_site')"> Payment with cash
+        <label for="payment_site"></label>
+      </div>
+    </div>
+  </div>
+  
+  <!--Payment Informations (this structure is only for testing) -->
+  <div class="payment-container">
+    <div class="payment-options">
+      <h2 id="text-payment">Payment Information</h2>
+      <div class="checkbox-payment">
+        <input type="text" name="card_number" id="card_number" placeholder="cardnumber"/>
+        <br>
+        <input type="number" name="month" id="month" placeholder="month" min="1" max="12"/>
+        <br>
+        <input type="text" name="year" id="year" placeholder="year" pattern="[0-9]{4}"/> <!--the user have to write 4 number-->
+        <br>
+        <input type="text" name="securitycode" id="securitycode" placeholder="securitycode" pattern="[0-9]{4}"/>
+      </div>
+    </div>
+  </div>
   <div class="order-container">
     <div class="order-list">
       <table id="order-table" name="order-table">
@@ -174,37 +204,8 @@
       <input type="submit" value="confirm order" class="button-proceed" name="order_button" id="order_button"></input> <!--writes the saved $disabled variable to disable or enable the input-->
     </div>
   </div>
-
-  <!--Payment Options -->
-  <div class="payment-container">
-    <div class="payment-options">
-      <h2 id="text-payment">Payment Options</h2>
-      <!--Checkboxs for Payment Options-->
-      <div class="checkbox-payment">
-        <input type="checkbox" name="method[]" id="pay_card" value="card" onClick="check_card('pay_card')" checked> Pay with card
-        <label for="pay_card"></label>
-        <br>
-        <input type="checkbox" name="method[]" id="payment_site" value="cash" onClick="check_card('payment_site')"> Payment on site
-        <label for="payment_site"></label>
-      </div>
-    </div>
-  </div>
+</div>
   
-  <!--Payment Informations (this structure is only for testing) -->
-  <div class="payment-container">
-    <div class="payment-options">
-      <h2 id="text-payment">Payment Information</h2>
-      <div class="checkbox-payment">
-        <input type="text" name="card_number" id="card_number" placeholder="cardnumber"/>
-        <br>
-        <input type="number" name="month" id="month" placeholder="month" min="1" max="12"/>
-        <br>
-        <input type="text" name="year" id="year" placeholder="year" pattern="[0-9]{4}"/> <!--the user have to write 4 number-->
-        <br>
-        <input type="text" name="securitycode" id="securitycode" placeholder="securitycode" pattern="[0-9]{4}"/>
-      </div>
-    </div>
-  </div>
   </form>
 
 <footer>
@@ -294,8 +295,8 @@ if (isset($_POST["order_button"])) {
     //document.getElementById("year").required = true;
     //document.getElementById("securitycode").required = true;
 
-    //shows the form for the credit card inforamtion if the user chooses to pay with the card
-    //if the user pays with cash the form will be hidden
+    //shows the form for the credit card information if the user chooses to pay with the card
+    //if the user pays with cash the form will be disabled
     function check_card(id)
 	  {
       document.getElementById("pay_card").checked = false;
