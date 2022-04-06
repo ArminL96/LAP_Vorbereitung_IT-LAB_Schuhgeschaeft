@@ -1,4 +1,5 @@
 
+
 /* Buttons */
 .button-style {
 	display: inline-block;
@@ -15,64 +16,103 @@
 	background-color: white;
 	border: 2px solid #D44444;
 }
-
-/* Login Page */
-.login-page-container {
+/* Name of the User */
+#displayName{
+	font-size: 36px;
+	margin-left: 10px;
+	 margin-top: 40px;
+}
+/* Profile */
+.profile-page-container {
 	display: flex;
 	justify-content: center;
-	margin-top: -150px;
 }
 
-.login-container {
-    display: flex;
-    border: 2px solid #DB6C6C;
-    height: 400px;
-    width: 600px;
-    flex-wrap: wrap;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 300px;
-}
-/* Login Inputs */
-.login-container input[type=text], input[type=password]{
-	width: 400px;
-	padding: 12px 20px;
-	margin: 8px 0;
-	display: inline-block;
-	border: 1px solid #ccc;
-	box-sizing: border-box;
+.profile-container {
+	margin-top: 100px;
+	display:flex;
+	flex-direction: column;
 }
 
-.login-container label {
-	margin-right: 20px;
-}
-/* Login Container & Button Style */
-.login-container .button-style {
-	margin-top: 15px;
-	margin-left: 358px;
+.profile-header {
+	display: flex;
+	margin-top: 30px;
 }
 
-@media screen and (max-width: 700px)
-{
-	.login-container {
-    height: 600px;
-    width: 400px;
-  
+.profile-main {
+	margin-top: 100px;
+	width: 1600px;
+	margin-left: 100px;
 }
-	.login-container input[type=text], input[type=password]{
-	width: 200px;
-	padding: 12px 20px;
-	margin: 8px 10px;
-		margin-top: 60px;
+
+.profile-container .profile-header h2 {
+	display: flex;
+	align-items: center;
+	margin-left: 40px;
 }
-	.login-container label {
-	margin-right: 20px;
+
+.profile-container img {
+	margin-right: 40px;
+	height: 180px;
+	width: 180px;
+	border: 0px solid;
+	border-radius: 100%;
+}
+
+.profile-shipadd, .profile-billadd {
+	position: relative;
+	border: 2px solid #DB6C6C;
+	padding: 0px 20px 20px 20px;
+	margin-bottom: 70px;
+	margin-left: 300px;
+	margin-right: 190px;
+	width: 1000px;
+}
+
+
+.profile-main input[type=button] {
+	margin-left: 235px;
+}
+
+.profile-main h2 {
+	text-align: center;
+}
+/* Input Field */
+input{
+	border: 2px solid #DB6C6C;
+	margin-top: 30px;
+}
+
+@media screen and (max-width: 1435px){
+	.profile-shipadd, .profile-billadd {
+
 		margin-left: 0px;
+		margin-right: 100px;
+		width: 900px;
+
 }
 
-	.login-container .button-style {
-	margin-top: 50px;
-	margin-left: 80px;
+}
+
+
+@media screen and (max-width: 1200px){
+	
+	.profile-shipadd, .profile-billadd {
+
+	margin-left: 0px;
+	margin-right: 100px;
+		width: 600px;
+
+}
+}
+
+@media screen and (max-width: 750px){
+	
+	.profile-shipadd, .profile-billadd {
+
+	margin-left: -70px;
+	margin-right: 0px;
+		width: 300px;
 }
 
 }
