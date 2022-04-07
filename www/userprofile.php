@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.css" rel="stylesheet"/>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
 	<link rel="stylesheet" href="style/userprofile_style.css">
 		<link rel="shortcut icon" href="../www/img/favicon.ico" type="image/x-icon">
 </head>
@@ -122,9 +119,9 @@
 				<br>
 				<input type="submit" name="bill_sumit" value="Change" class="button-style"/> <!--Change submit button-->
 			</div>
-
-			<div class="profile-billadd">
-				<h2>Your Last Order</h2>
+<h2>Your Last Order</h2>
+		
+				
 				<div class="order-container">
 					<div class="order-list">
       					<table id="order-table" name="order-table">
@@ -139,22 +136,18 @@
 							<?php
 								$Pricetotal = 0;
 
-								//gets the last cartid saved in the orders table for the current user
-								$sql = "SELECT orders.cartId, shopingcart.totalPrice AS totalprice, cartitem.cartId AS cartID_cartitem FROM orders
+
+								$sql = "SELECT orders.cartId, cartitem.cartId AS cartID_cartitem FROM orders
 								INNER JOIN cartitem ON cartitem.cartId = orders.cartId
-								INNER JOIN shopingcart ON shopingcart.id = orders.cartId
-								WHERE orders.customerId = ".$_SESSION["userID"]."
 								ORDER BY cartID_cartitem DESC";
 
 								
 
 								$result = $mysqli->query($sql);
 								$row = $result->fetch_assoc();
-
 								$cartID = $row["cartID_cartitem"];
-								$totalprice = $row["totalprice"];
 
-								//gets product information from the previous saved cardID
+								//gets the product informations
 								$sql = "SELECT orders.id AS ordernumber, orders.customerId, orders.cartId, cartitem.productId, product.name, product.size, product.price FROM orders
 								INNER JOIN cartitem ON cartitem.cartId = orders.cartId
 								INNER JOIN product ON product.id = cartitem.productId WHERE cartitem.cartId = ".$cartID." AND customerId = ".$_SESSION["userID"]." ORDER BY orders.id DESC;";
@@ -181,12 +174,12 @@
 								
 								?>
 						</table>				
-						<p class ="table-foot" style="border-top: 2px solid #DB6C6C;">Total Price (with MwSt): </p>
-						<p class ="table-foot-text" name="total_price"><?php echo number_format($totalprice, 2) ?>€</p>
+						<p class ="table-foot" style="border-top: 2px solid #DB6C6C;">Total Price: </p>
+						<p class ="table-foot-text" name="total_price"><?php echo number_format($Pricetotal, 2) ?>€</p>
 						<p class ="table-foot">Ordernumber:</p>
 						<p class ="table-foot-text" name="total_price"><?php echo $ordernumber ?></p>
 					</div>
-				</div>
+			
 
 
 			</div>
@@ -199,15 +192,5 @@
 		</div>
 	</footer>
 </body>
-	<?php 
-		//if the user got redirecet from the order.php page 
-		if ($_SERVER['HTTP_REFERER'] === "http://localhost/LAP/LAP_Vorbereitung_IT-LAB_Schuhgeschaeft/www/order.php") 
-		{
-			//scrolls to the bottom of the page to show the last order
-			echo "<script>window.scrollTo(0, document.body.scrollHeight);</script>";
-			//shows the order confirmed popup
-			echo '<script type="text/javascript">toastr.success("Order confirmed!")</script>';
-		} 
-	?>
 </html>
 
