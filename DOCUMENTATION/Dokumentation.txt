@@ -179,3 +179,11 @@ Frontend noch zu erledigen:
 	Login Page responsiv
 	Präsentation vorbereitung, gestellte anforderungen, was haben wir aus der arbeit mitgenommen
 	teamaufteilung
+	
+07.04.2022
+	Footer nochmal überarbeitet
+	Order Page responsiv
+	Return Page(Backend) abfrage zu den Orders ob diese exestiert oder nicht
+	Profile Page: was man zuletzt bestellt hat noch designen
+	
+	Vorbereitung der Präsentation und Präsentation um 13:30 Uhr
