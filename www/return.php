@@ -37,8 +37,8 @@
           <textarea placeholder="Write the Reason of the return here" name="return_text" id="return_text"></textarea>
           <input type="submit" name="sumit_cancel" value="Cancel" class="button-style"/>
           <input type="submit" name="sumit_return" value="Return" class="button-style"/>
-          
-  <?php
+          	<div class="return">
+		  <?php
     //if the submit button is pressed
     if (isset($_POST["orderID"])) {
       $orderID = $_POST["orderID"];
@@ -49,18 +49,48 @@
         #if true the connection failed
         die("connection failed: ".$mysqli->connect_error);
       }
+	  
+	  //selects from table order if user input is an order
+	  $sql = "SELECT id FROM orders WHERE id ='".$orderID."'";
+	  $return = $mysqli->query($sql);
+	  
+	  //if theres an result
+	  if ($return->num_rows > 0) {
 
-      //checks if the query throws an error
-      //Inserts the orderid, reason and the returned into the returns table
-      if (!$mysqli -> query("INSERT INTO `returns` (`orderId`, `reason`, `returned`) VALUES ($orderID, '$reason', 1)")) {
+			//looks if order has been already returned
+		  $sql = "SELECT returned FROM returns WHERE orderId ='".$orderID."'";
+		  $return = $mysqli->query($sql);
+	  
+		//if he doesnt find a row
+	  if($return->num_rows < 1)
+	  {
+		  $sql = "INSERT INTO returns (orderId, reason, returned) VALUES ('".$orderID."', '".$reason."', '1')";
+		  $mysqli->query($sql);
+		  echo "<p id='return'>Order has been returned!</p>";
+		
+	  }
+	  //if theres already an order returned
+	  else
+	  {
+		  
+		    echo "<p id='return'>Order ".$orderID." has already been returned!</p>";
+	  }
+	  
+	  }
+	  //if theres no order with that number
+	  else{
+		  echo "<p id='return'>Theres no order with that number!</p>";
+	  }
+	  
+	  
 
-        echo "<p>the ordernumber entered does not exsist or is already returned</p>";
-        #echo $mysqli -> error;
-      }
 
     }
   ?>
+		</div>
+
         </div>
+	
   </form>
    <footer>
 		<!--the footer-->
