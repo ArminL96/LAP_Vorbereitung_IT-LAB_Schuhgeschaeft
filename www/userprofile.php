@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html>
 <head>
 	<link rel="stylesheet" href="style/userprofile_style.css">
@@ -119,6 +119,71 @@
 				<br>
 				<input type="submit" name="bill_sumit" value="Change" class="button-style"/> <!--Change submit button-->
 			</div>
+
+			<div class="profile-billadd">
+				<h2>Your Last Order</h2>
+				<div class="order-container">
+					<div class="order-list">
+      					<table id="order-table" name="order-table">
+        					<tr>
+          						<!--Header Table-->
+								<th>Productname</th>
+								<th>Size</th>
+								<th>Price</th>
+							</tr>
+
+							<!--gets all the products form the shopcart-->
+							<?php
+								$Pricetotal = 0;
+
+
+								$sql = "SELECT orders.cartId, cartitem.cartId AS cartID_cartitem FROM orders
+								INNER JOIN cartitem ON cartitem.cartId = orders.cartId
+								ORDER BY cartID_cartitem DESC";
+
+								
+
+								$result = $mysqli->query($sql);
+								$row = $result->fetch_assoc();
+
+								$cartID = $row["cartID_cartitem"];
+
+								//gets the product informations
+								$sql = "SELECT orders.id AS ordernumber, orders.customerId, orders.cartId, cartitem.productId, product.name, product.size, product.price FROM orders
+								INNER JOIN cartitem ON cartitem.cartId = orders.cartId
+								INNER JOIN product ON product.id = cartitem.productId WHERE cartitem.cartId = ".$cartID." AND customerId = ".$_SESSION["userID"]." ORDER BY orders.id DESC;";
+								
+								
+
+								$result = $mysqli->query($sql);
+
+								while($row = $result->fetch_assoc()) {  
+									//add price of article in pricetotal variable    
+									$Pricetotal += $row['price']; 
+									$ordernumber = $row["ordernumber"];
+							?>
+							
+									<tr>
+									<!--products of Order-->
+									<td><?php echo $row["name"]?></td>
+									<td><?php echo $row["size"]?></td>
+									<td><?php echo $row["price"]?>€</td>
+									</tr>
+
+							<?php 
+								}
+								
+								?>
+						</table>				
+						<p class ="table-foot" style="border-top: 2px solid #DB6C6C;">Total Price: </p>
+						<p class ="table-foot-text" name="total_price"><?php echo number_format($Pricetotal, 2) ?>€</p>
+						<p class ="table-foot">Ordernumber:</p>
+						<p class ="table-foot-text" name="total_price"><?php echo $ordernumber ?></p>
+					</div>
+				</div>
+
+
+			</div>
 		</div>
 		</form>
 	<footer>
@@ -129,3 +194,4 @@
 	</footer>
 </body>
 </html>
+
