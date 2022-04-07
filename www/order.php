@@ -63,16 +63,16 @@
     <h2>Your Order</h2>
     <div class="order-shipadd">
       <h2 id="text-adress">Shipping Address</h2>
-      <p>First Name: <input type="text" name="ship_firstName" id="ship_firstname" value=<?php echo $row['ship_firstname'] ?>></p>
-      <p>Last Name:  <input type="text" name="ship_lastName" id="ship_lastname" value=<?php echo $row['ship_lastname'] ?>></p>
-      <p>Address:   <input type="text" name="ship_adress" id="ship_adress" value=<?php echo $row['ship_adress'] ?>></p>
-      <p>City:      <input type="text" name="ship_city" id="ship_city" value=<?php echo $row['ship_city'] ?>></p>
+      <p>First Name: <input type="text" name="ship_firstName" id="ship_firstname" value=<?php echo $row['ship_firstname'] ?> required></p>
+      <p>Last Name:  <input type="text" name="ship_lastName" id="ship_lastname" value=<?php echo $row['ship_lastname'] ?> required></p>
+      <p>Address:   <input type="text" name="ship_adress" id="ship_adress" value=<?php echo $row['ship_adress'] ?> required></p>
+      <p>City:      <input type="text" name="ship_city" id="ship_city" value=<?php echo $row['ship_city'] ?> required></p>
       <p>Country: <select name="ship_country">
-                    <option value="Austria" <?php if ($row["ship_country"] == "Austria") {echo "selected";}?>>Austria</option>
-                    <option value="Germany" <?php if ($row["ship_country"] == "Germany") {echo "selected";}?>>Germany</option>
+                    <option value="Austria" <?php if ($row["ship_country"] == "Austria") {echo "selected";}?> required>Austria</option>
+                    <option value="Germany" <?php if ($row["ship_country"] == "Germany") {echo "selected";}?> required>Germany</option>
                   </select>
       </p>
-      <p>ZIP Code:  <input type="number" name="ship_zipcode" id="ship_zip" value=<?php echo $row['ship_zipcode'] ?>></p>
+      <p>ZIP Code:  <input type="number" name="ship_zipcode" id="ship_zip" value=<?php echo $row['ship_zipcode'] ?> required></p>
 
 
       <button name="ship_sumit" class="button-style" type="submit">Change</button>
@@ -82,16 +82,16 @@
     <div class="order-billadd">
       <!--Output & input of User Billing Address-->
       <h2 id="text-adress">Billing Address</h2>
-      <p>First Name: <input  type="text" name="bill_firstName" id="bill_firstName" value=<?php echo $row['bill_firstname'] ?>></p>
-      <p>Last Name:  <input type="text" name="bill_lastName" id="bill_lastName" value=<?php echo $row['bill_lastname'] ?>></p>
-      <p>Address:   <input type="text" name="bill_adress" id="bill_adress" value=<?php echo $row['bill_adress'] ?>></p>
-      <p>City:      <input type="text" name="bill_city" id="bill_city" value=<?php echo $row['bill_city'] ?>></p>
+      <p>First Name: <input  type="text" name="bill_firstName" id="bill_firstName" value=<?php echo $row['bill_firstname'] ?> required></p>
+      <p>Last Name:  <input type="text" name="bill_lastName" id="bill_lastName" value=<?php echo $row['bill_lastname'] ?> required></p>
+      <p>Address:   <input type="text" name="bill_adress" id="bill_adress" value=<?php echo $row['bill_adress'] ?> required> </p>
+      <p>City:      <input type="text" name="bill_city" id="bill_city" value=<?php echo $row['bill_city'] ?> required></p>
       <p>Country: <select name="bill_country">
-                    <option value="Austria" <?php if ($row["bill_country"] == "Austria") {echo "selected";}?>>Austria</option>
-                    <option value="Germany" <?php if ($row["bill_country"] == "Germany") {echo "selected";}?>>Germany</option>
+                    <option value="Austria" <?php if ($row["bill_country"] == "Austria") {echo "selected";}?> required>Austria</option>
+                    <option value="Germany" <?php if ($row["bill_country"] == "Germany") {echo "selected";}?> required>Germany</option>
                   </select>
       </p>
-      <p>ZIP Code:  <input type="number" name="bill_zipcode" id="bill_zipcode" value=<?php echo $row['bill_zipcode'] ?>></p>
+      <p>ZIP Code:  <input type="number" name="bill_zipcode" id="bill_zipcode" value=<?php echo $row['bill_zipcode'] ?> required></p>
 
       <button name="bill_sumit" class="button-style" type="submit">Change</button>
     </div>
@@ -280,7 +280,7 @@ if (isset($_POST["order_button"])) {
     $_SESSION["order_confirm"] = true;
 
     //redirects the user to the products-page after his order
-    $URL="products.php";
+    $URL="userprofile.php";
     echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
     echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
 
@@ -292,12 +292,6 @@ if (isset($_POST["order_button"])) {
     if ( window.history.replaceState ) {
         window.history.replaceState( null, null, window.location.href );
     }
-
-    //because pay with card is checked at the start the inputs are required
-    document.getElementById("card_number").required = true;
-    document.getElementById("month").required = true;
-    document.getElementById("year").required = true;
-    document.getElementById("securitycode").required = true;
 
     //shows the form for the credit card information if the user chooses to pay with the card
     //if the user pays with cash the form will be disabled
@@ -351,4 +345,3 @@ if (isset($_POST["order_button"])) {
   </script>
 </html>
   
-
