@@ -317,7 +317,7 @@ if (isset($_POST["order_button"])) {
 
         //enable required
         document.getElementById("card_number").required = true;
-				ocument.getElementById("month").required = true;
+				document.getElementById("month").required = true;
 				document.getElementById("year").required = true;
 				document.getElementById("securitycode").required = true;
 			}  
