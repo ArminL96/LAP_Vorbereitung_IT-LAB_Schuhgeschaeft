@@ -1,10 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<!-- scripts and stylesheets for the popup box -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.css" rel="stylesheet"/>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
 	<!--favicon and own css-->
 	<link rel="stylesheet" href="style/products_style.css">
 	<link rel="shortcut icon" href="../www/img/favicon.ico" type="image/x-icon">
@@ -137,13 +133,7 @@
 			</div>
 			
 			<?php
-				//if the got redirectet from the order-page the SESSION variable is true and a "order confirmed" popup shows up
-				$orderd = $_SESSION["order_confirm"];
-				if (isset($orderd) AND $orderd == 1) {
-					echo '<script type="text/javascript">toastr.success("Order confirmed!")</script>';
-					$_SESSION["order_confirm"] = false;
-			
-				}
+
 		}
 		?>
 	</form>
