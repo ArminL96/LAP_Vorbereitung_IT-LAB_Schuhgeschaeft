@@ -41,6 +41,7 @@
 		
 </head>
 	<body>
+		<main>
 		<form method="post">
 		<!--Header-->
 		<header class="header-container">
@@ -58,7 +59,7 @@
 				
 			</div>
 		</header>
-		<main>
+		
 		
 		<?php
 		//Array to save all Product IDs
