@@ -122,10 +122,10 @@
       <h2 id="text-payment">Payment Options</h2>
       <!--Checkboxs for Payment Options-->
       <div class="checkbox-payment">
-        <input type="checkbox" name="method[]" id="pay_card" value="card" onClick="check_card('pay_card')" checked> Pay with card
+        <input type="checkbox" name="method[]" id="pay_card" value="card" onClick="check_card('pay_card')"> Pay with card
         <label for="pay_card"></label>
         <br>
-        <input type="checkbox" name="method[]" id="payment_site" value="cash" onClick="check_card('payment_site')"> Payment with cash
+        <input type="checkbox" name="method[]" id="payment_site" value="cash" onClick="check_card('payment_site')"checked> Payment with cash
         <label for="payment_site"></label>
       </div>
     </div>
@@ -136,13 +136,13 @@
     <div class="payment-options">
       <h2 id="text-payment">Payment Information</h2>
       <div class="checkbox-payment">
-        <input type="text" name="card_number" id="card_number" placeholder="cardnumber"/>
+        <input type="text" name="card_number" id="card_number" placeholder="cardnumber" disabled="disabled"/>
         <br>
-        <input type="number" name="month" id="month" placeholder="month" min="1" max="12"/>
+        <input type="number" name="month" id="month" placeholder="month" min="1" max="12" disabled="disabled"/>
         <br>
-        <input type="text" name="year" id="year" placeholder="year" pattern="[0-9]{4}"/> <!--the user have to write 4 number-->
+        <input type="text" name="year" id="year" placeholder="year" pattern="[0-9]{4}" disabled="disabled"/> <!--the user have to write 4 number-->
         <br>
-        <input type="text" name="securitycode" id="securitycode" placeholder="securitycode" pattern="[0-9]{4}"/>
+        <input type="text" name="securitycode" id="securitycode" placeholder="securitycode" pattern="[0-9]{4}" disabled="disabled"/>
       </div>
     </div>
   </div>
@@ -308,7 +308,7 @@ if (isset($_POST["order_button"])) {
       document.getElementById(id).checked = true;
 
       const credit = document.querySelector('#pay_card');
-			const cash = document.querySelector('#payment_site');
+	  const cash = document.querySelector('#payment_site');
 
       document.getElementById("pay_card").checked = false;
       document.getElementById("payment_site").checked = false;
@@ -336,7 +336,7 @@ if (isset($_POST["order_button"])) {
 				document.getElementById("securitycode").disabled = true;
 
         //disable required
-        document.getElementById("card_number").required = false;
+				document.getElementById("card_number").required = false;
 				document.getElementById("month").required = false;
 				document.getElementById("year").required = false;
 				document.getElementById("securitycode").required = false;
