@@ -1,5 +1,4 @@
 
-
 /* Buttons */
 .button-style {
 	display: inline-block;
@@ -64,57 +63,6 @@
 	margin-right: 100px;
 }
 
-/*.profile-billadd {
-	border: 2px solid #DB6C6C;
-	padding: 0px 20px 20px 20px;
-	margin-bottom: 70px;
-	margin-left: 400px;
-	margin-right: 190px;
-}*/
-
-.order-container{
-	border: 2px solid #DB6C6C;
-    padding: 20px 374px 37px 10px;
-    /* float: right; */
-    width: 500px;
-    margin-bottom: 20px;
-    margin: auto;
-    margin-top: 15px;
-    /* margin-right: 200px; */
-    /* position: absolute;*/
-  }
-
-  .order-list{
-	width: 540px;
-  }
-
-  table {
-    margin-bottom: 230px;
-    width: 85%;
-    border-collapse: collapse;
-}
-
-  td {
-    padding-top: 15px;
-    padding-bottom: 12px;
-    padding-left: 29px;
-    border-top: 2px solid #DB6C6C;
-}
-
-.table-foot {
-	width: 85%;
-    padding-left: 23px;
-    border-top: 1px soild;
-    /*border-top: 2px solid #db6c6c;*/
-}
-
-.table-foot-text {
-	width: 405px;
-    padding-left: 23px;
-    margin-left: 291px;
-    margin-top: -31px;
-    border-top: 1px soild;
-}
 
 .profile-main input[type=button] {
 	margin-left: 235px;
@@ -128,31 +76,52 @@ input{
 	border: 2px solid #DB6C6C;
 	margin-top: 30px;
 }
-
-@media screen and (max-width: 1200px){
-
-	.profile-shipadd, .profile-billadd {
-
-	margin-left: 100px;
-	margin-right: 100px;
-}
-/*	.profile-billadd {
-	margin-left: 100px;
-	margin-right: 300px;
-}*/
-
+.order-container{
+  border: 2px solid #DB6C6C;
+  padding: 20px 374px 37px 10px;
+  float: left;
+  width: 500px;
+  margin-bottom: 20px;
+   margin-left: 100px;
+  margin-top: 50px;
+  margin-right: 200px;
 }
 
-@media screen and (max-width: 650px){
-
-	.profile-shipadd, .profile-billadd {
-
-	margin-left: 100px;
-	margin-right: 100px;
+.order-list{
+  width: 540px;
 }
-/*	.profile-billadd {
-	margin-left: 20px;
-	margin-right: 150px;
-}*/
 
+/* Table Order */
+table{
+  margin-bottom: 230px;
+  width: 85%; 
+  border-collapse: collapse;
+}
+th{
+  height: 22px;
+  padding-right: 62px;
+  padding-left: 18px;
+}
+td{
+  padding-top: 15px;
+  padding-bottom: 12px;
+  padding-left: 29px;
+  border-top: 2px solid #DB6C6C;
+}
+tbody{
+  border-bottom: 2px solid #DB6C6C;
+}
+
+.table-foot{
+  width: 85%;
+  padding-left: 23px;
+  border-top: 1px soild;
+}
+
+.table-foot-text{
+  width: 405px;
+  padding-left: 23px;
+  margin-left: 291px;
+  margin-top: -31px;
+  border-top: 1px soild;
 }
