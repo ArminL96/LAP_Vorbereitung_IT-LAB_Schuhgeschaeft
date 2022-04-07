@@ -72,7 +72,7 @@
                     <option value="Germany" <?php if ($row["ship_country"] == "Germany") {echo "selected";}?>>Germany</option>
                   </select>
       </p>
-      <p>ZIP Code:  <input type="text" name="ship_zipcode" id="ship_zip" value=<?php echo $row['ship_zipcode'] ?>></p>
+      <p>ZIP Code:  <input type="number" name="ship_zipcode" id="ship_zip" value=<?php echo $row['ship_zipcode'] ?>></p>
 
 
       <button name="ship_sumit" class="button-style" type="submit">Change</button>
@@ -91,7 +91,7 @@
                     <option value="Germany" <?php if ($row["bill_country"] == "Germany") {echo "selected";}?>>Germany</option>
                   </select>
       </p>
-      <p>ZIP Code:  <input type="text" name="bill_zipcode" id="bill_zipcode" value=<?php echo $row['bill_zipcode'] ?>></p>
+      <p>ZIP Code:  <input type="number" name="bill_zipcode" id="bill_zipcode" value=<?php echo $row['bill_zipcode'] ?>></p>
 
       <button name="bill_sumit" class="button-style" type="submit">Change</button>
     </div>
@@ -100,7 +100,21 @@
 <?php 
     $billing_country = $row["bill_country"];
 
+    //checks if the change-button for the shippment adress or the billing adress was pressed
+    if (isset($_POST["ship_sumit"])) {
+
+      //changes the shippingadress in an external php file
+      require "shippingAdress.php";
+      //Refresh the page to load in the changed adress
+      header("Refresh: 0");
     }
+    else if (isset($_POST["bill_sumit"])) {
+
+      require "Billingadress.php";
+      header("Refresh: 0");
+    }
+
+  }
 ?>
   <!--Payment Options -->
   <div class="payment-container">
@@ -168,19 +182,6 @@
   <?php 
       }
     }
-
-    //checks if the change-button for the shippment adress or the billing adress was pressed
-    if (isset($_POST["ship_sumit"])) {
-
-      require "shippingAdress.php";
-      header("Refresh: 0");
-    }
-    else if (isset($_POST["bill_sumit"])) {
-
-      require "Billingadress.php";
-      header("Refresh: 0");
-    }
-
     //checks what the country to calculate the totalprice with the tax
     if ($billing_country == "Austria") {
         //20% tax rate in Austria
@@ -217,14 +218,14 @@
 </body>
 <?php
 
-//checks if the confirmm order-button is pressed
+//checks if the confirm order-button is pressed
 if (isset($_POST["order_button"])) {
 
     //gets the checked value from the checkboxes for the paymentmethod
-    foreach($_POST['method'] as $paymentmethod){
+    foreach($_POST['method'] as $paymentmethod);
 
-    }
-    //if the user checked "cart" as the payment option the inputs fields for the cardinformation gets saved in varibles
+    
+    //if the user checked "pay with card" as the payment option the inputs fields for the cardinformation gets saved in varibales
     if ($paymentmethod == "card") {
       $cardnumber = $_POST["card_number"];
       $month = $_POST["month"];
@@ -249,24 +250,27 @@ if (isset($_POST["order_button"])) {
             SET shopingcart.totalPrice = $Pricetotal
             WHERE customer.userId = '".$_SESSION["userID"]."'";
 
-    //sql Update totalprice of the cart is updatet here
     $result = $mysqli->query($sql);
+
 
     //inserts the cardId, customerId, billAddId and the shipAddId into the order table
     $sql = "INSERT INTO `orders` (`cartId`, `customerId`, `billAddId`, `shipAddId`, `paymentMethod`) VALUES ($cartID, $customerID, $billingID, $shippingID, '$paymentmethod' );";
     $mysqli->error;
     $result = $mysqli->query($sql); 
 
+
     //creates a new shopingcart for the user
     //a new shopingcart has to be created so the old shopingcart doesnt get overwritten
     $sql = "INSERT INTO `shopingcart` (`totalPrice`) VALUES (0)";
     $result = $mysqli->query($sql); 
+
 
     //Selects the last shopingcart to save the id in an variable
     $sql = "SELECT `id` FROM `shopingcart` ORDER BY id DESC LIMIT 1;";
     $result = $mysqli->query($sql);
     $row = $result->fetch_assoc();
     $newShopCartID = $row["id"];    
+
 
     //Updates the cardId in the customer-table to the id of the newly created shopingcart
     $sql = "UPDATE customer SET cartId = $newShopCartID WHERE id = '".$_SESSION['userID']."'";
@@ -290,10 +294,10 @@ if (isset($_POST["order_button"])) {
     }
 
     //because pay with card is checked at the start the inputs are required
-    //document.getElementById("card_number").required = true;
-    //document.getElementById("month").required = true;
-    //document.getElementById("year").required = true;
-    //document.getElementById("securitycode").required = true;
+    document.getElementById("card_number").required = true;
+    document.getElementById("month").required = true;
+    document.getElementById("year").required = true;
+    document.getElementById("securitycode").required = true;
 
     //shows the form for the credit card information if the user chooses to pay with the card
     //if the user pays with cash the form will be disabled
@@ -336,8 +340,6 @@ if (isset($_POST["order_button"])) {
 				document.getElementById("month").required = false;
 				document.getElementById("year").required = false;
 				document.getElementById("securitycode").required = false;
-
-
       }
 	}
 
@@ -349,3 +351,4 @@ if (isset($_POST["order_button"])) {
   </script>
 </html>
   
+
