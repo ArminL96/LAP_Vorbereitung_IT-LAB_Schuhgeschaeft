@@ -139,9 +139,11 @@
 							<?php
 								$Pricetotal = 0;
 
-
-								$sql = "SELECT orders.cartId, cartitem.cartId AS cartID_cartitem FROM orders
+								//gets the last cartid saved in the orders table for the current user
+								$sql = "SELECT orders.cartId, shopingcart.totalPrice AS totalprice, cartitem.cartId AS cartID_cartitem FROM orders
 								INNER JOIN cartitem ON cartitem.cartId = orders.cartId
+								INNER JOIN shopingcart ON shopingcart.id = orders.cartId
+								WHERE orders.customerId = ".$_SESSION["userID"]."
 								ORDER BY cartID_cartitem DESC";
 
 								
@@ -150,8 +152,9 @@
 								$row = $result->fetch_assoc();
 
 								$cartID = $row["cartID_cartitem"];
+								$totalprice = $row["totalprice"];
 
-								//gets the product informations
+								//gets product information from the previous saved cardID
 								$sql = "SELECT orders.id AS ordernumber, orders.customerId, orders.cartId, cartitem.productId, product.name, product.size, product.price FROM orders
 								INNER JOIN cartitem ON cartitem.cartId = orders.cartId
 								INNER JOIN product ON product.id = cartitem.productId WHERE cartitem.cartId = ".$cartID." AND customerId = ".$_SESSION["userID"]." ORDER BY orders.id DESC;";
@@ -178,8 +181,8 @@
 								
 								?>
 						</table>				
-						<p class ="table-foot" style="border-top: 2px solid #DB6C6C;">Total Price: </p>
-						<p class ="table-foot-text" name="total_price"><?php echo number_format($Pricetotal, 2) ?>€</p>
+						<p class ="table-foot" style="border-top: 2px solid #DB6C6C;">Total Price (with MwSt): </p>
+						<p class ="table-foot-text" name="total_price"><?php echo number_format($totalprice, 2) ?>€</p>
 						<p class ="table-foot">Ordernumber:</p>
 						<p class ="table-foot-text" name="total_price"><?php echo $ordernumber ?></p>
 					</div>
@@ -197,9 +200,12 @@
 	</footer>
 </body>
 	<?php 
-		if ($_SERVER['HTTP_REFERER'] != "http://localhost/LAP/LAP_Vorbereitung_IT-LAB_Schuhgeschaeft/www/products.php") 
+		//if the user got redirecet from the order.php page 
+		if ($_SERVER['HTTP_REFERER'] === "http://localhost/LAP/LAP_Vorbereitung_IT-LAB_Schuhgeschaeft/www/order.php") 
 		{
+			//scrolls to the bottom of the page to show the last order
 			echo "<script>window.scrollTo(0, document.body.scrollHeight);</script>";
+			//shows the order confirmed popup
 			echo '<script type="text/javascript">toastr.success("Order confirmed!")</script>';
 		} 
 	?>
