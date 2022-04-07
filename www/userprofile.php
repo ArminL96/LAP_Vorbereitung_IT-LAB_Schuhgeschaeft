@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.css" rel="stylesheet"/>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
 	<link rel="stylesheet" href="style/userprofile_style.css">
 		<link rel="shortcut icon" href="../www/img/favicon.ico" type="image/x-icon">
 </head>
@@ -193,5 +196,12 @@
 		</div>
 	</footer>
 </body>
+	<?php 
+		if ($_SERVER['HTTP_REFERER'] != "http://localhost/LAP/LAP_Vorbereitung_IT-LAB_Schuhgeschaeft/www/products.php") 
+		{
+			echo "<script>window.scrollTo(0, document.body.scrollHeight);</script>";
+			echo '<script type="text/javascript">toastr.success("Order confirmed!")</script>';
+		} 
+	?>
 </html>
 
