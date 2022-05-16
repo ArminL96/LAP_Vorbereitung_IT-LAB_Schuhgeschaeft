@@ -187,3 +187,6 @@ Frontend noch zu erledigen:
 	Profile Page: was man zuletzt bestellt hat noch designen
 	
 	Vorbereitung der Präsentation und Präsentation um 13:30 Uhr
+	
+16.05.2022
+	Auswertungs Filter Maßnahmen filtern
